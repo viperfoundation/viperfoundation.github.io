@@ -2,10 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/raw.svg" />
+    <script>
+      (function (l) {
+        if (l.search && l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            "",
+            l.pathname.slice(0, -1) + decoded + l.hash,
+          );
+        }
+      })(window.location);
+    </script>
+    <link rel="icon" type="image/svg+xml" href="./raw.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tds/patterns-react</title>
-  <script defer src="/static/js/lib-react.2200a300.js"></script><script defer src="/static/js/lib-router.db1101f1.js"></script><script defer src="/static/js/839.b5dbef43.js"></script><script defer src="/static/js/index.7f00336e.js"></script><link href="/static/css/index.0b4677b1.css" rel="stylesheet"></head>
+  <script defer src="./static/js/lib-react.2200a300.js"></script><script defer src="./static/js/lib-router.9b48c37b.js"></script><script defer src="./static/js/839.b5dbef43.js"></script><script defer src="./static/js/index.c27de534.js"></script><link href="./static/css/index.0b4677b1.css" rel="stylesheet"></head>
   <body>
     <div id="root"></div>
   </body>
