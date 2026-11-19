@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Message marks · Viper Blog</title>
+<meta name="description" content="Clock, check, read, and who keeps your message">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Guides</span> · November 19, 2026</p>
+<h1>Message marks</h1>
+<p class="lead">Clock, check, read, and who keeps your message</p>
+<h2>Clock, then a check</h2><p>A clock: your message is on its way, and Viper keeps trying. One check: the relay has accepted it.</p>
+<figure class="shot"><img loading="lazy" src="../img/iphone-4-chat.jpg" alt=""><figcaption>A chat: messages in a green frame came over the direct link (Viper 1.5.34, sample chat)</figcaption></figure>
+<h2>When they are offline</h2><p>The relay keeps it, encrypted, until they come back online. Then it delivers it and deletes its copy. There is no separate mark for delivered.</p>
+<h2>Read</h2><p>When they open the chat, their phone tells yours, and the check becomes a filled mark. If they turned Send Read Receipts off, you see no read mark.</p>
+<h2>Direct and Bluetooth</h2><p>A direct message shows no mark: it went straight to their phone. Over Bluetooth, the check means their phone got it. If a link drops as you send, the message takes the next route.</p>
+<h2>Kept on your phone</h2><p>Your chats are stored on this device, encrypted. The relay deletes each message once it is delivered and keeps no history. A copy of your own: Encrypted Chat Backup in Settings → Security and Data.</p>
+
+<h3>Earlier on this blog</h3><ul><li><a href="viper-1-5-9.html">Viper 1.5.9 — Ephemeral Relay, Local Contacts &amp; Persistent P2P History</a></li></ul>
+<p class="muted" style="margin-top:32px">From the guide in Viper 1.5.34: Profile → Settings → Help → Guides. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

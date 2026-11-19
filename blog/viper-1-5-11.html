@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.11 — Video &amp; Voice Messages, Apple Review Updates · Viper Blog</title>
+<meta name="description" content="Native video and voice messages over relay or P2P. Plus changes required by Apple review: Open In removed, wallet address hidden in other users&#x27; profiles — with a public-key copy workaround.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · July 16, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5.11 — Video &amp; Voice Messages, Apple Review Updates</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Voice: hold the record button; tap it to switch to a video circle of up to 30 seconds. Playback continues to the next note, at 1X, 1.5X or 2X.</li><li>Hold a voice message → Transcribe: Russian speech to text on the phone, free. Save Video on a circle; Save without Logo is Viper Pro.</li><li>Through the relay a voice or video note now waits for someone offline, like a file (it is deleted once delivered).</li></ul></div>
+<p>Viper 1.5.11 adds native video and voice messaging, and ships a few changes required to pass Apple's review.</p>
+<h2 id="video-voice-messages">Video &amp; Voice Messages</h2>
+<p>You can now send video and voice messages. These work over both the relay and direct P2P — the app picks the best transport based on whether you and your contact are online at the same time.</p>
+<ul>
+<li><strong>Voice messages</strong> — record and send audio inline.</li>
+<li><strong>Video messages</strong> — record and send short video clips.</li>
+</ul>
+<p>Like text, these are routed directly when both peers are online and never touch persistent storage on the server.</p>
+<h2 id="removed-open-in">Removed: Open In</h2>
+<p>The "Open In" functionality has been removed from the app.</p>
+<h2 id="removed-wallet-address-in-another-users-profile">Removed: Wallet Address in Another User's Profile</h2>
+<p>Apple requires this feature to go through an organization-level flow, which isn't set up yet — so wallet address display has been removed from other people's profiles in this build.</p>
+<p><strong>As an alternative:</strong> you can copy a contact's public key from their profile and convert it to a wallet address yourself using tools outside of Viper. I'll write about whether this approach passes Apple review in a future update.</p>
+<p class="muted" style="margin-top:32px">First published July 16, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

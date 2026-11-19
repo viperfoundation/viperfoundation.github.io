@@ -1,0 +1,80 @@
+# Turkish (siz, as in the tr App Store listing). The app UI is English, so Pro menu names are given in English in brackets.
+meta = Viper Messenger; iPhone, iPad ve Mac için özel bir mesajlaşma uygulamasıdır: cihazdan cihaza doğrudan, uçtan uca şifreli, telefon numarası gerekmez. Anahtarınız hesabınızdır. TON üzerine kurulu.
+og = TON üzerinde özel mesajlaşma. Cihazdan cihaza doğrudan, uçtan uca şifreli, telefon numarası gerekmez.
+nav_features = Özellikler
+nav_screens = Ekranlar
+ai_name = Cihazda yapay zeka
+get = Viper Messenger'ı indirin
+logo_alt = Viper logosu: yeşil ASCII karakterlerle çizilmiş bir engerek gözü
+lead = TON üzerine kurulu özel bir mesajlaşma uygulaması. Mesajlar mümkün olduğunda cihazdan cihaza doğrudan gider, her şey uçtan uca şifrelidir ve hesabınız bir anahtardır: telefon numarası yok, e-posta yok.
+download = App Store'dan İndirin
+tg_channel = Telegram kanalı
+hero_alt = iPhone'da bir Viper sohbeti; son mesajlar doğrudan bağlantıyla geldi, yeşil çerçeveyle gösteriliyor
+eyebrow = Viper Messenger bugün neler yapıyor
+h_private = Yapısı gereği gizli
+p_private = Bir politika vaadi değil: tasarım, bir sunucunun bilebileceği pek bir şey bırakmıyor.
+c1h = Doğrudan, cihazdan cihaza
+c1p = Mesajlar ve dosyalar mümkün olduğunda arada sunucu olmadan doğrudan cihazlar arasında gider. Doğrudan bağlantı mümkün olmadığında röle, okuyamadığı şeyi iletir.
+c2h = Uçtan uca şifreli
+c2p = Mesajlarınızı yalnızca siz ve karşınızdaki kişi okuyabilir: doğrudan bağlantıda, Bluetooth'ta ve röle üzerinden aynı şekilde.
+c3h = Geçmiş cihazınızda kalır
+c3p = Sohbetler cihazınızda şifreli olarak saklanır. Röle her mesajı teslim edilir edilmez siler ve geçmiş tutmaz.
+c4h = Telefon numarası veya e-posta yok
+c4p = Kripto anahtarınız hesabınızdır. Kayıt olmadan, 24 kelimelik bir kurtarma ifadesiyle başlayın; aynı ifade hesabınızı yeni bir cihaza taşır.
+c5h = Sesli mesaj, yuvarlak video, büyük dosya
+c5p = Sesli mesajlar, 30 saniyeye kadar yuvarlak videolar ve büyük dosyalar. Bağlantı koparsa aktarım kaldığı yerden devam eder.
+c6h = .ton kullanıcı adları
+c6p = Zincir üzerinde sahip olduğunuz bir TON DNS alan adını adınız olarak kullanın. Kime ait olduğunu bulmak için aramaya .ton ile biten bir ad yazın.
+c7h = Yerleşik TON cüzdanı
+c7p = Kurtarma ifadeniz ayrıca emanetsiz (non-custodial) bir TON cüzdanı oluşturur: aynı kelimeler hem hesabınızı hem cüzdanınızı geri yükler.
+c8p = Anonimlik (Anon Mode) sohbetleriniz çalışmaya devam ederken sizi aramadan çıkarır; Çevrimiçi durumunu gizleme (Hide Online Status) ise sizi herkese çevrimdışı gösterir.
+c9h = Yakındaki kişiler, internetsiz
+c9p = Çevrenizdeki Viper kullanıcılarını Bluetooth ile bulun ve hiç ağ olmadan sohbet edin. Bkz. <a href="#ton-drop">TON Drop</a>.
+c10p = Cihazınızda çalışan ve Viper'ı tanıyan bir yapay zeka sohbeti. Mesaj, etkinlik ve not taslakları hazırlar; siz onaylamadan hiçbir şey gönderilmez. <a href="#ai">Daha fazla</a>.
+also = Uygulamada ayrıca: iPhone'da sesli ve görüntülü aramalar (uçtan uca şifreli, röle üzerinden), şifreli notlar, Face ID kilidi ve şifreli sohbet yedeği.
+look = İçeriden bir bakış
+g1a = alt="Açık anahtar ve kullanıcı adıyla profil"
+g2a = alt="Rota seçimi: röle, doğrudan P2P veya Bluetooth"
+g3a = alt="Yakındaki Kişiler radarı"
+g4a = alt="Doğrudan gelen mesajların yeşil çerçevede göründüğü sohbet"
+g5a = alt="Şifreli notlar listesi"
+g6a = alt="Gönder, Düzenle ve İptal düğmeleriyle yapay zeka mesaj taslağı"
+g1c = <b>Telefon numarası yok</b><span>Hesabınız kriptografik bir anahtar</span>
+g2c = <b>Rotayı siz seçersiniz</b><span>Röle, doğrudan P2P veya Bluetooth</span>
+g3c = <b>Yakındaki kişiler</b><span>Bluetooth ile bulunur, internet gerekmez</span>
+g4c = <b>Uçtan uca şifreli</b><span>Yeşil çerçeve: doğrudan geldi, P2P</span>
+g5c = <b>Şifreli notlar</b><span>Yalnızca cihazınızda</span>
+g6c = <b>Hiçbir şey kendiliğinden gitmez</b><span>Yapay zeka taslağı yazar, siz gönderirsiniz (Mac, gpt-oss-20b)</span>
+g_note = Viper 1.5.34 ekranları, iOS simülatöründe örnek kişi ve mesajlarla oluşturuldu. Yapay zeka taslak ekranı, Mac'te çalışan gpt-oss-20b gerektirir.
+td_h = Tanışmak için Bluetooth. Bağlantıda kalmak için TON.
+td_p = Yan yana iki Viper kullanıcısı birbirini bulur ve hemen konuşmaya başlar: internet yok, telefon numarası yok, kullanıcı adı yok. İşte bugünkü durum, olduğu gibi.
+works = >Çalışıyor<
+wip = >Geliştiriliyor<
+td1 = <b>Bluetooth ile keşif.</b> Yakındaki Kişiler, çevrenizdeki Viper kullanıcılarını ve yaklaşık ne kadar uzakta olduklarını gösterir. Listedeki herkes hesabının kendisine ait olduğunu kanıtlamıştır.
+td2 = <b>Bluetooth ile tamamen çevrimdışı.</b> Mesajlar, sesli mesajlar, yuvarlak videolar ve dosyalar ağ ve sunucu olmadan telefondan telefona gider.
+td3 = <b>Önce Bluetooth, sonra internet üzerinden doğrudan.</b> Telefonlar IP adreslerini Bluetooth ile paylaşıp ardından doğrudan bağlanabilir: TON ile internet üzerinden P2P, arada sunucu yok.
+td4 = <b>Menzil dışında kararlı bağlantı.</b> Bugün telefonlardan birinin IP adresi değişirse doğrudan bağlantı kopar. Bağlantıyı korumak için telefonların TON DHT üzerinden birbirini yeniden bulması gerekir; TON Drop'un tam olarak anlatıldığı gibi çalışması için üzerinde çalışılan kısım bu.
+td_docs = TON Drop belgelerini okuyun →
+td_alt = Bluetooth üzerinden yaklaşık 3 metre uzaktaki bir kişiyi gösteren Yakındaki Kişiler radarı
+ai_h = Hazır bir açık model. Gerisi Viper'dan. Sizin cihazınızda.
+ai_p = Viper, Mac'te gpt-oss-20b'yi yerel olarak çalıştırır: bulut yok, yapay zeka hesabı yok, sorularınız cihazdan hiç çıkmaz. Viper'ın kendi kılavuzlarına dayanarak yanıt verir ve her yanıtın altında kaynakları gösterir; tek dokunuşla kontrol edebilirsiniz.
+mac_alt = Mac'te Viper'ın yapay zeka sohbeti, Viper hakkındaki üç soruyu her yanıtın altında kaynaklarla yanıtlıyor
+ch1 = <b>Eğitim yok.</b> Modelin ağırlıkları yayımlandığı gibidir. Viper modelin ne olduğunu değil, ne gördüğünü değiştirir: daha iyi bir modele geçin, bilgi yerinde kalır.
+ch2 = <b>Yanıtların altında kaynaklar.</b> Yanıtlar Viper'ın uygulama içi kılavuzlarından gelir ve kullanılan kılavuzlar hemen altında listelenir.
+ch3 = <b>Eylem değil, taslak.</b> Birine mesaj yazmasını, etkinlik oluşturmasını veya not kaydetmesini isteyin: bir taslak hazırlar ve siz onaylayana kadar hiçbir şey olmaz.
+ch4 = <b>Ne bileceğini siz seçersiniz.</b> Viper'ın yerleşik bilgisini açın veya kapatın, kendi notlarınızı ekleyin.
+st1 = 20 Viper sorusundan doğru yanıt: yalnız model ve Viper kılavuzlarıyla (1.5.34)
+st2 = tamamen doğru: 167 yeni ve daha zor soruda, iki kör hakem (1.5.34, App Store'da)
+ai_note = Henüz her zaman doğru değil: katı test, bir yanıtı ancak içindeki her Viper ayrıntısı doğruysa doğru sayar. Yeni bir sürüm test düzeneğinde %61'e ulaşıyor ve henüz uygulamada değil. gpt-oss-20b, Apple silicon'lu ve 24 GB belleğe sahip bir Mac gerektirir; iPhone ve iPad daha küçük açık modeller kullanır.
+writeup = Ayrıntılı yazı →
+try = Viper Messenger'ı deneyin
+try_p = iPhone, iPad ve Mac için. Telefon numarası gerekmez.
+follow = Telegram'da takip edin
+noto1 = Hareketli emojiler:
+noto2 = (Google), lisans:
+noto3 = değiştirilmeden — Viper'ın karşılama ekranında kullandığı animasyonların aynısı.
+_name = Türkçe
+_code = TR
+_lang = Dil
+_app = Uygulama
+_store = App Store sayfası

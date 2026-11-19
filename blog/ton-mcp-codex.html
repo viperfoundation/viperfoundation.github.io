@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TON + Codex = &lt;3 · Viper Blog</title>
+<meta name="description" content="How to connect TON MCP Server with Codex CLI and control your wallet from the terminal using natural language.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · March 18, 2026</p>
+<h1>TON + Codex = &lt;3</h1>
+<h2 id="what-is-tonmcp">What is @ton/mcp?</h2>
+<p><a href="https://github.com/ton-connect/kit/tree/main/packages/mcp"><code>@ton/mcp</code></a> is a Model Context Protocol server built on top of WalletKit. It gives AI agents access to your TON wallet without exposing raw private keys to the model — the server handles signing and confirmation flows.</p>
+<p>What you can do with it:</p>
+<ul>
+<li>Check Toncoin and jetton balances</li>
+<li>Send TON, jettons, and NFTs</li>
+<li>Get swap quotes via DEX aggregators</li>
+<li>Resolve TON DNS domains</li>
+<li>Deploy agentic sub-wallets</li>
+</ul>
+<h2 id="quick-start">Quick start</h2>
+<p>Go to <a href="https://github.com/viperfoundation/ton-codex-mcp">ton-codex-mcp</a> repo.</p>
+<h3>1. Run the MCP server</h3>
+<pre><code>node scripts/ton-mcp-stdio.mjs --http 3001
+</code></pre>
+<p>Or using npx directly:</p>
+<pre><code># With mnemonic
+MNEMONIC="word1 word2 ..." npx @ton/mcp@alpha --http 3001
+</code></pre>
+<p>The server exposes an MCP endpoint at <code>http://localhost:3001/mcp</code>.</p>
+<h3>2. Add the MCP server to Codex CLI</h3>
+<pre><code>codex mcp add --url http://localhost:3001/mcp ton-wallet
+</code></pre>
+<h3>3. Run Codex</h3>
+<pre><code>codex
+</code></pre>
+<p>That's it. Codex now has access to your TON wallet through the MCP protocol.</p>
+<h2 id="example-commands">Example commands</h2>
+<h3>Check your balance</h3>
+<pre><code>show my wallet balance
+</code></pre>
+<pre><code>Called ton-wallet.get_balance({})
+  └ {"success": true, "address": "UQCSm2q2mFmTY8L73KFJAzk-AV-sqOsogh4YwSvpR8cRW6jt",
+     "balance": "1.987803165 TON", "balanceNano": "1987803165"}
+</code></pre>
+<h3>Swap tokens on DeDust</h3>
+<pre><code>exchange on DeDust 0.1 TON to EQBlqsm144Dq6SjbPI4jjZvA1hqTIP3CvHovbIfW_t-SCALE (DUST) token
+</code></pre>
+<pre><code>• I'll fetch a swap quote on DeDust for 0.1 TON first.
+
+• Called
+  └ ton-wallet.get_swap_quote({"amount":"0.1","fromToken":"TON",
+    "toToken":"EQBlqsm144Dq6SjbPI4jjZvA1hqTIP3CvHovbIfW_t-SCALE"})
+</code></pre>
+<h2 id="other-mcp-clients">Other MCP clients</h2>
+<p><code>@ton/mcp</code> works with any MCP-compatible client. For Claude or Cursor, add this to your config:</p>
+<pre><code>{
+  "mcpServers": {
+    "ton": {
+      "command": "npx",
+      "args": ["-y", "@ton/mcp@alpha"],
+      "env": {
+        "MNEMONIC": "word1 word2 ..."
+      }
+    }
+  }
+}
+</code></pre>
+<p>For Claude Code specifically:</p>
+<pre><code>claude mcp add --transport http TonDocs https://docs.ton.org/mcp
+</code></pre>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://docs.ton.org/ecosystem/ai/mcp">TON MCP docs</a></li>
+<li><a href="https://www.npmjs.com/package/@ton/mcp">@ton/mcp on npm</a></li>
+<li><a href="https://docs.ton.org/ecosystem/walletkit/overview">WalletKit overview</a></li>
+</ul>
+<p class="muted" style="margin-top:32px">First published March 18, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

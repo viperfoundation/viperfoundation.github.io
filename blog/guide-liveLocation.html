@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Location · Viper Blog</title>
+<meta name="description" content="Where you are, for a while, to one chat">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Guides</span> · November 19, 2026</p>
+<h1>Live Location</h1>
+<p class="lead">Where you are, for a while, to one chat</p>
+<h2>Share for a while</h2><p>On iPhone, in a chat: tap the paperclip, then Live Location. Pick 15 minutes, 1 hour or 8 hours. One share per chat at a time.</p>
+<h2>It follows you</h2><p>Your pin moves as you do: at most every 15 seconds, and only after 20 m or more. It keeps going in the background, with the iOS location indicator.</p>
+<h2>What they see</h2><p>A map in the chat: live until what time, and how fresh the pin is. When sharing ends, it says so. A tap opens it on a map, with directions.</p>
+<h2>Stop any time</h2><p>Paperclip → Stop Live Location, or hold your map and tap Stop Sharing. Otherwise it stops by itself at the time you picked.</p>
+<h2>Only this chat</h2><p>Your position travels inside the end-to-end encrypted chat, by the same route as a message. The relay never sees where you are. Updates come silently, with no notification.</p>
+
+<p class="muted" style="margin-top:32px">From the guide in Viper 1.5.34: Profile → Settings → Help → Guides. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

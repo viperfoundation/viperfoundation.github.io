@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>v1.4.2 — Profile Setup &amp; Contact Wallets · Viper Blog</title>
+<meta name="description" content="Viper 1.4.2 adds a Profile Setup screen to configure your account, and surfaces TON wallet info directly on contact profiles — with one-tap copy and deep link to any wallet app.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · June 11, 2026 · Updated for Viper 1.5.34</p>
+<h1>v1.4.2 — Profile Setup &amp; Contact Wallets</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li><b>Changed:</b> since 1.5.11 another user's wallet address is no longer shown in their profile (an App Store review requirement). You can copy their public key instead.</li><li>The wallet deep-link template described here was not found in the 1.5.34 app.</li></ul></div>
+<p>Viper 1.4.2 is a focused update that improves identity configuration and contact wallet visibility.</p>
+<h2 id="my-profile-setup">My Profile → Setup</h2>
+<p>Your profile now has a dedicated <strong>Setup</strong> screen. From there you can set a custom deep link template for your TON wallet address — controlling which external wallet app opens when someone taps your address.</p>
+
+<p>The template uses the <code>{address}</code> placeholder, which gets replaced with your full TON address at open time. Any URL scheme is supported, so you can point it at Tonkeeper, Tonhub, or any other wallet app:</p>
+<pre><code>tonkeeper://transfer/{address}
+</code></pre>
+<p>A live <strong>Preview</strong> shows you exactly what the resolved link will look like before you save it — no surprises.</p>
+<h2 id="contact-wallet-view">Contact Wallet View</h2>
+<p>When you open another user's profile, Viper now shows their linked TON wallet inline. If their wallet is deployed on-chain, you'll see a <strong>Wallet active</strong> badge alongside the address.</p>
+
+<p>From that view you get two actions:</p>
+<ul>
+<li><strong>Copy address</strong> — copies the full TON address to clipboard</li>
+<li><strong>Open in</strong> — launches the address in the contact's configured wallet app (opens externally)</li>
+</ul>
+<p>This makes it easy to send TON to a contact — tap <strong>Open in</strong> and Viper hands off the address to the appropriate external wallet app.</p>
+<p class="muted" style="margin-top:32px">First published June 11, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

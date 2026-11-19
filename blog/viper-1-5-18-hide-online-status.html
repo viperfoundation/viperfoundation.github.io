@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.18 — Hide Your Online Status · Viper Blog</title>
+<meta name="description" content="Viper Pro is fully available. The privacy half of the Pro launch closes: hide your online status, on top of Anonymous Mode from 1.5.16.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · August 18, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5.18 — Hide Your Online Status</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Hide Online Status is still Viper Pro: you show as offline to everyone.</li><li>Anon Mode is described in the app today as: it takes you out of Search, and your chats keep working. The relay checks Apple's signature itself.</li><li>Hide Typing and read receipts are free switches in Settings → Privacy.</li></ul></div>
+<p>Viper Pro is fully live. The last piece of the subscription launch — payments — landed in 1.5.17. 1.5.18 closes the privacy half: Pro users can now hide their online status.</p>
+<h2 id="whats-new">What's New</h2>
+<ul>
+<li><strong>Hide your online status (Pro)</strong> — your presence dot no longer broadcasts. Other users see you as offline even when you're in the app. Pairs with Anonymous Mode from 1.5.16 for a fully invisible profile.</li>
+<li><strong>Viper Pro is fully available</strong> — subscriptions are live for everyone, no review hold, no gating.</li>
+</ul>
+<h2 id="where-it-goes-next">Where It Goes Next</h2>
+<p>With Pro shipped and stable, the focus moves to what Viper becomes on top of a working privacy substrate. The next releases lean into transport — making the network you talk over something you actually choose, not something the app guesses for you.</p>
+<p class="muted" style="margin-top:32px">First published August 18, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

@@ -13,6 +13,15 @@
 <meta property="og:image" content="https://viperfoundation.github.io/img/viper-eye-256.jpg">
 <link rel="icon" type="image/png" href="img/viper-eye-64.png">
 <link rel="apple-touch-icon" href="img/viper-eye-180.png">
+<!--i18n:links-->
+<link rel="canonical" href="https://viperfoundation.github.io/">
+<link rel="alternate" hreflang="en" href="https://viperfoundation.github.io/">
+<link rel="alternate" hreflang="ru" href="https://viperfoundation.github.io/ru/">
+<link rel="alternate" hreflang="pt-BR" href="https://viperfoundation.github.io/pt-br/">
+<link rel="alternate" hreflang="es-MX" href="https://viperfoundation.github.io/es/">
+<link rel="alternate" hreflang="uk" href="https://viperfoundation.github.io/uk/">
+<link rel="alternate" hreflang="x-default" href="https://viperfoundation.github.io/">
+<!--/i18n:links-->
 <script>
   // Old SPA links (/landing, /tds) come back from 404.html as /?/path: show the home page.
   (function (l) {
@@ -52,7 +61,7 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 8
 header.scrolled{border-bottom-color:var(--line)}
 .bar{display:flex;align-items:center;justify-content:center;height:60px}
 header .bar>.btn{max-width:0;padding-left:0;padding-right:0;margin-left:0;border-width:0;opacity:0;overflow:hidden;white-space:nowrap;pointer-events:none;transition:max-width .25s,padding .25s,margin .25s,opacity .2s}
-header .bar>.btn.show{max-width:240px;padding-left:14px;padding-right:14px;margin-left:28px;border-width:1px;opacity:1;pointer-events:auto}
+header .bar>.btn.show{max-width:280px;padding-left:14px;padding-right:14px;margin-left:28px;border-width:1px;opacity:1;pointer-events:auto}
 @media (max-width:720px){header .bar>.btn.show{margin-left:0}}
 @media (prefers-reduced-motion:reduce){header .bar>.btn{transition:none}}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);text-decoration:none;font-size:18px}
@@ -71,14 +80,46 @@ nav a:hover{color:var(--text)}
 .btn svg{width:18px;height:18px;fill:currentColor}
 
 /* hero */
-.hero{padding:64px 0 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero{padding:64px 20px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
 .hero .lead{font-size:clamp(18px,2.2vw,21px);color:var(--muted);max-width:34em}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
 .hero .snake{width:96px;height:96px;margin-bottom:14px}
 .hero .platforms{margin-top:18px;font-size:14px;color:var(--muted)}
+.hero .ai-line{margin-top:14px;font-size:16px;color:var(--muted);max-width:36em}
+.hero .ai-line b{color:var(--text)}
 .phone{border-radius:34px;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;background:#000}
 .hero .phone{max-width:320px;margin:0 auto;transform:rotate(2deg)}
-@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:36px}.hero .phone{max-width:260px;transform:none}}
+/* hero: text + phone; the Mac sits in its own full-width strip under the hero (no overlap) */
+.hero>*{min-width:0}
+.mac-strip{padding:0 20px 64px}
+.mac-hero{position:relative;z-index:1;display:block;width:100%;max-width:1040px;margin:0 auto;height:auto;border-radius:10px;border:1px solid var(--line);box-shadow:var(--shadow);background:#1e1e1e}
+/* hero carousel: whole devices slide in a row; the stage hides the neighbours and leaves room for the shadow */
+.shots .stage{overflow:hidden;max-width:470px;margin:-24px auto;-webkit-mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.shots .track{display:flex;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.shots .track.drag{transition:none}
+.shots .slide{flex:0 0 100%;padding:24px 15%;box-sizing:border-box;transition:opacity .6s ease}
+.shots .slide:not(.on){opacity:.15}
+.shots .track.drag .slide{opacity:1}
+.shots .phone{cursor:zoom-in;transition:scale .3s ease,box-shadow .3s ease}
+img{-webkit-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none}
+.shots img{display:block;width:100%;height:auto}
+.dots{display:flex;justify-content:center;gap:4px;margin-top:14px;visibility:hidden}
+.dots.live{visibility:visible}
+.dots button{width:28px;height:28px;padding:0;border:0;background:none;cursor:pointer;border-radius:50%;display:grid;place-items:center}
+.dots button::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .3s,transform .3s}
+.dots button[aria-current]::after{background:var(--accent);transform:scale(1.25)}
+.dots button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+@media (prefers-reduced-motion:reduce){.shots .track,.dots button::after{transition:none}}
+@media (hover:hover){.shots .slide.on .phone:hover{scale:1.016;box-shadow:0 28px 60px rgba(0,0,0,.45)}}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:36px}.hero .phone{max-width:260px;transform:none}.mac-strip{padding-bottom:40px}}
+/* hover/focus: a screenshot comes toward the viewer; scale composes with the phone's rotate, no layout shift */
+.zoom,.gallery .phone{transition:scale .3s ease,translate .3s ease,box-shadow .3s ease;outline-offset:4px}
+.zoom{cursor:zoom-in}
+.gallery figure:focus-visible .phone{translate:0 -5px;box-shadow:0 28px 60px rgba(0,0,0,.45)}
+.zoom:focus-visible{scale:1.016;box-shadow:0 28px 60px rgba(0,0,0,.45);position:relative;z-index:2}
+.gallery figure:focus-visible{outline:none}
+@media (hover:hover){.zoom:hover{scale:1.016;box-shadow:0 28px 60px rgba(0,0,0,.45);z-index:2}.gallery figure:hover .phone{translate:0 -5px;box-shadow:0 28px 60px rgba(0,0,0,.45);z-index:2}.gallery .phone{position:relative}}
+@media (prefers-reduced-motion:reduce){.zoom,.gallery .phone{transition:none}}
 
 /* sections */
 section{padding:64px 0;border-top:1px solid var(--line)}
@@ -94,8 +135,19 @@ section{padding:64px 0;border-top:1px solid var(--line)}
 .lot svg{display:block}
 
 /* gallery */
-.gallery{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 18px;margin:0 -20px;-webkit-overflow-scrolling:touch}
+.gallery{--fade:80px;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 var(--fade);padding:20px var(--fade) 30px;margin:0 calc(-1 * var(--fade));-webkit-overflow-scrolling:touch}
+@media (max-width:820px){.gallery{--fade:20px}}
 .gallery figure{margin:0;flex:0 0 220px;scroll-snap-align:start}
+.gallery{-webkit-mask-image:linear-gradient(90deg,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);mask-image:linear-gradient(90deg,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);scrollbar-width:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.gallery::-webkit-scrollbar{display:none}
+.gallery.drag{cursor:grabbing;scroll-snap-type:none}
+.gallery img{-webkit-user-drag:none}
+.gallery figure,.mac-strip img{cursor:zoom-in}
+.gallery.drag figure{cursor:grabbing}
+/* lightbox */
+#lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;margin:0;cursor:zoom-out}
+#lb::backdrop{background:rgba(0,0,0,.85)}
+#lb img{display:block;max-width:calc(100vw - 32px);max-height:calc(100vh - 32px);width:auto;height:auto;margin:auto;position:absolute;inset:0;border-radius:18px}
 .gallery figcaption{font-size:14px;margin-top:10px}
 .gallery figcaption b{display:block;color:var(--text)}
 .gallery figcaption span{color:var(--muted)}
@@ -127,8 +179,24 @@ section{padding:64px 0;border-top:1px solid var(--line)}
 
 /* cta */
 .cta{text-align:center}
+.cta .support{margin-top:22px;font-size:15px}
+.cta .support a{color:var(--accent)}
 .cta .lot{margin:0 auto 10px;width:84px;height:84px;line-height:84px;font-size:64px}
 .cta .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+
+/* language switcher: absolute on wide screens so the links stay centred; in the row below 960px */
+.bar{position:relative}
+.lang{position:absolute;right:20px;top:50%;transform:translateY(-50%)}
+@media (max-width:960px){.lang{position:relative;right:auto;top:auto;transform:none;margin-left:16px}nav{gap:14px;font-size:14px}header .bar>.btn.show{margin-left:16px}}
+@media (max-width:900px){nav{gap:10px;font-size:13px}header .bar>.btn.show{margin-left:12px;padding-left:12px;padding-right:12px}.lang{margin-left:10px}}
+.lang summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--muted);padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary:hover,.lang[open] summary{color:var(--text)}
+.lang summary svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6}
+.lang .menu{position:absolute;right:0;top:calc(100% + 8px);display:grid;min-width:170px;padding:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.lang .menu a{padding:8px 12px;border-radius:8px;color:var(--text);text-decoration:none;font-size:15px}
+.lang .menu a:hover{background:var(--accent-soft)}
+.lang .menu a[aria-current]{color:var(--accent);font-weight:600}
 
 footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:14px;color:var(--muted)}
 footer .cols{display:flex;flex-wrap:wrap;gap:12px 28px;margin-bottom:16px}
@@ -145,8 +213,10 @@ footer a:hover{color:var(--text)}
       <a href="#ton-drop">TON Drop</a>
       <a href="#ai">On-device AI</a>
       <a href="#screens">Screens</a>
+      <a href="/blog/">Blog</a>
     </nav>
-    <a class="btn primary small" id="hdr-get" tabindex="-1" aria-hidden="true" href="https://apps.apple.com/us/app/viper-messenger/id6754181968">Get Viper Messenger</a>
+    <a class="btn primary small" id="hdr-get" tabindex="-1" aria-hidden="true" href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">Get Viper Messenger</a>
+    <!--i18n:switcher--><details class="lang"><summary aria-label="Language: English"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>EN</summary><div class="menu"><a href="./" hreflang="en" lang="en" aria-current="page">English</a><a href="ru/" hreflang="ru" lang="ru">Русский</a><a href="pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a><a href="es/" hreflang="es-MX" lang="es-MX">Español (México)</a><a href="uk/" hreflang="uk" lang="uk">Українська</a></div></details><!--/i18n:switcher-->
   </div>
 </header>
 
@@ -156,8 +226,9 @@ footer a:hover{color:var(--text)}
       <img class="logo-hero" src="img/viper-eye-256.jpg" alt="Viper logo: a viper eye drawn in green ASCII characters" width="112" height="112">
       <h1>Viper Messenger</h1>
       <p class="lead">A private messenger built on TON. Messages go device to device whenever they can, everything is end-to-end encrypted, and your account is a key — no phone number, no email.</p>
+      <p class="ai-line"><b>On-device AI:</b> gpt-oss-20b runs locally on your Mac (Apple silicon, 24 GB) — answers from Viper's guides, nothing leaves the device. Smaller open models on iPhone and iPad.</p>
       <div class="ctas">
-        <a class="btn primary" href="https://apps.apple.com/us/app/viper-messenger/id6754181968">
+        <a class="btn primary" href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.09 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.28z"/></svg>
           Download on the App Store</a>
         <a class="btn ghost" href="https://t.me/viperfoundation">
@@ -166,7 +237,25 @@ footer a:hover{color:var(--text)}
       </div>
       <p class="platforms">iPhone · iPad · Mac</p>
     </div>
-    <div class="phone"><img src="img/iphone-4-chat.jpg" alt="A Viper chat on iPhone; the last messages came over a direct link, shown with a green frame" width="600" height="1304"></div>
+    <div class="shots" id="shots">
+      <div class="stage"><div class="track">
+          <div class="slide on"><div class="phone"><img src="img/iphone-4-chat.jpg" alt="A Viper chat on iPhone; the last messages came over a direct link, shown with a green frame" width="600" height="1304"></div></div>
+          <div class="slide" aria-hidden="true"><div class="phone"><img data-src="img/iphone-3-nearby.jpg" alt="People Nearby on iPhone: the radar found a Viper user about 3 meters away over Bluetooth, no internet" width="600" height="1304"></div></div>
+          <div class="slide" aria-hidden="true"><div class="phone"><img data-src="img/iphone-5-ai-answer.jpg" alt="Viper AI Chat answers whether Viper needs a phone number and shows the sources it used" width="600" height="1304"></div></div>
+          <div class="slide" aria-hidden="true"><div class="phone"><img data-src="img/iphone-6-ai-draft.jpg" alt="An AI message draft with Send, Edit and Cancel: nothing is sent until you tap Send" width="600" height="1304"></div></div>
+          <div class="slide" aria-hidden="true"><div class="phone"><img data-src="img/iphone-8-notes.jpg" alt="Encrypted Notes on iPhone: a list of notes kept only on the device, encrypted with your account key" width="600" height="1304"></div></div>
+      </div></div>
+      <div class="dots">
+        <button type="button" aria-label="Screen 1 of 5: Direct P2P chat" aria-current="true"></button>
+        <button type="button" aria-label="Screen 2 of 5: People Nearby over Bluetooth"></button>
+        <button type="button" aria-label="Screen 3 of 5: AI answer with sources"></button>
+        <button type="button" aria-label="Screen 4 of 5: AI message draft"></button>
+        <button type="button" aria-label="Screen 5 of 5: Encrypted Notes"></button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap mac-strip">
+    <img class="mac-hero zoom" src="img/en/mac-ai-chat-window.jpg" alt="" aria-hidden="true" width="1266" height="1056">
   </div>
 
   <section id="features">
@@ -224,7 +313,7 @@ footer a:hover{color:var(--text)}
         </ul>
         <p style="margin-top:18px"><a href="https://github.com/viperfoundation/Viper/blob/main/ton-drop.md">Read the TON Drop docs →</a></p>
       </div>
-      <div class="phone"><img loading="lazy" src="img/iphone-3-nearby.jpg" alt="People Nearby radar showing one person about 3 meters away over Bluetooth" width="600" height="1304"></div>
+      <div class="phone zoom"><img loading="lazy" src="img/iphone-3-nearby.jpg" alt="People Nearby radar showing one person about 3 meters away over Bluetooth" width="600" height="1304"></div>
     </div>
   </section>
 
@@ -235,7 +324,8 @@ footer a:hover{color:var(--text)}
         <h2>A stock open model. Viper's harness. Your device.</h2>
         <p>On a Mac, Viper runs gpt-oss-20b locally — no cloud, no AI account, your questions never leave the device. It answers from Viper's own guides and shows the sources under every answer, so you can check it in one tap.</p>
       </div>
-      <img class="mac" loading="lazy" src="img/mac-ai-chat.jpg" alt="AI Chat in Viper on a Mac answering three questions about Viper, with Sources under each answer" width="1400" height="1191">
+      <img class="mac zoom" loading="lazy" src="img/en/mac-ai-chat-window.jpg" alt="AI Chat in Viper on a Mac answering three questions: what Viper Messenger is, how to turn on Face ID sign-in, and what the clock and a single tick on a message mean, with Sources under each answer" width="1400" height="1190">
+      <p class="note mac-tr">Answers translated from the original Russian session.</p>
       <div class="split" style="margin-top:36px;align-items:start">
         <ul class="checks">
           <li><b>No training.</b> The model's weights are exactly as released. Viper changes what it sees, not what it is — swap in a better model and the knowledge stays.</li>
@@ -256,13 +346,14 @@ footer a:hover{color:var(--text)}
 
   <section class="cta">
     <div class="wrap">
-      <div class="lot" data-lottie="lotties/noto/onb_party.json" aria-hidden="true">🎉</div>
+      <div class="lot" data-lottie="lotties/noto/onb_snake.json" aria-hidden="true">🐍</div>
       <h2>Try Viper Messenger</h2>
       <p class="muted">For iPhone, iPad and Mac. No phone number needed.</p>
       <div class="ctas">
-        <a class="btn primary" href="https://apps.apple.com/us/app/viper-messenger/id6754181968">Download on the App Store</a>
+        <a class="btn primary" href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">Download on the App Store</a>
         <a class="btn ghost" href="https://t.me/viperfoundation">Follow on Telegram</a>
       </div>
+      <p class="muted support" id="support">Support: questions, bugs, a missing feature — write to <a href="viper://support">@support</a> in Viper (Search → @support) or on <a href="https://t.me/viperfoundation" target="_blank" rel="noopener">Telegram</a>.</p>
     </div>
   </section>
 </main>
@@ -270,21 +361,75 @@ footer a:hover{color:var(--text)}
 <footer>
   <div class="wrap">
     <div class="cols">
-      <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968">App Store</a>
+      <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a>
       <a href="https://t.me/viperfoundation">Telegram</a>
       <a href="https://github.com/viperfoundation/Viper">GitHub</a>
       <a href="https://github.com/viperfoundation/Viper/blob/main/ton-drop.md">TON Drop</a>
       <a href="https://github.com/viperfoundation/Viper/blob/main/on-device-ai.md">On-device AI</a>
+      <a href="/blog/">Blog</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="viper://support">Support</a>
     </div>
+    <!--i18n:langs--><p>App: English, Русский · App Store page: English, Русский, Português (Brasil), Español (México), Українська</p><!--/i18n:langs-->
     <p>Animated emoji: <a href="https://googlefonts.github.io/noto-emoji-animation/">Noto Animated Emoji</a> by Google, licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, unmodified — the same animations Viper uses in onboarding.</p>
     <p>© Viper Foundation</p>
   </div>
 </footer>
 
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
 <script src="js/lottie-web-5.12.2/lottie_light.min.js" defer></script>
 <script>
 (function(){var g=document.getElementById('hdr-get'),c=document.querySelector('.hero .ctas'),h=document.querySelector('header');if(!g||!c||!h||!('IntersectionObserver' in window)){if(g){g.classList.add('show');g.removeAttribute('tabindex');g.removeAttribute('aria-hidden')}return}
   new IntersectionObserver(function(e){var on=!e[0].isIntersecting;g.classList.toggle('show',on);if(on){g.removeAttribute('tabindex');g.removeAttribute('aria-hidden')}else{g.setAttribute('tabindex','-1');g.setAttribute('aria-hidden','true')}},{rootMargin:'-'+h.offsetHeight+'px 0px 0px 0px'}).observe(c)})();
+// Hero carousel: whole devices slide; auto-advance every 4 s; pauses on hover, focus inside, hidden tab;
+// reduced motion = no auto-advance. Drag (mouse) or swipe (finger) moves the row with the pointer.
+(function(){var w=document.getElementById('shots');if(!w)return;var st=w.querySelector('.stage'),tr=w.querySelector('.track'),sl=w.querySelectorAll('.slide'),
+  im=w.querySelectorAll('.slide img'),ds=w.querySelectorAll('.dots button'),n=sl.length,i=0,t=0,hov=0,foc=0,still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function load(){im.forEach(function(m){if(m.dataset.src){m.src=m.dataset.src;m.removeAttribute('data-src')}})}
+  function place(dx){tr.style.transform='translateX(calc('+(-i*100)+'% + '+(dx||0)+'px))'}
+  function go(k){load();i=(k+n)%n;tr.classList.remove('drag');place(0);
+    sl.forEach(function(s,j){s.classList.toggle('on',j===i);j===i?s.removeAttribute('aria-hidden'):s.setAttribute('aria-hidden','true')});
+    ds.forEach(function(d,j){j===i?d.setAttribute('aria-current','true'):d.removeAttribute('aria-current')})}
+  function run(){clearInterval(t);if(!still&&!hov&&!foc&&!document.hidden)t=setInterval(function(){go(i+1)},4000)}
+  ds.forEach(function(d,k){d.addEventListener('click',function(){go(k);run()})});
+  w.addEventListener('mouseenter',function(){hov=1;run()});w.addEventListener('mouseleave',function(){hov=0;run()});
+  w.addEventListener('focusin',function(){foc=1;run()});w.addEventListener('focusout',function(e){if(!w.contains(e.relatedTarget)){foc=0;run()}});
+  document.addEventListener('visibilitychange',run);
+  // drag: the row follows the pointer; past 15% of a device width it moves on, otherwise snaps back
+  var x0=null,dx=0,moved=0;
+  function start(x){load();x0=x;dx=0;moved=0}
+  function move(x){if(x0===null)return;dx=x-x0;if(Math.abs(dx)>6){moved=1;tr.classList.add('drag');place(dx)}}
+  function end(){if(x0===null)return;x0=null;var lim=st.offsetWidth*.15;go(dx<-lim?i+1:dx>lim?i-1:i);run()}
+  st.addEventListener('pointerdown',function(e){if(e.pointerType!=='touch'&&!e.button)start(e.clientX)});
+  addEventListener('pointermove',function(e){if(e.pointerType!=='touch')move(e.clientX)});
+  addEventListener('pointerup',function(e){if(e.pointerType!=='touch')end()});
+  st.addEventListener('touchstart',function(e){start(e.touches[0].clientX)},{passive:true});
+  st.addEventListener('touchmove',function(e){move(e.touches[0].clientX)},{passive:true});
+  st.addEventListener('touchend',end);st.addEventListener('touchcancel',end);
+  st.addEventListener('dragstart',function(e){e.preventDefault()});
+  st.addEventListener('click',function(){if(!moved&&window.openShot)openShot(im[i])});
+  document.readyState==='complete'?load():addEventListener('load',load);  // devices 2-5 load after the page
+  w.querySelector('.dots').classList.add('live');run()})();
+// Screens gallery: mouse drag scrolls it (touch scrolls natively); click or Enter opens a screenshot full size.
+(function(){var lb=document.getElementById('lb'),big=lb&&lb.querySelector('img');if(!lb||!lb.showModal)return;
+  function open(m){big.src=m.currentSrc||m.src;big.alt=m.alt;lb.showModal()}window.openShot=open;
+  lb.addEventListener('click',function(){lb.close()});
+  document.querySelectorAll('.gallery').forEach(function(g){var x0=0,s0=0,down=0,moved=0;
+    g.addEventListener('pointerdown',function(e){moved=0;if(e.pointerType!=='mouse'||e.button)return;down=1;x0=e.clientX;s0=g.scrollLeft});
+    addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-x0;if(Math.abs(dx)>5&&!moved){moved=1;g.classList.add('drag')}if(moved)g.scrollLeft=s0-dx});
+    addEventListener('pointerup',function(){if(!down)return;down=0;if(moved){var l=g.scrollLeft;g.classList.remove('drag');g.scrollLeft=l}});
+    g.addEventListener('dragstart',function(e){e.preventDefault()});
+    g.querySelectorAll('figure').forEach(function(f){var m=f.querySelector('img');f.tabIndex=0;f.setAttribute('role','button');f.setAttribute('aria-label',m.alt);
+      f.addEventListener('click',function(){if(!moved)open(m)});
+      f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(m)}})})});
+  document.querySelectorAll('.mac-strip img').forEach(function(m){m.addEventListener('click',function(){open(m)})});
+  document.querySelectorAll('section .zoom').forEach(function(z){var m=z.tagName==='IMG'?z:z.querySelector('img');if(!m)return;
+    z.tabIndex=0;z.setAttribute('role','button');z.setAttribute('aria-label',m.alt);
+    z.addEventListener('click',function(){open(m)});z.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(m)}})})})();
+document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+// Close the language menu on a click outside it.
+document.addEventListener('click',function(e){var d=document.querySelector('details.lang');if(d&&d.open&&!d.contains(e.target))d.open=false});
 (function(){var h=document.querySelector('header');if(!h)return;var f=function(){h.classList.toggle('scrolled',window.scrollY>4)};addEventListener('scroll',f,{passive:true});f()})();
   // Lotties load when scrolled into view and pause off-screen; the emoji stays as the fallback.
   window.addEventListener("load", function () {

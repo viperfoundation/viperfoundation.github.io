@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper — Performance &amp; UX Pass (In Progress) · Viper Blog</title>
+<meta name="description" content="After user testing, I&#x27;m working on speeding up Viper overall — account creation, account switching, and fixing the rough edges that slipped through 20+ updates of edge cases.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · July 24, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper — Performance &amp; UX Pass (In Progress)</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>The instant launch described here shipped in 1.5.12 (see <a href="viper-two-weeks-four-releases.html">Two Weeks, Four Releases</a>). There was no separate 1.6 release; versions continued as 1.5.x.</li></ul></div>
+<p>I recently sat down with people and watched them actually use Viper. Even I was surprised by the small things that broke the flow.</p>
+<h2 id="why-now">Why Now</h2>
+<p>At the start, I tested Viper on a single-bar connection and it was livable. But 20+ updates in, the codebase has grown enough that not every edge case is caught — and small frictions add up.</p>
+<h2 id="app-bootstrap">App Bootstrap</h2>
+<p>The annoying loading screen is gone. Chats now show up instantly when you open the app — no splash, no spinner while everything initializes.</p>
+<h2 id="what-im-working-on">What I'm Working On</h2>
+<p>Right now the focus is overall speed:</p>
+<ul>
+<li><strong>Account creation</strong> — faster, less waiting.</li>
+<li><strong>Account switching</strong> — snappier transitions between accounts.</li>
+<li><strong>General responsiveness</strong> — the small delays and rough edges I saw during testing.</li>
+</ul>
+<h2 id="on-testing-on-bad-connections">On Testing on Bad Connections</h2>
+<p>I always test on the worst connection I can find. If it works there, it works everywhere. The app got a little heavier after 20 updates; this pass is about clearing that back up.</p>
+<p>More soon — I'll post updates as the speedups land.</p>
+<p class="muted" style="margin-top:32px">First published July 24, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What the Heck is TON · Viper Blog</title>
+<meta name="description" content="The Open Network is not just another blockchain. It&#x27;s a full P2P network stack with its own transport, storage, proxy, DNS, and payments — and at its core, an elegant cryptographic idea: your address is your key.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · June 1, 2026</p>
+<h1>What the Heck is TON</h1>
+<p>The Open Network (TON) was designed by Nikolai Durov and the TON Core team. It's simultaneously a blockchain platform and a full peer-to-peer network with its own transport, storage, proxy layer, naming system, and payments. The whitepaper describes TON as a massive distributed "supercomputer" capable of handling millions of transactions per second and hosting arbitrary services — blockchain-related or not.</p>
+<p>The key insight about TON's architecture: <strong>the network comes first, not the blockchain.</strong> The foundation is the network layer (ADNL and the DHT, RLDP, overlays built on top of it), and the blockchain is assembled <em>on top of it</em> — as one service among many, alongside Storage, Proxy, DNS, Services, and Payments. The blockchain physically depends on the network: blocks propagate through it, transaction candidates are gathered via it, validators are discovered through it. Without ADNL/DHT/RLDP, there is no blockchain.</p>
+<h2 id="what-ton-is-made-of">What TON Is Made Of</h2>
+<p>The whitepaper breaks things down into layers, bottom to top:</p>
+<ul>
+<li><strong>The Open Network</strong> — the foundation: the P2P network everything else runs on. Includes ADNL transport, DHT, RLDP reliable delivery protocol, and overlay subnets.</li>
+<li><strong>TON Blockchain</strong> — built on top of the network: a multi-chain platform with Turing-complete smart contracts, dynamic sharding, and fast inter-shard message routing.</li>
+<li><strong>TON Storage</strong> — distributed file storage (torrent-style, with content hashes anchored on-chain).</li>
+<li><strong>TON Proxy</strong> — an anonymizing layer similar to I2P, hiding node IP addresses.</li>
+<li><strong>TON DNS</strong> — a mostly on-chain system for human-readable names.</li>
+<li><strong>TON Services</strong> — a platform for arbitrary services with formalized interfaces.</li>
+<li><strong>TON Payments</strong> — payment channels and instant off-chain transfers (lightning-style).</li>
+</ul>
+<h2 id="the-blockchain-briefly">The Blockchain, Briefly</h2>
+<p>TON's blockchain is not a single chain — it's a collection of chains. There's one <em>masterchain</em> that stores the protocol config, the validator set, and the latest block hashes of all other chains. Below it: up to 2³² <em>workchains</em> (each with potentially different rules), each splitting into <em>shardchains</em> (up to 2⁶⁰ shards per workchain).</p>
+<p>The sharding approach is called the <em>Infinite Sharding Paradigm</em>: conceptually, every account lives in its own "account-chain", and shards are just a way to group them efficiently. Shards split automatically under load and merge back when load drops. Consensus is BFT Proof-of-Stake: validators who posted a stake create and sign blocks, and each block gets signatures from at least two-thirds of the active validator group roughly every 5 seconds.</p>
+<p>All data — blocks, state, smart contracts, Merkle proofs — is represented uniformly as a "bag of cells", which makes serialization and verification elegantly consistent.</p>
+<h2 id="the-network-adnl-dht-rldp-overlays">The Network: ADNL, DHT, RLDP, Overlays</h2>
+<p>The foundation of the network is <strong>ADNL</strong> (Abstract Datagram Network Layer). It lets nodes communicate using only 256-bit "abstract network addresses" — the underlying IPv4/IPv6 and UDP ports are hidden behind the abstraction.</p>
+<p>On top of ADNL:</p>
+<ul>
+<li><strong>DHT</strong> — a Kademlia-style hash table with XOR metric, used to find nodes by address, discover services, locate tunnel entry points, and find torrent peers.</li>
+<li><strong>RLDP</strong> — a reliable large-datagram delivery protocol over unreliable ADNL (with FEC codes like RaptorQ). This plays the role of "TCP" in TON, carrying RPC requests, files, and HTTP.</li>
+<li><strong>Overlay networks</strong> — subgraphs within ADNL for broadcasting blocks of a specific shard, streaming multicast delivery, etc.</li>
+</ul>
+<p>A fun detail from the whitepaper: the MTProto protocol Telegram uses for client-server communication can be wrapped in RLDP — making Telegram a "TON service" that becomes practically unblockable via TON Proxy.</p>
+<h2 id="the-cryptography-of-adnl-why-content-between-two-nodes-is-encrypted-by-design">The Cryptography of ADNL: Why Content Between Two Nodes Is Encrypted by Design</h2>
+<p>This is the most interesting part. In the ordinary internet, encryption (TLS) is a layer bolted on top of unencrypted TCP/IP. In TON, identity and encryption are baked into the lowest network layer itself.</p>
+<p><strong>An address is a hash of a public key.</strong> The abstract address of a node is a 256-bit number — and it's <em>not</em> the public key itself, but the <code>SHA-256</code> of a serialized TL object describing the key (in the simplest case: a 4-byte magic prefix plus a 256-bit ECC key — roughly 36 bytes total get hashed). RSA-2048 and other schemes can be used too — the address is always a hash of the key description.</p>
+<p>This has two fundamental implications:</p>
+<ul>
+<li>To <strong>send</strong> something to an address, you need to know its preimage — the actual public key whose hash equals that address. Without the preimage, you can't encrypt a datagram.</li>
+<li>To <strong>receive and decrypt</strong> a message, you must hold the corresponding private key.</li>
+</ul>
+<p><strong>How content between two nodes is actually encrypted.</strong> The whitepaper describes several modes:</p>
+<ol>
+<li><em>Simple</em>: the sender appends their ECC signature and address (or preimage) to the datagram, encrypts everything with the recipient's public key, and puts it in a UDP packet. The first 256 bits of the packet are the recipient's address — so the recipient knows which private key to use for decryption. The sender's identity is only revealed after decryption.</li>
+<li><em>Efficient (for sustained exchange)</em>: the sender's private key and recipient's public key are combined via <strong>ECDH</strong> (Elliptic Curve Diffie-Hellman) into a shared 256-bit secret; AES keys are derived from it together with a random nonce. Integrity is ensured by appending the plaintext's hash before encryption. The shared secret can be computed once and cached — no heavy elliptic curve operations needed after that.</li>
+<li><em>Channels</em>: two nodes establish a shared secret (via DH or by agreeing on a random secret), and derive a channel identifier from it plus their addresses. That identifier goes in the first 256 bits of subsequent packets.</li>
+</ol>
+<p>The upshot: at the ADNL level, <strong>you cannot send a packet without encrypting it with the recipient's key, and you cannot read it without the recipient's private key</strong>. Content encryption between two nodes isn't an option or a separate handshake on top of the transport — it's a property of how addressing works. Sender authentication is also built in, via signatures or knowledge of the shared ECDH secret.</p>
+<h2 id="comparison-with-web2-why-there-are-no-certificate-authorities-here">Comparison with Web2: Why There Are No Certificate Authorities Here</h2>
+<p>To understand why TON has no CAs, it helps to remember <em>why</em> they exist in the web.</p>
+<p><strong>The Web2 model (TLS + PKI).</strong> On the ordinary internet, the identity of a service is a domain name (<code>example.com</code>). A domain name has <em>no mathematical relationship</em> to a cryptographic key — <code>example.com</code> is just a string. So the browser needs a trusted third party to attest: "this public key genuinely belongs to the owner of example.com." That's what a Certificate Authority does: it signs a certificate binding a domain to a key, and the browser verifies the chain of signatures up to a root CA it trusts out of the box. Trust here is external, socio-institutional, and has known weaknesses: CA compromise, misissuance, certificate substitution attacks.</p>
+<p><strong>The TON model (address = hash of key).</strong> In ADNL, the binding of "identity ↔ key" is not delegated to a third party — it's <em>mathematical</em>: the address is literally derived from the key as its hash. To impersonate a foreign address, an attacker would need to:</p>
+<ul>
+<li>find another public key that produces the same <code>SHA-256</code> address (preimage attack — computationally infeasible), or</li>
+<li>obtain the real owner's private key.</li>
+</ul>
+<p>Neither is solved by "issuing a fake certificate". The address is <em>self-certifying</em>: knowing the address, you already know whose key you're encrypting to, and you can verify the preimage. The intermediary role of a CA simply isn't needed — cryptography does the job instead.</p>
+<p><strong>What about human-readable names?</strong> A fair question: CAs exist in the web precisely because people work with names, not keys. TON solves this with <strong>TON DNS</strong> — but again, without certificate authorities. Names resolve to addresses through a tree of smart contracts on the blockchain, starting from a "root" DNS contract whose identifier is hardcoded into the client. A light client can ask a full node to resolve a domain and receive the answer together with a <strong>Merkle proof</strong> — allowing independent verification that the answer is correct and cannot be substituted by an interceptor, unlike classic DNS. Trust in names rests not on a list of trusted CAs, but on blockchain consensus and verifiable Merkle proofs from a known root.</p>
+<h2 id="side-by-side">Side by Side</h2>
+<table><tr><th>Aspect</th><th>Web2 (TLS / PKI)</th><th>TON (ADNL)</th></tr><tr><td>Node identity</td><td>domain name</td><td>256-bit address = SHA-256(public key)</td></tr><tr><td>Name ↔ key binding</td><td>attested by external CA</td><td>mathematical (hash), self-certifying</td></tr><tr><td>Where encryption lives</td><td>overlay (TLS) on top of TCP/IP</td><td>built into the ADNL network layer</td></tr><tr><td>Forward secrecy</td><td>ephemeral ECDHE in TLS handshake</td><td>ephemeral keys / ECDH per channel</td></tr><tr><td>Human-readable names</td><td>DNS + CA for keys</td><td>TON DNS on-chain + Merkle proofs</td></tr><tr><td>Trust failure point</td><td>CA compromise / misissuance</td><td>compromise of node's private key</td></tr></table>
+<h2 id="the-core-idea">The Core Idea</h2>
+<p>TON is not "yet another blockchain" — it's a blockchain plus a P2P network, designed together to replace the familiar web without central servers. The central cryptographic idea is simple and elegant: <strong>a node's address is its key (or rather, the hash of its key)</strong>. From that single design decision, two properties follow for free — content between two nodes is encrypted by the very nature of addressing, and verifying "who is who" requires no certificate authorities, because the node's identity is guaranteed by mathematics, not by an external institution of trust.</p>
+<hr>
+<p><em>Source: The Open Network whitepaper, Nikolai Durov / TON Core, July 26, 2021.</em></p>
+<p class="muted" style="margin-top:32px">First published June 1, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

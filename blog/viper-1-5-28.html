@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.28 · Viper Blog</title>
+<meta name="description" content="Calls, profiles and a lot more in your chats.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · October 1, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5.28</h1>
+<p class="lead">Calls, profiles and a lot more in your chats.</p>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Calls always go through the relay, end-to-end encrypted with a new key per call. On a Mac, macOS gives Viper no microphone or camera yet.</li><li>Your profile name and photo are public: anyone who has your key can see them.</li></ul></div>
+<figure class="shot"><img loading="lazy" src="../img/iphone-1-profile.jpg" alt=""><figcaption>Profile: public key, Reputation, Accounts, Encrypted Notes, Shared Files (Viper 1.5.34, sample account)</figcaption></figure>
+<ul><li>Audio and video calls — one-to-one, end-to-end encrypted. Calls connect reliably and the voice stays clear, even on a weak connection.</li><li>Profile name and photo — set a nickname and a picture; tap someone&#x27;s photo to see it full size.</li><li>Live location — share where you are for 15 minutes, 1 hour or 8 hours. Shared locations open on a map right inside Viper.</li><li>Edit your messages, and react to any message — over the relay, a direct connection or Bluetooth.</li><li>Reply, forward, send photos from the camera, swipe to reply, search inside a chat, and see shared media and links in a contact&#x27;s profile.</li><li>Voice messages can be transcribed on your device — free, nothing leaves your phone.</li><li>Save video circles to your Photos.</li></ul>
+<p>Steadier everywhere:</p>
+<ul><li>Viper stays reachable when it is in the background, and comes back faster.</li><li>Works better on one bar of signal — messages and presence keep flowing.</li><li>Direct connections are easier to set up and no longer drop on their own.</li></ul>
+<p class="muted" style="margin-top:32px">Text: the App Store “What's New” for Viper 1.5.28, released October 1, 2026. Screenshots: Viper 1.5.34 with sample data. <a href="index.html#releases">All release notes</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

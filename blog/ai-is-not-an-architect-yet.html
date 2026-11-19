@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI is not an architect (yet) · Viper Blog</title>
+<meta name="description" content="AI tools are part of our daily workflow. They help us move faster, explore ideas, and reduce friction. But there is an important line they don&#x27;t cross.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · December 19, 2025</p>
+<h1>AI is not an architect (yet)</h1>
+<p>AI tools are part of our daily workflow. They help us move faster, explore ideas, and reduce friction.</p>
+<p>But there is an important line they don't cross.</p>
+<p>Without a programmer, Viper would not exist.</p>
+<h2 id="architecture-is-responsibility-not-generation">Architecture is responsibility, not generation</h2>
+<p>AI can generate code. It can suggest patterns. It can explain concepts.</p>
+<p>What it cannot do is take responsibility for a system.</p>
+<p>Architecture is about:</p>
+<ul>
+<li>understanding constraints</li>
+<li>predicting failure modes</li>
+<li>choosing trade-offs</li>
+<li>living with the consequences</li>
+</ul>
+<p>Those decisions don't live in prompts. They live in production.</p>
+<p>While building Viper, we faced problems that look small on the surface — but become critical in real-world conditions.</p>
+<p>For example:</p>
+<h3>Reliable messaging at "1 bar" connectivity</h3>
+<ul>
+<li>unstable connections</li>
+<li>partial packet loss</li>
+<li>delayed acknowledgements</li>
+<li>duplicated or out-of-order messages</li>
+</ul>
+<p>There is no "AI answer" to this. You have to design, test, break, and redesign.</p>
+<h3>Incoming and outgoing message guarantees</h3>
+<ul>
+<li>delivery confirmation</li>
+<li>retry logic</li>
+<li>idempotency</li>
+<li>consistency between local and remote state</li>
+</ul>
+<p>AI can describe these concepts. It cannot decide how much reliability is enough without killing UX.</p>
+<h3>Offline mode</h3>
+<p>Offline is not a feature. It's a separate system state.</p>
+<p>You need to think about:</p>
+<ul>
+<li>queues</li>
+<li>conflict resolution</li>
+<li>local persistence</li>
+<li>recovery after reconnect</li>
+</ul>
+<p>No prompt tells you where your system will break.</p>
+<h3>Chat UI issues</h3>
+<p>This was one of the most painful areas:</p>
+<ul>
+<li>scroll jumps</li>
+<li>message prepending</li>
+<li>restoring visual position</li>
+<li>async layout updates</li>
+</ul>
+<p>On paper — trivial. In practice — weeks of work.</p>
+<h2 id="where-ai-actually-helped">Where AI actually helped</h2>
+<p>To be clear — AI was useful:</p>
+<ul>
+<li>generating boilerplate</li>
+<li>exploring alternatives</li>
+<li>sanity-checking ideas</li>
+<li>speeding up iterations</li>
+</ul>
+<p>But every critical decision:</p>
+<ul>
+<li>protocol behavior</li>
+<li>message flow</li>
+<li>architecture in general</li>
+</ul>
+<p>…was made by a human.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>AI accelerates engineers. It does not replace them.</p>
+<p>Especially when systems:</p>
+<ul>
+<li>operate under poor networks</li>
+<li>must work offline</li>
+<li>need predictable behavior</li>
+</ul>
+<p>AI is not an architect — yet.</p>
+<p class="muted" style="margin-top:32px">First published December 19, 2025 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

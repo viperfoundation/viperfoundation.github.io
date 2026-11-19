@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Viper is Built on TON · Viper Blog</title>
+<meta name="description" content="TON/ADNL isn&#x27;t just a blockchain stack. For Viper, it&#x27;s the network and identity layer that makes a genuinely different kind of messenger possible.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · May 24, 2026 · Updated for Viper 1.5.34</p>
+<h1>Why Viper is Built on TON</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Since 1.5.14–1.5.15 Viper's messages and files travel over <b>QUIC</b>, through the relay or directly between phones, rather than ADNL. Identity is still a TON key pair; .ton names and the wallet are still TON.</li></ul></div>
+<p>Most encrypted messengers are web apps with encryption bolted on. Viper is different — and a big part of why comes down to the protocol it's built on: <a href="https://ton.org">The Open Network</a>.</p>
+<p>Here's what TON/ADNL actually gives <a href="https://viperfoundation.base44.app">Viper Messenger</a> that you can't easily get from a standard backend stack.</p>
+<h2 id="realtime">Realtime</h2>
+<p>TON ADNL was designed from the ground up for low-latency peer-to-peer communication — not HTTP request/response cycles.</p>
+<p>That means:</p>
+<ul>
+<li>Messages feel <em>alive</em></li>
+<li>Less overhead per event</li>
+<li>Persistent connections are natural, not bolted on</li>
+<li>Realtime events — reactions, typing indicators, sync — feel snappier</li>
+</ul>
+<p>For a messenger, this is a massive UX difference. The vibe of a conversation changes when the network layer isn't fighting you.</p>
+<h2 id="architecture-closer-to-the-network-layer">Architecture Closer to the Network Layer</h2>
+<p>Most messengers are structured as:</p>
+<ul>
+<li>REST API</li>
+<li>WebSocket over a centralized server</li>
+<li>Phone number as identity</li>
+<li>Backend as single source of truth</li>
+</ul>
+<p>TON/ADNL lets you build closer to:</p>
+<ul>
+<li>Encrypted packet routing</li>
+<li>Relay architecture (Viper uses a relay too — but built on ADNL, not a generic WebSocket server)</li>
+<li>Decentralized identity</li>
+<li>Peer networking as a long-term direction</li>
+</ul>
+<p>This is a different class of product. Not a chat app. A communication layer.</p>
+<h2 id="public-key-identity-instead-of-a-phone-number">Public Key Identity Instead of a Phone Number</h2>
+<p>This is one of the strongest differentiators Viper has.</p>
+<p>WhatsApp, Telegram, Signal — all of them use your phone number as the central identity layer. That number is tied to your carrier, your country, and ultimately to you.</p>
+<p>Viper uses:</p>
+<ul>
+<li>A public key</li>
+<li>A username</li>
+<li>A potentially portable crypto identity</li>
+</ul>
+<p>This is closer to the email era, early internet identity, crypto-native identity. And it maps extremely well onto:</p>
+<ul>
+<li>Digital nomads</li>
+<li>Creators</li>
+<li>Crypto users</li>
+<li>Privacy-focused users</li>
+</ul>
+<p>You don't need a SIM card to exist on Viper.</p>
+<h2 id="nat-traversal-and-udp-advantages">NAT Traversal and UDP Advantages</h2>
+<p>UDP + ADNL delivers:</p>
+<ul>
+<li>Lighter packets, less latency</li>
+<li>Less connection overhead</li>
+<li>Better realtime feeling across all events</li>
+</ul>
+<p>This is especially noticeable in reactions, online presence indicators, and fast reconnect behavior — exactly the places where a messenger either feels <em>fast</em> or feels <em>laggy</em>.</p>
+<h2 id="ton-ecosystem-synergy">TON Ecosystem Synergy</h2>
+<p>Building on TON opens a roadmap that's architecturally coherent, not just feature-stacked:</p>
+<ul>
+<li>Wallet identity</li>
+<li>Document signing</li>
+<li>Reputation layers</li>
+<li>Mini apps</li>
+<li>Encrypted social graph</li>
+<li>Payment layer</li>
+</ul>
+<p>The key is balance. None of this turns Viper into a "crypto casino app". It's infrastructure, not speculation.</p>
+<h2 id="less-platform-dependency">Less Platform Dependency</h2>
+<p>If your identity isn't a phone number, isn't an Apple ID, isn't a Google account — your product becomes structurally less dependent on the platforms that could remove it.</p>
+<p>For a privacy-first messenger, that independence is strategic, not cosmetic.</p>
+<h2 id="the-market-timing">The Market Timing</h2>
+<p>Right now the market is saturated with:</p>
+<ul>
+<li>AI wrappers</li>
+<li>Social app clones</li>
+<li>Messenger copies</li>
+</ul>
+<p>Almost nobody is working at the network and protocol layer. That's where Viper sits — and it creates a different feeling:</p>
+<blockquote>
+<p>"This isn't just another app. This is an alternative communication layer."</p>
+</blockquote>
+<p>That's the vibe of early Telegram, Tox, Session, Keet/Holepunch. Old internet ethos applied to modern infrastructure.</p>
+<h2 id="the-honest-tradeoffs">The Honest Tradeoffs</h2>
+<p>TON/ADNL is harder to work with:</p>
+<ul>
+<li>Harder to debug</li>
+<li>Harder to scale</li>
+<li>Harder to onboard new developers</li>
+<li>Harder to explain in an App Store description</li>
+<li>Less mature tooling</li>
+<li>Fewer ready-made SDKs</li>
+</ul>
+<p>You win on architecture, latency, identity, and uniqueness. You trade simplicity, ecosystem maturity, and standard backend infrastructure.</p>
+<p>That's a real tradeoff. It's worth it — but only if you build something that earns it.</p>
+<h2 id="the-core-idea">The Core Idea</h2>
+<p>Viper isn't another encrypted messenger.</p>
+<p>It's a communication protocol and identity layer, with messenger UX on top.</p>
+<p>TON/ADNL is why that's possible.</p>
+<p class="muted" style="margin-top:32px">First published May 24, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

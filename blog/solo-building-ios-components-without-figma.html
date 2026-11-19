@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solo building: why I skipped Figma and built iOS components for the web · Viper Blog</title>
+<meta name="description" content="When you&#x27;re building alone, design tooling starts to feel like an unnecessary layer. So I built iOS-like components directly in shadcn to prototype in the browser — no Figma required.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · March 15, 2026</p>
+<h1>Solo building: why I skipped Figma and built iOS components for the web</h1>
+<h1>Solo building: why I skipped Figma and built iOS components for the web</h1>
+<h2 id="the-problem-with-design-tooling-when-youre-solo">The problem with design tooling when you're solo</h2>
+<p>When you're building alone, design starts to feel like overhead.</p>
+<p>You open Figma, spend time laying out screens, then manually translate everything into code. Two layers, two sources of truth, two things to maintain. For a solo developer, that friction compounds fast.</p>
+<p>At some point I stopped asking <em>how do I design this properly</em> and started asking — <em>why am I designing it at all before writing it?</em></p>
+<h2 id="a-different-approach">A different approach</h2>
+<p>The idea is simple: skip the design tool entirely.</p>
+<p>Instead of designing iOS screens in Figma and then porting them to code, I built iOS-like UI components directly in <strong>shadcn</strong> — so prototyping happens in the browser from day one.</p>
+<p>The result is <a href="https://github.com/viperfoundation/ton-design-system/tree/master?tab=readme-ov-file#ios-web-shadcn">ios-web-shadcn</a> — a set of components that replicate iOS UI patterns using Tailwind CSS and shadcn primitives.</p>
+<p><figure class="shot"><img loading="lazy" src="img/old/solo-building-ios-components-without-figma-fbba3ccf6_localhost_3001_profile1.jpg" alt=""><figcaption>iOS-like Profile UI (older version of Viper)</figcaption></figure></p>
+<h2 id="the-prototype-is-the-code">The prototype is the code</h2>
+<p>Rebuilding iOS-like components in shadcn is faster than you'd expect. The primitives are already there — layout, typography, color tokens. You're just composing them with familiar iOS patterns: rounded search bars, avatar rows, tab bars, nav titles.</p>
+<p>And since it's all just React + Tailwind, the prototype <em>is</em> the code. There's no gap between what you designed and what you ship.</p>
+<p>This also pairs well with AI tools — you can describe a screen and get working iOS-style components immediately, without leaving your editor or waiting for a Figma export.</p>
+<h2 id="the-registry">The registry</h2>
+<p>The components live in the <a href="https://github.com/viperfoundation/ton-design-system">ton-design-system registry</a> and can be copied into any shadcn project via the CLI.</p>
+<p>If you're building solo — especially mobile-first apps — it might be worth trying. Design in the browser, skip the translation layer.</p>
+<p class="muted" style="margin-top:32px">First published March 15, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

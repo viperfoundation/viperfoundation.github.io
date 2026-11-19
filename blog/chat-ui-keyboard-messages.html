@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat UI in Viper: keyboard and messages · Viper Blog</title>
+<meta name="description" content="Building a stable chat interface: handling keyboard appearance, outgoing messages, and incoming updates without scroll jumps.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · December 27, 2025</p>
+<h1>Chat UI in Viper: keyboard and messages</h1>
+<p>Chat looks simple.</p>
+<p>A message list, an input field, a send button —
+it feels like a solved problem.</p>
+<p>In practice, chat UI quickly hits the limits of standard components.
+Especially when you need to support at the same time:</p>
+<ul>
+<li>loading older messages from the top,</li>
+<li>correct keyboard handling,</li>
+<li>sending and receiving messages without jumps,</li>
+<li>staying inside SwiftUI.</li>
+</ul>
+<p>In Viper, chat is implemented as a <strong>custom ScrollView</strong> built on <strong>SwiftUI + UIKit</strong>.
+During development, several typical but non-obvious problems appeared.
+These are rarely described end to end, but show up immediately in real apps.</p>
+<h2 id="architecture-in-short">Architecture in short</h2>
+<p>At the core there is <strong>UIScrollView</strong> wrapped in <strong>UIViewRepresentable</strong>.</p>
+<p>Key components:</p>
+<ul>
+<li><strong>NotifyingScrollView</strong> — UIScrollView that reports layout changes</li>
+<li><strong>ChatScrollView</strong> — SwiftUI wrapper that controls scrolling via bindings</li>
+<li><strong>Coordinator</strong> — central place for scrolling logic, prepend, restore, and keyboard</li>
+</ul>
+<p>This approach allows:</p>
+<ul>
+<li>keeping control over scroll geometry,</li>
+<li>synchronizing UIKit and SwiftUI,</li>
+<li>avoiding unstable behavior of standard ScrollView.</li>
+</ul>
+<h2 id="part-1-keyboard-show-and-hide">Part 1. Keyboard show and hide</h2>
+<p><figure class="shot"><img loading="lazy" src="img/old/chat-ui-keyboard-messages-6743e675d_image7.jpg" alt=""><figcaption>Keyboard Closed (older version of Viper)</figcaption></figure></p>
+<p><em>The chat interface with the keyboard hidden, showing messages 7, 8, and 9 in the viewport.</em></p>
+<p><figure class="shot"><img loading="lazy" src="img/old/chat-ui-keyboard-messages-f826838b8_image21.jpg" alt=""><figcaption>Keyboard Open (older version of Viper)</figcaption></figure></p>
+<p><em>When the keyboard appears, the same messages remain visible. The content shifts up smoothly without losing scroll position.</em></p>
+<p>The most common scenario is reading messages and starting to type.</p>
+<p>Expected behavior is simple:</p>
+<ul>
+<li>keyboard appears,</li>
+<li>content moves together with it,</li>
+<li>current position is preserved,</li>
+<li>no jumps or layout rebuilds.</li>
+</ul>
+<h3>What usually breaks</h3>
+<p>With a standard SwiftUI + ScrollView setup:</p>
+<ul>
+<li>safe area changes cause a <strong>contentInset</strong> jump,</li>
+<li>UIKit automatically adjusts <strong>contentOffset</strong>,</li>
+<li>position drifts when keyboard shows and hides,</li>
+<li>the effect is stronger when the user is not at the bottom.</li>
+</ul>
+<p>Formally everything works.
+Visually scrolling becomes unstable.</p>
+<h3>How it is handled in code</h3>
+<p>In <strong>ChatScrollView</strong> the keyboard is treated as a <strong>layout event</strong>.
+Not as a UI state change.</p>
+<p>Several techniques are used:</p>
+<ul>
+<li><strong>NotifyingScrollView</strong> reports <strong>layoutSubviews</strong> to track real size changes</li>
+<li>temporary switching of <strong>contentInsetAdjustmentBehavior</strong>
+(<strong>.never → .automatic → .never</strong>)
+forces UIKit to recalculate layout without manual offset correction</li>
+<li>all scroll changes go through <strong>Coordinator</strong> instead of SwiftUI directly</li>
+</ul>
+<p>As a result:</p>
+<ul>
+<li>content moves in sync with the keyboard,</li>
+<li>position is not auto-corrected by the system,</li>
+<li>visual context is preserved.</li>
+</ul>
+<h2 id="part-2-outgoing-message">Part 2. Outgoing message</h2>
+<p><figure class="shot"><img loading="lazy" src="img/old/chat-ui-keyboard-messages-f7220d539_image3.jpg" alt=""><figcaption>Typing Message (older version of Viper)</figcaption></figure></p>
+<p><em>User types "10" in the input field while viewing messages 7, 8, 9.</em></p>
+<p><figure class="shot"><img loading="lazy" src="img/old/chat-ui-keyboard-messages-80b10097b_image4.jpg" alt=""><figcaption>Message Sent (older version of Viper)</figcaption></figure></p>
+<p><em>After sending, message "10" appears at the bottom. The scroll position adjusts smoothly to show the new message without jarring jumps.</em></p>
+<p>Sending a message is another scenario where jumps appear easily.</p>
+<p>At the moment of sending:</p>
+<ul>
+<li>a new item is added to the data source,</li>
+<li><strong>contentHeight</strong> changes,</li>
+<li>SwiftUI triggers a view update,</li>
+<li>keyboard stays active.</li>
+</ul>
+<p>Calling auto scroll directly almost always causes a jump.</p>
+<h3>How it works</h3>
+<p>There is no direct <strong>scrollToBottom</strong> in <strong>ChatScrollView</strong>.</p>
+<p>Instead:</p>
+<ul>
+<li>current position and content height are tracked via bindings
+(<strong>contentOffset</strong>, <strong>contentHeight</strong>)</li>
+<li><strong>Coordinator</strong> decides whether the position should change</li>
+<li>if the user is at the bottom, scrolling follows smoothly</li>
+<li>if the user is higher, the offset stays unchanged</li>
+</ul>
+<p>Outgoing messages do not interfere with reading history.</p>
+<h2 id="part-3-keyboard-hide">Part 3. Keyboard hide</h2>
+<p><figure class="shot"><img loading="lazy" src="img/old/chat-ui-keyboard-messages-03a2b762b_image5.jpg" alt=""><figcaption>Keyboard Closed Again (older version of Viper)</figcaption></figure></p>
+<p><em>After sending message "10", the keyboard stays open. User manually taps outside the input field to dismiss it. When the keyboard hides, message "10" moves down smoothly as the content expands. Messages 3-10 are now visible, with "Load older (+10)" button at the top. The transition is stable with no content jumps.</em></p>
+<p>Keyboard hide looks like a reverse operation.
+In practice, it is where many micro issues appear.</p>
+<p>In SwiftUI, keyboard dismissal <a href="https://www.reddit.com/r/SwiftUI/comments/1jnn17y/how_do_you_move_the_contents_of_scrollview_up/">often causes layout jumps</a>.</p>
+<p>Typical symptoms:</p>
+<ul>
+<li>small offset bounce,</li>
+<li>bottom gap,</li>
+<li>brief layout reconstruction.</li>
+</ul>
+<p>The reason is UIKit automatic adjustments.</p>
+<h3>What is done in Viper</h3>
+<ul>
+<li>automatic inset adjustments are disabled</li>
+<li>position restore goes through <strong>Coordinator</strong></li>
+<li>two-pass restore is used to account for height changes</li>
+<li>scrolling may be temporarily locked
+(<strong>isScrollEnabled = false</strong>)
+to remove micro jitter</li>
+</ul>
+<p>As a result, keyboard hide looks as stable as keyboard show.</p>
+<h2 id="part-4-incoming-message">Part 4. Incoming message</h2>
+<p><figure class="shot"><img loading="lazy" src="img/old/chat-ui-keyboard-messages-80c56a2b3_image6.jpg" alt=""><figcaption>Incoming Message (older version of Viper)</figcaption></figure></p>
+<p><em>A new incoming message "11" appears at the bottom with a darker bubble (left-aligned), showing it's from another user. The scroll position automatically adjusts to show the new message.</em></p>
+<p>Incoming messages are also non-trivial because they can arrive:</p>
+<ul>
+<li>at any moment,</li>
+<li>while typing,</li>
+<li>while reading history,</li>
+<li>with keyboard shown or hidden.</li>
+</ul>
+<h3>Base rule</h3>
+<p>An incoming message <strong>must not change the current position</strong> if the user:</p>
+<ul>
+<li>is not at the bottom,</li>
+<li>or is actively interacting with the chat.</li>
+</ul>
+<h3>Implementation</h3>
+<ul>
+<li>content change triggers <strong>relayout</strong> without offset change</li>
+<li><strong>Coordinator</strong> tracks the user position</li>
+<li>auto scroll happens only when the user is already at the bottom</li>
+</ul>
+<p>Incoming messages do not break the current context.</p>
+<h2 id="summary">Summary</h2>
+<p>Chat implementation is not just a message list.
+It is constant coordination between:</p>
+<ul>
+<li>UIKit and SwiftUI,</li>
+<li>layout and state,</li>
+<li>user actions and async events.</li>
+</ul>
+<p>Keyboard, prepend, append, restore —
+all of them intersect inside one ScrollView and require explicit control.</p>
+<p>That is why Viper uses a custom implementation instead of the standard <strong>ScrollView</strong>.</p>
+<p class="muted" style="margin-top:32px">First published December 27, 2025 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

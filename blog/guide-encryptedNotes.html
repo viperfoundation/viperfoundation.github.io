@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Encrypted Notes · Viper Blog</title>
+<meta name="description" content="Your notes, on your device only">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Guides</span> · November 19, 2026</p>
+<h1>Encrypted Notes</h1>
+<p class="lead">Your notes, on your device only</p>
+<h2>Where it is</h2><p>Profile → Encrypted Notes. Tap the pencil to write one: a title and the text, saved as you type. Swipe a note to delete it.</p>
+<figure class="shot"><img loading="lazy" src="../img/iphone-8-notes.jpg" alt=""><figcaption>Encrypted Notes, kept on this device only (sample notes)</figcaption></figure>
+<h2>Your device, your storage</h2><p>Each note is a file on this device, encrypted with a key made from your Account Key. Not on the relay, not in iCloud. Each account has its own.</p>
+<h2>Send to Chat</h2><p>In a note, tap …, then Send to Chat. The chat gets a copy as a note card, end-to-end encrypted like a message, up to 4,000 characters. Your note stays here.</p>
+<h2>Keep a copy</h2><p>Encrypted Chat Backup in Settings → Security and Data carries your notes, free, and Import brings them back. Erase All Data or deleting Viper removes them.</p>
+
+<p class="muted" style="margin-top:32px">From the guide in Viper 1.5.34: Profile → Settings → Help → Guides. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

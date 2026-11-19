@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.29 · Viper Blog</title>
+<meta name="description" content="P2P improvements">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · October 14, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5.29</h1>
+<p class="lead">P2P improvements</p>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Route order today: <b>relay first by default</b>, a Bluetooth link still wins; change it in Settings → Connectivity. The 1.5.29 note lists Bluetooth, direct, relay.</li><li>Our first draft of these notes (not the published App Store text) also listed: Bluetooth asks first with an Allow/Decline card, the line under the name shows the current route, and all connection settings moved to Settings → Connectivity.</li></ul></div>
+<div class="shots"><figure class="shot"><img loading="lazy" src="../img/iphone-2-route.jpg" alt=""><figcaption>Route sheet: Auto, Bluetooth for this person, Relay only, and the links. This sample account was switched to Direct P2P first; the default is Relay first (Viper 1.5.34)</figcaption></figure><figure class="shot"><img loading="lazy" src="img/bt-radar-connect.jpg" alt=""><figcaption>People Nearby: Connect asks the other phone first</figcaption></figure></div>
+<ul><li>Talk directly. Messages go straight to your friend&#x27;s phone, at home or on mobile data, even with one bar of signal.</li></ul>
+<h2>Also new</h2>
+<ul><li>Router. Viper picks the way for every message: Bluetooth when you are close, a direct link, or the relay. If one drops, it switches on its own. Set the order in Settings. Much better UX when choosing a route for a message.</li><li>Viper Bluetooth Radar: see which way people nearby are and how far.</li><li>Calendar events and notes, right in the chat.</li><li>Share to Viper from other apps.</li><li>Plus many fixes.</li></ul>
+<p class="muted" style="margin-top:32px">Text: the App Store “What's New” for Viper 1.5.29, released October 14, 2026. Screenshots: Viper 1.5.34 with sample data. <a href="index.html#releases">All release notes</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper Enterprise — Private Messaging Infrastructure for Organizations · Viper Blog</title>
+<meta name="description" content="Viper Enterprise gives organizations full ownership over their messaging infrastructure — no phone numbers, no email addresses, self-hosted relays, and cryptographic identity from day one.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · June 11, 2026</p>
+<h1>Viper Enterprise — Private Messaging Infrastructure for Organizations</h1>
+<div class="box updated"><h2>Note</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Not re-checked: this post describes an offering for organizations, not features of the App Store app. The App Store app lets you change the relay key in Settings → Advanced.</li></ul></div>
+<p>Most enterprise messaging tools require employees to register with a phone number or corporate email. That means your communication infrastructure is tied to identifiers you don't fully control — and that can be taken away, spoofed, or leaked.</p>
+<p>Viper Enterprise is built on a different premise: <strong>own your messenger, own your infrastructure, own your identity.</strong></p>
+<h2 id="no-phone-numbers-no-email-addresses">No Phone Numbers. No Email Addresses.</h2>
+<p>Employee identities in Viper are based on cryptographic keypairs — specifically Ed25519 keys, the same primitive used by the TON network. There are no phone numbers or email addresses involved. This eliminates entire classes of attacks: SIM swapping, email takeover, credential stuffing.</p>
+<p>An employee's identity is a key. Nothing more.</p>
+<h2 id="mnemonic-phrase-private-key-auth">Mnemonic Phrase &amp; Private Key Auth</h2>
+<p>Accounts are portable and fully owned by the employee. Each account can be backed up with a 24-word mnemonic phrase, and imported on any device using a private key. The employee holds the key — not the organization, not the vendor.</p>
+<h2 id="self-hosted-or-private-deployment">Self-Hosted or Private Deployment</h2>
+<p>Viper runs on a relay architecture. For enterprise deployments, you bring your own relay — installed on your own servers or private cloud. Messages never touch infrastructure you don't control.</p>
+<p>We support fully air-gapped deployments for environments where no public internet involvement is acceptable.</p>
+<h2 id="private-network-topology">Private Network Topology</h2>
+<p>Define your own network topology — control how nodes connect, route messages across internal segments, and isolate departments or teams within a fully private overlay network. No public relay involvement required.</p>
+<h2 id="fully-customizable-relay">Fully Customizable Relay</h2>
+<p>Relay routing, security policies, and connection rules are fully configurable. You're not locked into a fixed architecture — the relay can be shaped to fit your existing network and compliance requirements.</p>
+<h2 id="open-integration-architecture">Open Integration Architecture</h2>
+<p>Viper Enterprise supports custom authentication backends, internal API integrations, and enterprise system hooks. There's no walled garden — if you need to connect it to your identity provider, HR system, or access control layer, that's possible.</p>
+<h2 id="enterprise-branding">Enterprise Branding</h2>
+<p>The client can be white-labeled with your company's logo, colors, and identity. Employees see your brand, not ours.</p>
+<h2 id="low-infrastructure-cost">Low Infrastructure Cost</h2>
+<p>The relay architecture is lightweight by design. Running Viper infrastructure for hundreds or thousands of employees doesn't require significant compute — the model is built to keep operational costs low at scale.</p>
+<h2 id="deployment-assistance-consulting">Deployment Assistance &amp; Consulting</h2>
+<p>We work directly with your team through the entire deployment process — relay setup, network configuration, identity provisioning, and integration with existing workflows. You're not handed documentation and left alone.</p>
+<h2 id="built-on-the-open-network">Built on The Open Network</h2>
+<p>Viper's cryptographic foundation is built on TON networking primitives — modern, auditable, and open. The identity model is transparent and doesn't depend on proprietary black boxes.</p>
+<hr>
+<p>If you're evaluating private messaging infrastructure for your organization, reach out directly on Viper:</p>
+<pre><code>viper://u/support
+</code></pre>
+<p class="muted" style="margin-top:32px">First published June 11, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

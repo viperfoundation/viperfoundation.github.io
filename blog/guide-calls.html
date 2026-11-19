@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calls · Viper Blog</title>
+<meta name="description" content="Audio and video, end-to-end encrypted, through the relay">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Guides</span> · November 19, 2026</p>
+<h1>Calls</h1>
+<p class="lead">Audio and video, end-to-end encrypted, through the relay</p>
+<h2>Call from a chat</h2><p>In a chat, tap the phone at the top for a call or the camera for a video call. Calls are free. If their Viper is too old for calls, you see Calls unavailable.</p>
+<h2>Audio or video</h2><p>A video call rings with Decline, Audio and Video: Audio answers with your camera off. During a call, Camera turns yours on or off and Flip switches it.</p>
+<h2>How it rings</h2><p>On iPhone the system call screen rings while Viper is running. If Viper is closed, a notification comes first: open Viper in time and it rings. On a Mac, macOS gives Viper no microphone or camera yet.</p>
+<h2>Through the relay, sealed</h2><p>Voice and video always go through the relay, never direct. Each call gets its own new key: end-to-end encrypted, the relay passes on what it cannot read.</p>
+<h2>Missed calls</h2><p>A call rings for 45 seconds. Then you see No answer and they get a Missed call, also if they were offline and come back within a day. Every call leaves a line in the chat.</p>
+
+<p class="muted" style="margin-top:32px">From the guide in Viper 1.5.34: Profile → Settings → Help → Guides. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

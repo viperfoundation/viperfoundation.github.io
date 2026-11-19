@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notifications · Viper Blog</title>
+<meta name="description" content="What a push says, and what stays quiet">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Guides</span> · November 19, 2026</p>
+<h1>Notifications</h1>
+<p class="lead">What a push says, and what stays quiet</p>
+<h2>What a push says</h2><p>When Viper is closed or iOS has paused it, the relay sends a push through Apple. It says only Viper and New message: no text, no name, no key.</p>
+<h2>Tap to open the chat</h2><p>The push holds only a short hash of the sender. Your phone matches it against your chats and opens the right one. From one person, a new push replaces the last.</p>
+<h2>Quiet on purpose</h2><p>Read marks, reactions, edits and Live Location updates go silent: the relay never pushes them. With Viper open, no banner covers the chat.</p>
+<h2>Bluetooth and calls</h2><p>A message over Bluetooth gets a notification made on your phone, with the name and the text: the relay never saw it. A call to a closed Viper comes as New message first: open Viper in time and it rings.</p>
+<h2>Turning them off</h2><p>Viper asks once, after your first connection. To change it: iOS Settings → Viper → Notifications. Exit, Delete Account and Erase All Data stop pushes for the account in use.</p>
+
+<p class="muted" style="margin-top:32px">From the guide in Viper 1.5.34: Profile → Settings → Help → Guides. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

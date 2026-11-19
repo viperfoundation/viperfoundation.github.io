@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.7 — TON Domains NFT Support · Viper Blog</title>
+<meta name="description" content="Viper 1.5.7 adds TON Domains NFT support — users can now be found via .ton domain names using TON liteservers.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · July 1, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5.7 — TON Domains NFT Support</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Type a name with .ton in Search: the relay looks up who holds it on-chain.</li><li>In profiles, .ton names held by wallets of that key show only with Settings → Appearance → Show TON Domains, read from TON and tonapi.io.</li><li>The relay key is in Settings → Advanced.</li></ul></div>
+<p>Viper 1.5.7 integrates TON Domains — the NFT-based naming system on The Open Network.</p>
+<h2 id="whats-new">What's new</h2>
+<h3>TON Domains NFT Support</h3>
+<p>Users can now be discovered via their <code>.ton</code> domain name. When someone owns a TON Domain NFT, their Viper identity can be resolved through it — search for <code>name.ton</code> and find the corresponding user directly.</p>
+<p>Resolution uses <strong>TON liteservers</strong>, keeping the lookup decentralized and trustless.</p>
+<h3>TON Domains in Profile</h3>
+<p>If a contact has a <code>.ton</code> domain linked to their identity, it now appears in their profile via <strong>TON API</strong>. It's another layer of verifiable identity — alongside their public key, you can see the domain name they own on-chain.</p>
+<h3>Relay Key Management Improvements</h3>
+<p>This release also improves relay key management in Settings, making it easier to configure and rotate relay credentials.</p>
+<hr>
+<p>TON Domains support is a meaningful step toward human-readable, blockchain-verified identities in Viper — names you own, not usernames assigned by a platform.</p>
+<p class="muted" style="margin-top:32px">First published July 1, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

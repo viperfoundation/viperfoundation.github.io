@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bluetooth: friends nearby · Viper Blog</title>
+<meta name="description" content="Chat with no internet, only after Allow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Guides</span> · November 19, 2026</p>
+<h1>Bluetooth: friends nearby</h1>
+<p class="lead">Chat with no internet, only after Allow</p>
+<h2>People nearby</h2><p>Anyone near you with Viper and Bluetooth on shows up above your chats and in Search, with a rough distance if they share it.</p>
+<div class="shots"><figure class="shot"><img loading="lazy" src="img/bt-radar-connect.jpg" alt=""><figcaption>People Nearby: Connect asks the other phone first</figcaption></figure><figure class="shot"><img loading="lazy" src="img/bt-chat.jpg" alt=""><figcaption>Blue frame: over Bluetooth with no network; green frame: then direct over the internet with TON</figcaption></figure></div>
+<h2>Bluetooth asks first</h2><p>Tap Connect in the chat&#x27;s ⚡ or on the radar. Their phone shows a card: Allow or Decline. Every new link asks, contacts too, and cards stack.</p>
+<h2>No internet needed</h2><p>Once linked, messages and files go phone to phone, end-to-end encrypted. Messages reach you in the background too, with a notification.</p>
+<h2>TON Drop: where it stands</h2>
+<ul class="status">
+<li><span class="tag">Works now</span> <b>Discovery over Bluetooth.</b> People Nearby shows Viper users around you, roughly how far away.</li>
+<li><span class="tag">Works now</span> <b>Fully offline chat over Bluetooth.</b> Messages, voice notes, video circles and files go phone to phone with no network.</li>
+<li><span class="tag">Works now</span> <b>Bluetooth, then direct over the internet.</b> Phones exchange IP addresses over Bluetooth, then connect directly, P2P over the internet with TON.</li>
+<li><span class="tag wip">In progress</span> <b>A stable link out of range.</b> When either phone's IP address changes, the direct link breaks today. Keeping it needs TON DHT to find each other again.</li>
+</ul>
+<h3>Earlier on this blog</h3><ul><li><a href="viper-1-5-20-bluetooth.html">Viper 1.5.20 — Chat Over Bluetooth, No Internet Needed</a></li></ul>
+<p class="muted" style="margin-top:32px">From the guide in Viper 1.5.34: Profile → Settings → Help → Guides. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

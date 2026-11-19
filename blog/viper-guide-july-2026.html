@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper Guide — July 2026 · Viper Blog</title>
+<meta name="description" content="A tour through Viper as of July 2026 — device-first storage, your account as a TON wallet, NFT usernames for trustless identity, P2P messages and file transfers, and Shared Files. A Frankenstein of Telegram, VKontakte, and torrents.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · July 16, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper Guide — July 2026</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Files are no longer P2P-only. Through the relay: up to 50 MB free, 2 GB with Pro, even when the other person is offline (kept up to 14 days, deleted once delivered). Direct: no size limit. Bluetooth: up to 8 MB (1 GB with Wi-Fi).</li><li>Direct P2P now opens only when you have each other in contacts and someone taps Connect in Route; by default the relay goes first.</li><li>Contacts: the authoritative list is on your device, encrypted. The app also still sends each contact you add to the relay (your key → their key, the name encrypted to you).</li><li>Shared Files: the list comes over a direct link, so you must have each other in contacts.</li><li>.ton names in profiles show only with Settings → Appearance → Show TON Domains, read from TON and tonapi.io, not the relay.</li><li>The old screenshots were replaced with Viper 1.5.34 screens.</li></ul></div>
+<div class="shots"><figure class="shot"><img loading="lazy" src="img/chats.jpg" alt=""><figcaption>Chats: someone nearby above the list, Saved Messages first (Viper 1.5.34, sample data)</figcaption></figure><figure class="shot"><img loading="lazy" src="../img/iphone-1-profile.jpg" alt=""><figcaption>Profile: public key, Reputation, Accounts, Encrypted Notes, Shared Files (Viper 1.5.34, sample account)</figcaption></figure><figure class="shot"><img loading="lazy" src="../img/iphone-4-chat.jpg" alt=""><figcaption>A chat: messages in a green frame came over the direct link (Viper 1.5.34, sample chat)</figcaption></figure></div>
+<p>A quick tour of what Viper is right now, and the ideas behind it. It's a Frankenstein mix of Telegram, VKontakte, and torrents — your data, on your device.</p>
+<h2 id="contacts-chats-everything-on-your-device">Contacts &amp; Chats — Everything on Your Device</h2>
+<p>Contacts and chats live entirely on your device. I keep almost nothing on the server.</p>
+
+
+<h2 id="your-account-is-your-wallet">Your Account Is Your Wallet</h2>
+<p>If you created your account through a mnemonic phrase, your Viper account <strong>is</strong> a TON wallet. Open any TON wallet app, enter the same phrase, and you'll see the exact same wallet.</p>
+<p>Your <strong>Recovery Phrase</strong> is 24 words — a human-readable way to remember the private key without actually memorizing a long string. You can also derive a wallet from a private key directly, but that's painful and probably not worth it.</p>
+
+<p>Want to derive the private key from those 24 words yourself, outside of Viper? See the <a href="v1-3-external-ton-wallets.html">Generating a Wallet with tonutils-go</a> writeup — same 24 words, same wallet, no Viper required.</p>
+<h2 id="nft-usernames-trustless-identity">NFT Usernames — Trustless Identity</h2>
+<p>You don't need to trust my server. If someone has an NFT username (like <code>debugname111.ton</code>), you can pull their public key straight from the blockchain — that's 100% guaranteed to be that person.</p>
+
+<h2 id="p2p-messages-file-transfers">P2P Messages &amp; File Transfers</h2>
+<p>When the other person is online, you talk <strong>peer-to-peer</strong> — directly, no relay involved.</p>
+
+
+<p>Files are P2P-only for now.</p>
+<h2 id="shared-files">Shared Files</h2>
+<p>Going to an event and need to hand out a presentation? Upload a file to your profile. Others can download it — but only while <strong>you're online</strong>.</p>
+
+
+
+<p>This frees up server bandwidth — no 24/7 file hosting on my end.</p>
+<h2 id="closing">Closing</h2>
+<p>Viper ended up a strange mix: Telegram's chat model, VKontakte's profile and file sharing, and torrents' peer-to-peer distribution. A Frankenstein. Your data, your keys, your rules.</p>
+<p class="muted" style="margin-top:32px">First published July 16, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

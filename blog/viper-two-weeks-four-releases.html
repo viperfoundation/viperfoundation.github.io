@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Weeks, Four Releases: How Viper Got Fast, Then Got Unbreakable · Viper Blog</title>
+<meta name="description" content="Four App Store releases in two weeks: instant launch and a new SQLite engine in 1.5.12, hardened relay delivery in 1.5.13, and QUIC on both the P2P and relay transports in 1.5.14 and 1.5.15.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · August 5, 2026</p>
+<h1>Two Weeks, Four Releases: How Viper Got Fast, Then Got Unbreakable</h1>
+<h2 id="tldr">TL;DR</h2>
+<ul>
+<li><code>1.5.12</code> — Instant launch, new SQLite storage engine, better weak-network account flows, refined composer.</li>
+<li><code>1.5.13</code> — User search and relay delivery hardened for one-bar, high-latency, lossy networks.</li>
+<li><code>1.5.14</code> — Direct device-to-device transport moved to QUIC; RLDP stays as fallback.</li>
+<li><code>1.5.15</code> — Relay transport moved to QUIC too; the whole path is modern.</li>
+</ul>
+<p>The last two weeks were the fastest stretch of shipping in Viper's history. Four App Store releases, a full transport migration, and the groundwork for the biggest privacy features we've ever built — landed back to back.</p>
+<p>This is what shipped, and why.</p>
+<p><code>1.5.12</code></p>
+<h2 id="speed-everywhere">Speed. Everywhere.</h2>
+<p>The performance release. We went after every delay a user can feel.</p>
+<p>Viper now launches instantly. Chats and contacts render the moment the app opens — no loading screen, no spinner, no placeholder. The first frame is the real list.</p>
+<p>Under that, we replaced the storage layer with a new SQLite engine. Long conversations open instantly now, tab switching is smooth, and memory use is down across the board. Scrolling a thread with thousands of messages no longer asks the disk for permission.</p>
+<p>We also rebuilt the weak-network paths for account creation and switching. On a flaky connection, creating a second account or moving between accounts no longer stalls halfway — it completes, or it fails fast and tells you why.</p>
+<p>The composer is new: a proper multiline input with refined send, voice, and video buttons. Profile data — username, account address, recovery phrase — loads instantly instead of trickling in. And dozens of stability fixes you'll never see, because the crashes that caused them are gone.</p>
+<p><code>1.5.13</code></p>
+<h2 id="the-one-bar-war">The one-bar war</h2>
+<p>We tested Viper on terrible networks on purpose. One bar of signal. High latency. Packet loss. The kind of conditions where most apps just spin.</p>
+<p>This release made user search and relay message delivery reliable there. Search no longer times out when the radio is gasping. Relay messages arrive instead of silently dropping. If you've ever watched a messenger "sending…" for a minute on a train platform, that's the failure mode we closed.</p>
+<p><code>1.5.14</code></p>
+<h2 id="p2p-goes-quic">P2P goes QUIC</h2>
+<p>Major transport upgrade. Viper's direct device-to-device layer moved to QUIC.</p>
+<p>Text, voice messages, video messages, and files now transfer directly between devices over QUIC whenever a direct connection exists. Lower latency, better behavior under packet loss, faster handshakes than the old transport.</p>
+<p>RLDP stays supported for backward compatibility. If P2P can't be established — NAT, no relay candidate, asymmetric routing — Viper falls back to relay automatically. And when both peers are online, the relay forwards messages in real time without storing them. Direct when possible, relayed when needed, never parked on a server.</p>
+<p><code>1.5.15</code></p>
+<h2 id="the-relay-goes-quic-too">The relay goes QUIC too</h2>
+<p>The same transport upgrade, applied to relay traffic. Faster message delivery. Faster user search. Much better reliability on slow, high-latency, unstable mobile networks.</p>
+<p>With both hops on QUIC — direct P2P and relay — the whole path is modern. There's no legacy leg left in the route a Viper message takes.</p>
+<p class="muted" style="margin-top:32px">First published August 5, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

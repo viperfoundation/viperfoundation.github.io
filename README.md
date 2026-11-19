@@ -35,6 +35,10 @@ python3 -m http.server 8765
 # open http://localhost:8765/
 ```
 
+## Languages
+
+`index.html` (English) is the only template. Translations live in `i18n/<lang>.txt`; after editing English or a translation run `python3 i18n/build.py`, which rewrites `ru/ pt-br/ es/ uk/` and the switcher, hreflang links and footer language line. Screenshots per language: `docs/screenshots/i18n/`. Each page links to its own App Store storefront (us, ru, br, mx, ua). /ru/ shows the Russian app screens (`img/ru/`); the app has no es/uk/pt UI, /es/, /uk/ and /pt-br/ show localized app screens from the l10n-es-uk-pt build (`img/<lang>/l10n-framed-*`, hero `img/<lang>/iphone-4-chat.jpg`); Route and People Nearby have no localized screen yet and stay English screens with translated headlines (`img/<lang>/framed-*`). The footer app-language list switches with `APP_L10N_SHIPPED` in `i18n/build.py`. de/fr/it/tr are parked in `i18n/parked/` (see NOTE.txt there).
+
 ## Deploy
 
 GitHub Pages serves `main` from the repository root. Push to `main` and the site updates.
@@ -44,6 +48,6 @@ GitHub Pages serves `main` from the repository root. Push to `main` and the site
 
 - Animated emoji: [Google Noto Emoji](https://googlefonts.github.io/noto-emoji-animation/), CC BY 4.0, unmodified
   (see `lotties/noto/NOTICE.md`).
-- Older files (`static/`, `lotties/ton-pack/`) are the previous React build, kept in place and no longer used.
+- `lotties/ton-pack/` is left from the previous React build and is not used. That build itself is not published.
 
 © Viper Foundation

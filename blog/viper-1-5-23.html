@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.23 · Viper Blog</title>
+<meta name="description" content="Viper now works with no internet at all when the person you&#x27;re talking to is nearby.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · September 14, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5.23</h1>
+<p class="lead">Viper now works with no internet at all when the person you&#x27;re talking to is nearby.</p>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Bluetooth links now ask first (since 1.5.29): the other phone shows Allow or Decline.</li><li>Erase All Data clears this device only; the accounts stay on the relay. Use Delete Account to remove one from the relay.</li><li>Files over Bluetooth today: up to 8 MB, up to 1 GB when Wi-Fi can join in.</li></ul></div>
+<div class="shots"><figure class="shot"><img loading="lazy" src="../img/iphone-3-nearby.jpg" alt=""><figcaption>People Nearby over Bluetooth (Viper 1.5.34, sample contact)</figcaption></figure><figure class="shot"><img loading="lazy" src="img/bt-chat.jpg" alt=""><figcaption>Blue frame: over Bluetooth with no network; green frame: then direct over the internet with TON</figcaption></figure></div>
+<ul><li>Bluetooth works from the very first launch, even with no internet: create an account offline and people nearby can see you and chat with you right away.</li><li>See how many meters away people nearby are — in the People Nearby list and at the top of a Bluetooth chat. Rather not share yours? Turn off &quot;Show My Distance&quot; in Settings.</li><li>Files, voice messages and video messages over Bluetooth. Transfers no longer break: if you walk out of range, lock the screen or the app is closed, the file picks up where it stopped instead of starting over, and it only counts as delivered once it has been checked and saved on the other phone.</li><li>Much faster nearby transfers over Wi-Fi peer-to-peer — no Wi-Fi network or internet needed, the Wi-Fi radio just has to be on. If Wi-Fi isn&#x27;t available, the file goes over Bluetooth straight away.</li><li>Turn Wi-Fi on in the middle of a Bluetooth transfer and the file speeds up on its own — no need to reopen the chat.</li><li>Bluetooth chat stays connected with the screen locked and recovers from interference on its own.</li><li>Files you receive nearby now open with a tap.</li><li>A more reliable connection on first launch and after reinstalling: Viper connects right away and keeps trying on its own if the network isn&#x27;t ready yet.</li><li>New in Settings: Erase All Data removes every account, message, contact and file from this device.</li><li>Works together with Viper 1.5.20: chat as before, and files to people on the older version go through the relay.</li></ul>
+<p>Viper asks for Local Network access the first time it sends a file over Wi-Fi.</p>
+<p class="muted" style="margin-top:32px">Text: the App Store “What's New” for Viper 1.5.23, released September 14, 2026. Screenshots: Viper 1.5.34 with sample data. <a href="index.html#releases">All release notes</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper Messenger</title>
+<meta name="description" content="Viper Messenger — приватний месенджер для iPhone, iPad і Mac: напряму між пристроями, з наскрізним шифруванням, без номера телефону. Ваш ключ — це ваш акаунт. Побудований на TON.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<meta property="og:title" content="Viper Messenger">
+<meta property="og:description" content="Приватний месенджер на TON. Напряму між пристроями, наскрізне шифрування, без номера телефону.">
+<meta property="og:image" content="https://viperfoundation.github.io/img/viper-eye-256.jpg">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<!--i18n:links-->
+<link rel="canonical" href="https://viperfoundation.github.io/uk/">
+<link rel="alternate" hreflang="en" href="https://viperfoundation.github.io/">
+<link rel="alternate" hreflang="ru" href="https://viperfoundation.github.io/ru/">
+<link rel="alternate" hreflang="pt-BR" href="https://viperfoundation.github.io/pt-br/">
+<link rel="alternate" hreflang="es-MX" href="https://viperfoundation.github.io/es/">
+<link rel="alternate" hreflang="uk" href="https://viperfoundation.github.io/uk/">
+<link rel="alternate" hreflang="x-default" href="https://viperfoundation.github.io/">
+<!--/i18n:links-->
+<script>
+  // Old SPA links (/landing, /tds) come back from 404.html as /?/path: show the home page.
+  (function (l) {
+    if (l.search && l.search[1] === "/") window.history.replaceState(null, "", l.pathname + l.hash);
+  })(window.location);
+</script>
+<style>
+:root{
+  --bg:#f6f8f7; --bg2:#ffffff; --card:#ffffff; --line:#dfe7e3; --text:#0e1512; --muted:#55635c;
+  --accent:#1aaa7e; --accent-ink:#ffffff; --accent-soft:#e3f6ee; --warn:#b26b00; --warn-soft:#fff3df;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(14,21,18,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0b0f0d; --bg2:#101613; --card:#121a16; --line:#1f2a25; --text:#e8f1ec; --muted:#93a39b;
+    --accent:#3ed9a4; --accent-ink:#04261a; --accent-soft:#12291f; --warn:#f0b54a; --warn-soft:#2a2213;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--accent)}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0}
+h1{font-size:clamp(40px,7vw,68px)}
+h2{font-size:clamp(28px,4.4vw,42px)}
+h3{font-size:19px}
+p{margin:.6em 0}
+.muted{color:var(--muted)}
+.eyebrow{color:var(--accent);font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+header.scrolled{border-bottom-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:center;height:60px}
+header .bar>.btn{max-width:0;padding-left:0;padding-right:0;margin-left:0;border-width:0;opacity:0;overflow:hidden;white-space:nowrap;pointer-events:none;transition:max-width .25s,padding .25s,margin .25s,opacity .2s}
+header .bar>.btn.show{max-width:280px;padding-left:14px;padding-right:14px;margin-left:28px;border-width:1px;opacity:1;pointer-events:auto}
+@media (max-width:720px){header .bar>.btn.show{margin-left:0}}
+@media (prefers-reduced-motion:reduce){header .bar>.btn{transition:none}}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);text-decoration:none;font-size:18px}
+.brand img{width:32px;height:32px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px #2bd46a,0 0 10px rgba(43,212,106,.45)}
+.logo-hero{width:112px;height:112px;border-radius:50%;object-fit:cover;display:block;margin-bottom:18px;box-shadow:0 0 0 3px #2bd46a,0 0 0 7px rgba(43,212,106,.18),0 0 36px rgba(43,212,106,.45)}
+nav{display:flex;gap:22px;font-size:15px;white-space:nowrap}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--text)}
+@media (max-width:720px){nav{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid transparent;font-size:15px;white-space:nowrap}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{border-color:var(--line);color:var(--text);background:var(--card)}
+.btn.small{padding:8px 14px;font-size:14px}
+.btn svg{width:18px;height:18px;fill:currentColor}
+
+/* hero */
+.hero{padding:64px 20px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero .lead{font-size:clamp(18px,2.2vw,21px);color:var(--muted);max-width:34em}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero .snake{width:96px;height:96px;margin-bottom:14px}
+.hero .platforms{margin-top:18px;font-size:14px;color:var(--muted)}
+.hero .ai-line{margin-top:14px;font-size:16px;color:var(--muted);max-width:36em}
+.hero .ai-line b{color:var(--text)}
+.phone{border-radius:34px;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;background:#000}
+.hero .phone{max-width:320px;margin:0 auto;transform:rotate(2deg)}
+/* hero: text + phone; the Mac sits in its own full-width strip under the hero (no overlap) */
+.hero>*{min-width:0}
+.mac-strip{padding:0 20px 64px}
+.mac-hero{position:relative;z-index:1;display:block;width:100%;max-width:1040px;margin:0 auto;height:auto;border-radius:10px;border:1px solid var(--line);box-shadow:var(--shadow);background:#1e1e1e}
+/* hero carousel: whole devices slide in a row; the stage hides the neighbours and leaves room for the shadow */
+.shots .stage{overflow:hidden;max-width:470px;margin:-24px auto;-webkit-mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
+.shots .track{display:flex;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.shots .track.drag{transition:none}
+.shots .slide{flex:0 0 100%;padding:24px 15%;box-sizing:border-box;transition:opacity .6s ease}
+.shots .slide:not(.on){opacity:.15}
+.shots .track.drag .slide{opacity:1}
+.shots .phone{cursor:zoom-in;transition:scale .3s ease,box-shadow .3s ease}
+img{-webkit-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none}
+.shots img{display:block;width:100%;height:auto}
+.dots{display:flex;justify-content:center;gap:4px;margin-top:14px;visibility:hidden}
+.dots.live{visibility:visible}
+.dots button{width:28px;height:28px;padding:0;border:0;background:none;cursor:pointer;border-radius:50%;display:grid;place-items:center}
+.dots button::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .3s,transform .3s}
+.dots button[aria-current]::after{background:var(--accent);transform:scale(1.25)}
+.dots button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+@media (prefers-reduced-motion:reduce){.shots .track,.dots button::after{transition:none}}
+@media (hover:hover){.shots .slide.on .phone:hover{scale:1.016;box-shadow:0 28px 60px rgba(0,0,0,.45)}}
+@media (max-width:820px){.hero{grid-template-columns:1fr;padding-top:36px}.hero .phone{max-width:260px;transform:none}.mac-strip{padding-bottom:40px}}
+/* hover/focus: a screenshot comes toward the viewer; scale composes with the phone's rotate, no layout shift */
+.zoom,.gallery .phone{transition:scale .3s ease,translate .3s ease,box-shadow .3s ease;outline-offset:4px}
+.zoom{cursor:zoom-in}
+.gallery figure:focus-visible .phone{translate:0 -5px;box-shadow:0 28px 60px rgba(0,0,0,.45)}
+.zoom:focus-visible{scale:1.016;box-shadow:0 28px 60px rgba(0,0,0,.45);position:relative;z-index:2}
+.gallery figure:focus-visible{outline:none}
+@media (hover:hover){.zoom:hover{scale:1.016;box-shadow:0 28px 60px rgba(0,0,0,.45);z-index:2}.gallery figure:hover .phone{translate:0 -5px;box-shadow:0 28px 60px rgba(0,0,0,.45);z-index:2}.gallery .phone{position:relative}}
+@media (prefers-reduced-motion:reduce){.zoom,.gallery .phone{transition:none}}
+
+/* sections */
+section{padding:64px 0;border-top:1px solid var(--line)}
+.head{max-width:720px;margin-bottom:36px}
+.head p{color:var(--muted);font-size:18px}
+
+/* feature grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.card h3{margin:10px 0 6px}
+.card p{color:var(--muted);margin:0;font-size:15px}
+.lot{width:56px;height:56px;font-size:44px;line-height:56px;text-align:center}
+.lot svg{display:block}
+
+/* gallery */
+.gallery{--fade:80px;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 var(--fade);padding:20px var(--fade) 30px;margin:0 calc(-1 * var(--fade));-webkit-overflow-scrolling:touch}
+@media (max-width:820px){.gallery{--fade:20px}}
+.gallery figure{margin:0;flex:0 0 220px;scroll-snap-align:start}
+.gallery{-webkit-mask-image:linear-gradient(90deg,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);mask-image:linear-gradient(90deg,transparent,#000 var(--fade),#000 calc(100% - var(--fade)),transparent);scrollbar-width:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.gallery::-webkit-scrollbar{display:none}
+.gallery.drag{cursor:grabbing;scroll-snap-type:none}
+.gallery img{-webkit-user-drag:none}
+.gallery figure,.mac-strip img{cursor:zoom-in}
+.gallery.drag figure{cursor:grabbing}
+/* lightbox */
+#lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;margin:0;cursor:zoom-out}
+#lb::backdrop{background:rgba(0,0,0,.85)}
+#lb img{display:block;max-width:calc(100vw - 32px);max-height:calc(100vh - 32px);width:auto;height:auto;margin:auto;position:absolute;inset:0;border-radius:18px}
+.gallery figcaption{font-size:14px;margin-top:10px}
+.gallery figcaption b{display:block;color:var(--text)}
+.gallery figcaption span{color:var(--muted)}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+
+/* split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split .phone{max-width:290px;margin:0 auto}
+@media (max-width:820px){.split{grid-template-columns:1fr;gap:28px}}
+
+/* status list */
+.status{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+.status li{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px 14px 16px}
+.pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:3px 10px;margin-bottom:6px}
+.pill.ok{background:var(--accent-soft);color:var(--accent)}
+.pill.wip{background:var(--warn-soft);color:var(--warn)}
+.status p{margin:0;color:var(--muted);font-size:15px}
+.status b{color:var(--text)}
+
+/* ai */
+.mac{border-radius:14px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:28px 0 8px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.stat .n{font-size:32px;font-weight:700;color:var(--accent);letter-spacing:-.02em}
+.stat .l{color:var(--muted);font-size:14px}
+.checks{padding-left:0;list-style:none;margin:16px 0}
+.checks li{padding-left:28px;position:relative;margin:8px 0}
+.checks li::before{content:"";position:absolute;left:0;top:.45em;width:16px;height:16px;border-radius:50%;background:var(--accent-soft);box-shadow:inset 0 0 0 5px var(--accent)}
+
+/* cta */
+.cta{text-align:center}
+.cta .support{margin-top:22px;font-size:15px}
+.cta .support a{color:var(--accent)}
+.cta .lot{margin:0 auto 10px;width:84px;height:84px;line-height:84px;font-size:64px}
+.cta .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+
+/* language switcher: absolute on wide screens so the links stay centred; in the row below 960px */
+.bar{position:relative}
+.lang{position:absolute;right:20px;top:50%;transform:translateY(-50%)}
+@media (max-width:960px){.lang{position:relative;right:auto;top:auto;transform:none;margin-left:16px}nav{gap:14px;font-size:14px}header .bar>.btn.show{margin-left:16px}}
+@media (max-width:900px){nav{gap:10px;font-size:13px}header .bar>.btn.show{margin-left:12px;padding-left:12px;padding-right:12px}.lang{margin-left:10px}}
+.lang summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--muted);padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card)}
+.lang summary::-webkit-details-marker{display:none}
+.lang summary:hover,.lang[open] summary{color:var(--text)}
+.lang summary svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6}
+.lang .menu{position:absolute;right:0;top:calc(100% + 8px);display:grid;min-width:170px;padding:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.lang .menu a{padding:8px 12px;border-radius:8px;color:var(--text);text-decoration:none;font-size:15px}
+.lang .menu a:hover{background:var(--accent-soft)}
+.lang .menu a[aria-current]{color:var(--accent);font-weight:600}
+
+footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:14px;color:var(--muted)}
+footer .cols{display:flex;flex-wrap:wrap;gap:12px 28px;margin-bottom:16px}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <nav>
+      <a href="#features">Можливості</a>
+      <a href="#ton-drop">TON Drop</a>
+      <a href="#ai">ШІ на пристрої</a>
+      <a href="#screens">Екрани</a>
+      <a href="/blog/">Блог</a>
+    </nav>
+    <a class="btn primary small" id="hdr-get" tabindex="-1" aria-hidden="true" href="https://apps.apple.com/ua/app/viper-messenger/id6754181968" target="_blank" rel="noopener">Отримати Viper Messenger</a>
+    <!--i18n:switcher--><details class="lang"><summary aria-label="Мова: Українська"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>UK</summary><div class="menu"><a href="../" hreflang="en" lang="en">English</a><a href="../ru/" hreflang="ru" lang="ru">Русский</a><a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a><a href="../es/" hreflang="es-MX" lang="es-MX">Español (México)</a><a href="../uk/" hreflang="uk" lang="uk" aria-current="page">Українська</a></div></details><!--/i18n:switcher-->
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <img class="logo-hero" src="../img/viper-eye-256.jpg" alt="Логотип Viper: око гадюки із зелених символів ASCII" width="112" height="112">
+      <h1>Viper Messenger</h1>
+      <p class="lead">Приватний месенджер на TON. Повідомлення йдуть напряму з пристрою на пристрій, коли це можливо, усе захищене наскрізним шифруванням, а ваш акаунт — це ключ: без номера телефону й пошти.</p>
+      <p class="ai-line"><b>ШІ на пристрої:</b> gpt-oss-20b працює локально на вашому Mac (Apple silicon, 24 ГБ) — відповідає за гайдами Viper, нічого не залишає пристрій. На iPhone та iPad — менші відкриті моделі.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://apps.apple.com/ua/app/viper-messenger/id6754181968" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.27-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.09 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.28z"/></svg>
+          Завантажте в App Store</a>
+        <a class="btn ghost" href="https://t.me/viperfoundation">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.94 4.3 18.9 18.6c-.23 1.01-.83 1.26-1.68.79l-4.63-3.41-2.23 2.15c-.25.25-.45.45-.93.45l.33-4.71 8.58-7.75c.37-.33-.08-.52-.58-.18L7.15 12.62 2.58 11.2c-.99-.31-1.01-.99.21-1.47L20.65 2.85c.83-.31 1.55.18 1.29 1.45z"/></svg>
+          Канал у Telegram</a>
+      </div>
+      <p class="platforms">iPhone · iPad · Mac</p>
+    </div>
+    <div class="shots" id="shots">
+      <div class="stage"><div class="track">
+          <div class="slide on"><div class="phone"><img src="../img/uk/iphone-4-chat.jpg" alt="Чат Viper на iPhone; останні повідомлення прийшли прямим каналом — вони в зеленій рамці" width="600" height="1304"></div></div>
+          <div class="slide" aria-hidden="true"><div class="phone"><img data-src="../img/iphone-3-nearby.jpg" alt="«Люди поруч» на iPhone: радар знайшов користувача Viper приблизно за 3 метри через Bluetooth, без інтернету" width="600" height="1304"></div></div>
+          <div class="slide" aria-hidden="true"><div class="phone"><img data-src="../img/uk/iphone-5-ai-answer.jpg" alt="ШІ-чат Viper відповідає, чи потрібен для Viper номер телефону, і показує, якими джерелами скористався" width="600" height="1304"></div></div>
+          <div class="slide" aria-hidden="true"><div class="phone"><img data-src="../img/uk/iphone-6-ai-draft.jpg" alt="Чернетка повідомлення від ШІ з кнопками надсилання, редагування й скасування: нічого не піде, доки ви не натиснете «Надіслати»" width="600" height="1304"></div></div>
+          <div class="slide" aria-hidden="true"><div class="phone"><img data-src="../img/uk/iphone-8-notes.jpg" alt="Зашифровані нотатки на iPhone: список нотаток, що зберігаються лише на пристрої й зашифровані ключем облікового запису" width="600" height="1304"></div></div>
+      </div></div>
+      <div class="dots">
+        <button type="button" aria-label="Екран 1 з 5: прямий P2P-чат" aria-current="true"></button>
+        <button type="button" aria-label="Екран 2 з 5: «Люди поруч» через Bluetooth"></button>
+        <button type="button" aria-label="Екран 3 з 5: відповідь ШІ з джерелами"></button>
+        <button type="button" aria-label="Екран 4 з 5: чернетка повідомлення від ШІ"></button>
+        <button type="button" aria-label="Екран 5 з 5: зашифровані нотатки"></button>
+      </div>
+    </div>
+  </div>
+  <div class="wrap mac-strip">
+    <img class="mac-hero zoom" src="../img/uk/mac-ai-chat-window.jpg" alt="" aria-hidden="true" width="1266" height="1056">
+  </div>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Що Viper Messenger уміє вже зараз</div>
+        <h2>Приватний за самою будовою</h2>
+        <p>Не обіцянка в політиці, а архітектура: серверу майже нічого про вас знати.</p>
+      </div>
+      <div class="grid">
+        <div class="card"><div class="lot" data-lottie="../lotties/noto/onb_globe.json" aria-hidden="true">🌍</div><h3>Напряму, з пристрою на пристрій</h3><p>Повідомлення й файли йдуть напряму між пристроями, коли це можливо, без сервера посередині. Коли прямий канал неможливий, релей передає те, чого не може прочитати.</p></div>
+        <div class="card"><div class="lot" data-lottie="../lotties/noto/onb_lock.json" aria-hidden="true">🔒</div><h3>Наскрізне шифрування</h3><p>Читати повідомлення можете лише ви та ваш співрозмовник — прямим каналом, через Bluetooth і через релей однаково.</p></div>
+        <div class="card"><div class="lot" data-lottie="../lotties/noto/onb_chat.json" aria-hidden="true">💬</div><h3>Історія — на вашому пристрої</h3><p>Чати зберігаються на вашому пристрої в зашифрованому вигляді. Релей видаляє кожне повідомлення одразу після доставки й не зберігає історію.</p></div>
+        <div class="card"><div class="lot" data-lottie="../lotties/noto/onb_wave.json" aria-hidden="true">👋</div><h3>Без номера телефону й пошти</h3><p>Ваш криптографічний ключ — це ваш акаунт. Почніть із фрази відновлення з 24 слів, без реєстрації; та сама фраза перенесе акаунт на новий пристрій.</p></div>
+        <div class="card"><div class="lot" data-lottie="../lotties/noto/onb_rocket.json" aria-hidden="true">🚀</div><h3>Голосові, кружечки, великі файли</h3><p>Голосові повідомлення, відеокружечки до 30 секунд і великі файли. Якщо зв'язок обірветься, передавання продовжиться з того самого місця.</p></div>
+        <div class="card"><div class="lot" data-lottie="../lotties/noto/onb_search.json" aria-hidden="true">🧐</div><h3>Імена .ton</h3><p>Використовуйте як ім'я домен TON DNS, яким ви володієте в блокчейні. Введіть ім'я з .ton у пошуку, щоб знайти його власника.</p></div>
+        <div class="card"><div class="lot" data-lottie="../lotties/noto/onb_gem.json" aria-hidden="true">💎</div><h3>Вбудований гаманець TON</h3><p>З фрази відновлення створюється й некастодіальний гаманець TON: ті самі слова відновлюють і акаунт, і гаманець.</p></div>
+        <div class="card"><div class="lot" data-lottie="../lotties/noto/onb_shh.json" aria-hidden="true">🤫</div><h3>Viper Pro</h3><p>Анонімність (Anon Mode) прибирає вас із пошуку, а чати працюють як і раніше; приховування статусу «в мережі» (Hide Online Status) показує вас усім як не в мережі.</p></div>
+        <div class="card"><div class="lot" data-lottie="../lotties/noto/onb_nearby.json" aria-hidden="true">🫂</div><h3>Люди поруч без інтернету</h3><p>Знаходьте користувачів Viper навколо через Bluetooth і спілкуйтеся зовсім без мережі. Докладніше — <a href="#ton-drop">TON Drop</a>.</p></div>
+        <div class="card"><div class="lot" data-lottie="../lotties/noto/onb_robot.json" aria-hidden="true">🤖</div><h3>ШІ на пристрої</h3><p>ШІ-чат, який працює на вашому пристрої й знає Viper. Він готує чернетки повідомлень, подій і нотаток — нічого не надсилається без вашого підтвердження. <a href="#ai">Докладніше</a>.</p></div>
+      </div>
+      <p class="muted" style="margin-top:22px">Ще в застосунку: аудіо- й відеодзвінки на iPhone (з наскрізним шифруванням, через релей), зашифровані нотатки, блокування Face ID і зашифрована копія чатів.</p>
+    </div>
+  </section>
+
+  <section id="screens">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">Екрани</div>
+        <h2>Як це виглядає</h2>
+      </div>
+      <div class="gallery">
+        <figure><div class="phone"><img loading="lazy" src="../img/uk/l10n-framed-1-profile.jpg" alt="Профіль із публічним ключем та іменем користувача" width="600" height="1304"></div><figcaption><b>Без номера телефону</b><span>Ваш акаунт — криптографічний ключ</span></figcaption></figure>
+        <figure><div class="phone"><img loading="lazy" src="../img/uk/framed-2-route.jpg" alt="Вибір маршруту: релей, прямий P2P або Bluetooth" width="600" height="1304"></div><figcaption><b>Маршрут обираєте ви</b><span>Релей, прямий P2P або Bluetooth</span></figcaption></figure>
+        <figure><div class="phone"><img loading="lazy" src="../img/uk/framed-3-nearby.jpg" alt="Радар «Люди поруч»" width="600" height="1304"></div><figcaption><b>Люди поруч</b><span>Через Bluetooth, без інтернету</span></figcaption></figure>
+        <figure><div class="phone"><img loading="lazy" src="../img/uk/l10n-framed-4-chat.jpg" alt="Чат із прямими повідомленнями в зеленій рамці" width="600" height="1304"></div><figcaption><b>Наскрізне шифрування</b><span>Зелена рамка — прийшло напряму, P2P</span></figcaption></figure>
+        <figure><div class="phone"><img loading="lazy" src="../img/uk/l10n-framed-8-notes.jpg" alt="Список зашифрованих нотаток" width="600" height="1304"></div><figcaption><b>Зашифровані нотатки</b><span>Лише на вашому пристрої</span></figcaption></figure>
+        <figure><div class="phone"><img loading="lazy" src="../img/uk/l10n-framed-6-ai-draft.jpg" alt="Чернетка повідомлення від ШІ з кнопками надсилання, редагування й скасування" width="600" height="1304"></div><figcaption><b>Нічого не йде саме</b><span>ШІ пише чернетку, надсилаєте ви (Mac, gpt-oss-20b)</span></figcaption></figure>
+      </div>
+      <p class="note">Екрани Viper 1.5.34 зняті в симуляторі iOS із прикладами контактів і повідомлень. Для екрана чернетки ШІ потрібна gpt-oss-20b, яка працює на Mac.</p>
+    </div>
+  </section>
+
+  <section id="ton-drop">
+    <div class="wrap split">
+      <div>
+        <div class="eyebrow">TON Drop</div>
+        <h2>Bluetooth — щоб зустрітися. TON — щоб залишатися на зв'язку.</h2>
+        <p class="muted" style="font-size:18px">Два користувачі Viper поруч одразу знаходять одне одного й починають спілкуватися — без інтернету, без номера телефону, без імені користувача. Ось як усе є зараз, без прикрас.</p>
+        <ul class="status">
+          <li><span class="pill ok">Уже працює</span><p><b>Пошук через Bluetooth.</b> «Люди поруч» показує користувачів Viper навколо вас і приблизну відстань до них. Кожен у списку довів, що володіє своїм акаунтом.</p></li>
+          <li><span class="pill ok">Уже працює</span><p><b>Повністю офлайн через Bluetooth.</b> Повідомлення, голосові, кружечки й файли йдуть з телефона на телефон без мережі й без сервера.</p></li>
+          <li><span class="pill ok">Уже працює</span><p><b>Bluetooth, потім напряму через інтернет.</b> Телефони можуть обмінятися IP-адресами через Bluetooth, а потім з'єднатися напряму — P2P через інтернет на TON, без сервера посередині.</p></li>
+          <li><span class="pill wip">У роботі</span><p><b>Стабільний зв'язок поза зоною дії.</b> Зараз, якщо IP-адреса одного з телефонів змінюється, прямий канал рветься. Щоб його зберегти, телефони мають знову знаходити одне одного через TON DHT; над цим триває робота, щоб TON Drop запрацював повністю, як описано.</p></li>
+        </ul>
+        <p style="margin-top:18px"><a href="https://github.com/viperfoundation/Viper/blob/main/ton-drop.md">Документація TON Drop →</a></p>
+      </div>
+      <div class="phone zoom"><img loading="lazy" src="../img/iphone-3-nearby.jpg" alt="Радар «Люди поруч»: одна людина приблизно за 3 метри, через Bluetooth" width="600" height="1304"></div>
+    </div>
+  </section>
+
+  <section id="ai">
+    <div class="wrap">
+      <div class="head">
+        <div class="eyebrow">ШІ на пристрої</div>
+        <h2>Відкрита модель як є. Решту робить Viper. На вашому пристрої.</h2>
+        <p>На Mac Viper запускає gpt-oss-20b локально — без хмари й без ШІ-акаунта, ваші запитання не залишають пристрій. Відповіді спираються на власні гайди Viper, а під кожною відповіддю видно джерела: перевірити можна одним дотиком.</p>
+      </div>
+      <img class="mac zoom" loading="lazy" src="../img/uk/mac-ai-chat-window.jpg" alt="ШІ-чат у Viper на Mac відповідає на три запитання: що таке Viper Messenger, як увімкнути вхід через Face ID і що означають годинник та одна галочка біля повідомлення; під кожною відповіддю — джерела" width="1400" height="1190">
+      <p class="note mac-tr">Відповіді перекладено з оригінальної сесії російською.</p>
+      <div class="split" style="margin-top:36px;align-items:start">
+        <ul class="checks">
+          <li><b>Без донавчання.</b> Ваги моделі — точно такі, як під час випуску. Viper змінює те, що модель бачить, а не її саму: поставте кращу модель — знання залишаться.</li>
+          <li><b>Джерела під відповідями.</b> Відповіді беруться з вбудованих гайдів Viper, а використані гайди перелічені одразу під відповіддю.</li>
+          <li><b>Чернетки, а не дії.</b> Попросіть написати комусь, створити подію чи зберегти нотатку: ШІ підготує чернетку, і нічого не станеться, доки ви не підтвердите.</li>
+          <li><b>Ви вирішуєте, що він знає.</b> Вмикайте й вимикайте вбудовані знання Viper, додавайте власні нотатки.</li>
+        </ul>
+        <div>
+          <div class="stats">
+            <div class="stat"><div class="n">4 → 19</div><div class="l">з 20 запитань про Viper — правильно: модель сама й із гайдами Viper (1.5.34)</div></div>
+            <div class="stat"><div class="n">41%</div><div class="l">повністю правильних відповідей на 167 нових, складніших запитань, двоє сліпих суддів (1.5.34, в App Store)</div></div>
+          </div>
+          <p class="note">Поки не завжди правий: суворий тест зараховує відповідь, лише якщо правильна кожна деталь про Viper. Нова версія дає 61% на тестовому стенді й у застосунок ще не ввійшла. Для gpt-oss-20b потрібен Mac на Apple silicon із 24 ГБ пам'яті; на iPhone та iPad працюють менші відкриті моделі. <a href="https://github.com/viperfoundation/Viper/blob/main/on-device-ai.md">Повний розбір →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <div class="lot" data-lottie="../lotties/noto/onb_snake.json" aria-hidden="true">🐍</div>
+      <h2>Спробуйте Viper Messenger</h2>
+      <p class="muted">Для iPhone, iPad і Mac. Номер телефону не потрібен.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://apps.apple.com/ua/app/viper-messenger/id6754181968" target="_blank" rel="noopener">Завантажте в App Store</a>
+        <a class="btn ghost" href="https://t.me/viperfoundation">Стежити в Telegram</a>
+      </div>
+      <p class="muted support" id="support">Підтримка: запитання, баги, бракує функції — напишіть <a href="viper://support">@support</a> у Viper (Пошук → @support) або в <a href="https://t.me/viperfoundation" target="_blank" rel="noopener">Telegram</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <a href="https://apps.apple.com/ua/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a>
+      <a href="https://t.me/viperfoundation">Telegram</a>
+      <a href="https://github.com/viperfoundation/Viper">GitHub</a>
+      <a href="https://github.com/viperfoundation/Viper/blob/main/ton-drop.md">TON Drop</a>
+      <a href="https://github.com/viperfoundation/Viper/blob/main/on-device-ai.md">ШІ на пристрої</a>
+      <a href="/blog/">Блог</a>
+      <a href="/privacy/">Конфіденційність</a>
+      <a href="/terms/">Умови</a>
+      <a href="viper://support">Підтримка</a>
+    </div>
+    <!--i18n:langs--><p>Застосунок: English, Русский · Сторінка в App Store: English, Русский, Português (Brasil), Español (México), Українська</p><!--/i18n:langs-->
+    <p>Анімовані емодзі: <a href="https://googlefonts.github.io/noto-emoji-animation/">Noto Animated Emoji</a> від Google за ліцензією <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, без змін — ті самі анімації, що Viper показує під час першого запуску.</p>
+    <p>© Viper Foundation</p>
+  </div>
+</footer>
+
+<dialog id="lb" aria-label="Знімок екрана"><img alt=""></dialog>
+<script src="../js/lottie-web-5.12.2/lottie_light.min.js" defer></script>
+<script>
+(function(){var g=document.getElementById('hdr-get'),c=document.querySelector('.hero .ctas'),h=document.querySelector('header');if(!g||!c||!h||!('IntersectionObserver' in window)){if(g){g.classList.add('show');g.removeAttribute('tabindex');g.removeAttribute('aria-hidden')}return}
+  new IntersectionObserver(function(e){var on=!e[0].isIntersecting;g.classList.toggle('show',on);if(on){g.removeAttribute('tabindex');g.removeAttribute('aria-hidden')}else{g.setAttribute('tabindex','-1');g.setAttribute('aria-hidden','true')}},{rootMargin:'-'+h.offsetHeight+'px 0px 0px 0px'}).observe(c)})();
+// Hero carousel: whole devices slide; auto-advance every 4 s; pauses on hover, focus inside, hidden tab;
+// reduced motion = no auto-advance. Drag (mouse) or swipe (finger) moves the row with the pointer.
+(function(){var w=document.getElementById('shots');if(!w)return;var st=w.querySelector('.stage'),tr=w.querySelector('.track'),sl=w.querySelectorAll('.slide'),
+  im=w.querySelectorAll('.slide img'),ds=w.querySelectorAll('.dots button'),n=sl.length,i=0,t=0,hov=0,foc=0,still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function load(){im.forEach(function(m){if(m.dataset.src){m.src=m.dataset.src;m.removeAttribute('data-src')}})}
+  function place(dx){tr.style.transform='translateX(calc('+(-i*100)+'% + '+(dx||0)+'px))'}
+  function go(k){load();i=(k+n)%n;tr.classList.remove('drag');place(0);
+    sl.forEach(function(s,j){s.classList.toggle('on',j===i);j===i?s.removeAttribute('aria-hidden'):s.setAttribute('aria-hidden','true')});
+    ds.forEach(function(d,j){j===i?d.setAttribute('aria-current','true'):d.removeAttribute('aria-current')})}
+  function run(){clearInterval(t);if(!still&&!hov&&!foc&&!document.hidden)t=setInterval(function(){go(i+1)},4000)}
+  ds.forEach(function(d,k){d.addEventListener('click',function(){go(k);run()})});
+  w.addEventListener('mouseenter',function(){hov=1;run()});w.addEventListener('mouseleave',function(){hov=0;run()});
+  w.addEventListener('focusin',function(){foc=1;run()});w.addEventListener('focusout',function(e){if(!w.contains(e.relatedTarget)){foc=0;run()}});
+  document.addEventListener('visibilitychange',run);
+  // drag: the row follows the pointer; past 15% of a device width it moves on, otherwise snaps back
+  var x0=null,dx=0,moved=0;
+  function start(x){load();x0=x;dx=0;moved=0}
+  function move(x){if(x0===null)return;dx=x-x0;if(Math.abs(dx)>6){moved=1;tr.classList.add('drag');place(dx)}}
+  function end(){if(x0===null)return;x0=null;var lim=st.offsetWidth*.15;go(dx<-lim?i+1:dx>lim?i-1:i);run()}
+  st.addEventListener('pointerdown',function(e){if(e.pointerType!=='touch'&&!e.button)start(e.clientX)});
+  addEventListener('pointermove',function(e){if(e.pointerType!=='touch')move(e.clientX)});
+  addEventListener('pointerup',function(e){if(e.pointerType!=='touch')end()});
+  st.addEventListener('touchstart',function(e){start(e.touches[0].clientX)},{passive:true});
+  st.addEventListener('touchmove',function(e){move(e.touches[0].clientX)},{passive:true});
+  st.addEventListener('touchend',end);st.addEventListener('touchcancel',end);
+  st.addEventListener('dragstart',function(e){e.preventDefault()});
+  st.addEventListener('click',function(){if(!moved&&window.openShot)openShot(im[i])});
+  document.readyState==='complete'?load():addEventListener('load',load);  // devices 2-5 load after the page
+  w.querySelector('.dots').classList.add('live');run()})();
+// Екрани gallery: mouse drag scrolls it (touch scrolls natively); click or Enter opens a screenshot full size.
+(function(){var lb=document.getElementById('lb'),big=lb&&lb.querySelector('img');if(!lb||!lb.showModal)return;
+  function open(m){big.src=m.currentSrc||m.src;big.alt=m.alt;lb.showModal()}window.openShot=open;
+  lb.addEventListener('click',function(){lb.close()});
+  document.querySelectorAll('.gallery').forEach(function(g){var x0=0,s0=0,down=0,moved=0;
+    g.addEventListener('pointerdown',function(e){moved=0;if(e.pointerType!=='mouse'||e.button)return;down=1;x0=e.clientX;s0=g.scrollLeft});
+    addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-x0;if(Math.abs(dx)>5&&!moved){moved=1;g.classList.add('drag')}if(moved)g.scrollLeft=s0-dx});
+    addEventListener('pointerup',function(){if(!down)return;down=0;if(moved){var l=g.scrollLeft;g.classList.remove('drag');g.scrollLeft=l}});
+    g.addEventListener('dragstart',function(e){e.preventDefault()});
+    g.querySelectorAll('figure').forEach(function(f){var m=f.querySelector('img');f.tabIndex=0;f.setAttribute('role','button');f.setAttribute('aria-label',m.alt);
+      f.addEventListener('click',function(){if(!moved)open(m)});
+      f.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(m)}})})});
+  document.querySelectorAll('.mac-strip img').forEach(function(m){m.addEventListener('click',function(){open(m)})});
+  document.querySelectorAll('section .zoom').forEach(function(z){var m=z.tagName==='IMG'?z:z.querySelector('img');if(!m)return;
+    z.tabIndex=0;z.setAttribute('role','button');z.setAttribute('aria-label',m.alt);
+    z.addEventListener('click',function(){open(m)});z.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(m)}})})})();
+document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+// Close the language menu on a click outside it.
+document.addEventListener('click',function(e){var d=document.querySelector('details.lang');if(d&&d.open&&!d.contains(e.target))d.open=false});
+(function(){var h=document.querySelector('header');if(!h)return;var f=function(){h.classList.toggle('scrolled',window.scrollY>4)};addEventListener('scroll',f,{passive:true});f()})();
+  // Lotties load when scrolled into view and pause off-screen; the emoji stays as the fallback.
+  window.addEventListener("load", function () {
+    if (!window.lottie || !("IntersectionObserver" in window)) return;
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var el = e.target;
+        if (e.isIntersecting && !el._anim) {
+          el._anim = lottie.loadAnimation({ container: el, renderer: "svg", loop: true, autoplay: !still, path: el.dataset.lottie });
+          el._anim.addEventListener("DOMLoaded", function () { if (el.firstChild && el.firstChild.nodeType === 3) el.removeChild(el.firstChild); });
+        } else if (el._anim && !still) {
+          e.isIntersecting ? el._anim.play() : el._anim.pause();
+        }
+      });
+    }, { rootMargin: "100px" });
+    document.querySelectorAll("[data-lottie]").forEach(function (el) { io.observe(el); });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5 — Device-to-Device Communication Is Coming · Viper Blog</title>
+<meta name="description" content="Viper 1.5 brings true peer-to-peer communication — messages routed directly between devices, with no relay in the path. Coming soon.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · June 14, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5 — Device-to-Device Communication Is Coming</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>P2P shipped in 1.5 and is described in <a href="guide-route.html">How your messages travel</a>. Direct links need both of you in each other's contacts; by default the relay goes first.</li><li>The Enterprise part of this post was not re-checked against the App Store app.</li></ul></div>
+<p>Since Viper's first release, messages have been routed through relays — a deliberate architectural choice that keeps infrastructure costs low and simplifies connectivity across networks and firewalls. Relays never see message content, but they do sit in the path.</p>
+<p>With Viper 1.5, that changes.</p>
+<h2 id="real-device-to-device-communication">Real Device-to-Device Communication</h2>
+<p>Viper 1.5 introduces true peer-to-peer (P2P) messaging. When two devices can establish a direct connection, messages travel between them without touching any relay at all. The relay network remains available as a fallback for difficult network conditions — but when P2P is possible, it's used.</p>
+<p>This means:</p>
+<ul>
+<li><strong>Lower latency.</strong> No relay hop means faster message delivery on local networks, same Wi-Fi, or direct internet connections.</li>
+<li><strong>Zero relay involvement.</strong> When P2P is active, no infrastructure sits between sender and recipient — not ours, not yours.</li>
+<li><strong>Same encryption.</strong> The E2E encryption model is unchanged. P2P doesn't weaken the cryptographic guarantees — if anything, removing the relay from the path reduces the attack surface.</li>
+</ul>
+<h2 id="p2p-in-viper-enterprise">P2P in Viper Enterprise</h2>
+<p>For enterprise deployments, P2P is a significant addition. Teams operating on the same internal network — an office, a data center, a corporate LAN — can communicate directly, with no traffic leaving the local environment at all.</p>
+<p>This enables:</p>
+<ul>
+<li><strong>Fully offline internal messaging.</strong> A local deployment with no internet dependency for intra-office communication.</li>
+<li><strong>Reduced relay load.</strong> Internal traffic no longer routes through the relay, freeing relay capacity for external connections.</li>
+<li><strong>Air-gapped segments.</strong> Departments or devices on isolated network segments can communicate directly over P2P without relay involvement, strengthening network isolation.</li>
+</ul>
+<p>P2P becomes another layer in the enterprise network topology model — alongside relay-based routing, it gives infrastructure teams more granular control over how messages move across their environment.</p>
+<h2 id="what-stays-the-same">What Stays the Same</h2>
+<p>P2P is additive. The relay fallback remains. Encryption remains. The identity model remains. If P2P cannot be established, Viper falls back to relay routing transparently — the user experience is unchanged.</p>
+<hr>
+<p>Viper 1.5 is coming soon. Follow updates on our Telegram channel or reach out directly:</p>
+<pre><code>viper://u/support
+</code></pre>
+<p class="muted" style="margin-top:32px">First published June 14, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.34 · Viper Blog</title>
+<meta name="description" content="Viper Knowledge: a local AI that knows Viper and tells you where every answer comes from.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · November 19, 2026</p>
+<h1>Viper 1.5.34</h1>
+<p class="lead">Viper Knowledge: a local AI that knows Viper and tells you where every answer comes from.</p>
+<div class="box updated"><h2>Notes for Viper 1.5.34</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>GPT-OSS 20B needs a Mac with Apple silicon and 24 GB of memory; iPhone and iPad run the smaller models.</li><li>Contacts for AI: only names go to the model, never keys or messages.</li></ul></div>
+<h2>Viper knowledge (GPT-OSS 20B on Mac)</h2>
+<figure class="shot wide"><img loading="lazy" src="img/mac-ai-chat-en.jpg" alt=""><figcaption>Viper 1.5.34 on a Mac: AI Chat with gpt-oss-20b, answers with Sources. Recreated in English from a real screenshot of a Russian session; the answers are translations of the model&#x27;s Russian answers</figcaption></figure><p class="muted" style="text-align:center;font-size:14px">The original screenshot, as the model answered in Russian: <a href="../img/mac-ai-chat.jpg">mac-ai-chat.jpg</a></p>
+<p>Most AI assistants answer from whatever they memorized during training, and they make things up when they don&#x27;t know. Viper AI works differently. Before every answer, Viper picks the right pages from its own knowledge and gives them to the model, right on your device:</p>
+<ul><li>About Viper: what Viper is and how it protects you.</li><li>Guides: the in-app guides for this very build, from keys to Bluetooth.</li><li>What&#x27;s new: the notes for the build you are running.</li><li>My knowledge: your own notes, in Markdown, as long as you need.</li></ul>
+<p>The source of every answer is shown under it, one tap away. In Viper knowledge you can read every built-in source, copy or share it, and switch each one on or off. In My knowledge you add your own and share them in a chat, so a friend&#x27;s AI can know it too. Nothing is sent anywhere: the knowledge, your question and the answer stay on your device.</p>
+<h2>Actions you confirm</h2>
+<ul><li>Ask the AI to write a message, create an event or a note. It prepares a draft, and nothing is sent until you tap Send.</li><li>Contacts for AI: choose up to 50 contacts it can address, by the name you see in Contacts or by @username.</li><li>Comment from AI: add a short comment or summary to your message, marked as written by Viper AI. Your own text is sent word for word.</li></ul>
+<h2>Also new</h2>
+<ul><li>Markdown in AI answers: headings, lists, code and tables, and an Edit / Preview editor for your prompt and knowledge.</li><li>Your base prompt: set how the AI answers and share it in a chat.</li><li>A new AI guide: every page shows the real interface, from drafts to Viper knowledge.</li><li>MedPsy 1.7B and 4B on iPhone and Mac: small health models for general questions in English. Not medical advice.</li></ul>
+<p>AI can make mistakes. Check important details.</p>
+<div class="box coming"><h3>Coming (announced, not shipped yet)</h3>
+<p>Features that run on your device are moving to Free: <b>Save without Logo</b> and the <b>full chat backup with photos, videos and files</b>. What the relay does stays in Viper Pro: <b>Anon Mode</b>, <b>Hide Online Status</b> and <b>big files through the relay</b>. File transfers will also be improved. Until that update ships, the page above describes the app as it is.</p></div>
+<p class="muted" style="margin-top:32px">Text: the App Store “What's New” for Viper 1.5.34, released November 19, 2026. Screenshots: Viper 1.5.34 with sample data. <a href="index.html#releases">All release notes</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

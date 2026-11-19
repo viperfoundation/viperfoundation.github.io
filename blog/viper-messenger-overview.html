@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper Messenger Overview · Viper Blog</title>
+<meta name="description" content="What&#x27;s inside.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · December 21, 2025 · Updated for Viper 1.5.34</p>
+<h1>Viper Messenger Overview</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Creating an account: <b>Generate from Recovery Phrase</b> (24 words make the Account Key and your TON wallet) or <b>Generate from Account Key</b> (a random key, no phrase).</li><li>The tab bar is Contacts, Chats, Profile and AI Chat; there is no Wallet tab. Other users' wallet addresses are not shown in profiles (since 1.5.11).</li><li>Your Account Key and recovery phrase are in Settings → Security and Data, each behind Face ID or the passcode; your public key stays on your Profile.</li><li>Messages are end-to-end encrypted; the relay deletes each message once delivered. Chats live on your device.</li><li>The old screenshots (old UI, real accounts) were replaced with Viper 1.5.34 screens.</li></ul></div>
+<div class="shots"><figure class="shot"><img loading="lazy" src="img/create-account.jpg" alt=""><figcaption>Create your account: from an Account Key or a Recovery Phrase</figcaption></figure><figure class="shot"><img loading="lazy" src="../img/iphone-1-profile.jpg" alt=""><figcaption>Profile: public key, Reputation, Accounts, Encrypted Notes, Shared Files (Viper 1.5.34, sample account)</figcaption></figure><figure class="shot"><img loading="lazy" src="img/chats.jpg" alt=""><figcaption>Chats: someone nearby above the list, Saved Messages first (Viper 1.5.34, sample data)</figcaption></figure></div>
+<h1>Viper Messenger Overview</h1>
+<h2 id="whats-inside">What's inside.</h2>
+
+<p>Welcome to Viper Messenger - a private messaging app built with privacy as the default.</p>
+<h2 id="accounts">Accounts</h2>
+
+<p>Viper Messenger allows you to manage multiple accounts. Each account is identified by a public key rather than phone number or email.</p>
+<h2 id="creating-new-accounts">Creating New Accounts</h2>
+
+<p>You have two options when creating an account:</p>
+<p><strong>Generate from Mnemonic:</strong> Your public key becomes your wallet address. Less privacy, more comfort. One mnemonic gives you access to both chats and wallet.</p>
+<p><strong>Generate from Private Key:</strong> Your wallet will be separated from your public key and won't be visible to other users automatically. More privacy, less comfort. You'll need a private key for chats and a mnemonic phrase for wallet access.</p>
+<h2 id="profile">Profile</h2>
+
+<p>In your profile, you can see:</p>
+<ul>
+<li>Your <strong>public key</strong> - this is your identifier</li>
+<li>Your <strong>username</strong> - for easier discovery</li>
+<li>Your <strong>private key</strong> - never share this with anyone</li>
+<li>Your <strong>mnemonic phrase</strong> - if you created an account via mnemonic (never share this either)</li>
+</ul>
+<h2 id="chats">Chats</h2>
+
+<p>Your conversations are end-to-end encrypted by default. Messages are protected, and no central service can read or monetize your data.</p>
+
+<p>Example: Chat with developer (@designervoid). This is a private account - you cannot see the wallet address until it's shared.</p>
+
+<p>Example: Chat with another account (@wallet) created via mnemonic. The wallet address is visible from the public key.</p>
+<h2 id="wallet">Wallet</h2>
+
+<p>Viper includes a non-custodial TON wallet. If you created your account via mnemonic, you can view it in your profile, not in the wallet tab. The wallet supports TON, USDT, and DOGEJETTON.</p>
+<h2 id="download-the-app">Download the App</h2>
+<p><a href="https://apps.apple.com/au/app/viper-messenger/id6754181968" target="_blank" rel="noopener">Download the App</a></p>
+<h2 id="feedback-welcome">Feedback Welcome</h2>
+<p>The interface is still quite technical in places, but we're gathering feedback and adding improvements constantly.</p>
+<p>You can reach out with suggestions or just chat:</p>
+<ul>
+<li>Username: <strong>support</strong></li>
+<li>Username: <strong>designervoid</strong> (developer)</li>
+</ul>
+<p>We're excited to hear from you!</p>
+<p class="muted" style="margin-top:32px">First published December 21, 2025 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

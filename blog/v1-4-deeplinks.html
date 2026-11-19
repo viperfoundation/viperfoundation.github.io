@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>v1.4 — Deeplinks · Viper Blog</title>
+<meta name="description" content="Viper 1.4 introduces deeplinks — a URI scheme that lets you open specific users, chats, and resources directly. You can now reach support via viper://u/support.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · June 1, 2026 · Updated for Viper 1.5.34</p>
+<h1>v1.4 — Deeplinks</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>viper:// links still open in the app (viper://u/&lt;name&gt;); an @username in a message becomes such a link.</li><li>Not re-checked: the support and developer accounts named below.</li></ul></div>
+<p>Viper 1.4 ships deeplink support.</p>
+<p>A deeplink is a URI that opens a specific destination inside the app directly — skipping the home screen and landing exactly where the link points.</p>
+<h2 id="the-scheme">The Scheme</h2>
+<p>All Viper deeplinks follow the pattern:</p>
+<pre><code>viper://&lt;resource&gt;/&lt;identifier&gt;
+</code></pre>
+<p>The first supported resource type is <code>u</code> — a user profile:</p>
+<pre><code>viper://u/&lt;username&gt;
+</code></pre>
+<h2 id="examples">Examples</h2>
+<table><tr><th>Link</th><th>Opens</th></tr><tr><td><code>viper://u/support</code></td><td>Support chat</td></tr><tr><td><code>viper://u/designervoid</code></td><td>Developer profile</td></tr><tr><td><code>viper://u/&lt;your-username&gt;</code></td><td>Your own profile</td></tr></table>
+<h2 id="why-it-matters">Why It Matters</h2>
+<p>Deeplinks make it possible to share Viper contacts the same way you'd share any URL — in a website, a README, a QR code, or a message in another app. The recipient taps the link and lands directly in the conversation.</p>
+<p>This is the first step toward a richer linking model.</p>
+<h2 id="reaching-support">Reaching Support</h2>
+<p>You can now open the support chat directly:</p>
+<pre><code>viper://u/support
+</code></pre>
+<p>Tap it on a device with Viper installed, or copy it into any browser — the app will open and navigate to the support conversation.</p>
+<p class="muted" style="margin-top:32px">First published June 1, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

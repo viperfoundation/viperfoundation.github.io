@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.31 · Viper Blog</title>
+<meta name="description" content="Viper in Russian, a new start and Guides">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · October 22, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5.31</h1>
+<p class="lead">Viper in Russian, a new start and Guides</p>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Files from non-contacts are rejected, as this note says (Settings → Privacy, under Messages from Non-Contacts).</li><li>Guides are in Profile → Settings → Help → Guides; there are 30 now, and each is also a <a href="index.html#guides">post on this blog</a>.</li></ul></div>
+<div class="shots"><figure class="shot"><img loading="lazy" src="img/onb-language.jpg" alt=""><figcaption>First screen: choose English or Russian (Viper 1.5.34)</figcaption></figure><figure class="shot"><img loading="lazy" src="img/onb-direct.jpg" alt=""><figcaption>Welcome tour: Direct when it can (Viper 1.5.34)</figcaption></figure><figure class="shot"><img loading="lazy" src="img/keys-pair.jpg" alt=""><figcaption>Your keys guide: the public key is your address, the Account Key stays secret (sample, blurred)</figcaption></figure></div>
+<ul><li>Viper now speaks Russian. Pick English or Russian on the first screen.</li><li>A new welcome: a short tour of what Viper can do, ending with a chat to @support. Replay it any time from Settings.</li><li>Guides: step-by-step how-tos for routes, Bluetooth, contacts, accounts, settings and AI. Find them in Profile, Settings, Guides.</li><li>Settings are grouped into clear sections, each with its own screen. Your keys now live under Security and Data.</li></ul>
+<h2>Accounts and chats</h2>
+<ul><li>Exit several accounts at once: Select in Accounts, tick them, Exit. Viper switches to an account you kept.</li><li>@usernames and viper:// links in messages are tappable and open that person&#x27;s chat.</li><li>Files are accepted only from your contacts.</li></ul>
+<h2>AI</h2>
+<ul><li>Answer length Auto is the new default: short questions get short answers, and every answer ends on a full sentence.</li><li>Model download is one button on any network, and a stalled download picks up where it stopped.</li><li>The small models no longer repeat an earlier answer.</li></ul>
+<h2>Faster and steadier</h2>
+<ul><li>Messages arrive right away when you open Viper after it slept, instead of after about 10 seconds.</li><li>Viper reconnects by itself after a network outage.</li><li>Files go over a direct link again when one is up.</li><li>Voice notes and video circles play one after another again.</li></ul>
+<p class="muted" style="margin-top:32px">Text: the App Store “What's New” for Viper 1.5.31, released October 22, 2026. Screenshots: Viper 1.5.34 with sample data. <a href="index.html#releases">All release notes</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

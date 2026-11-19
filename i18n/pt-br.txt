@@ -1,0 +1,99 @@
+# Brazilian Portuguese (você, as in the pt-BR App Store listing). The app UI is English, so Pro menu names are given in English in brackets.
+meta = Viper Messenger é um mensageiro privado para iPhone, iPad e Mac: direto de dispositivo para dispositivo, criptografado de ponta a ponta, sem número de telefone. Sua chave é sua conta. Construído sobre TON.
+og = Mensageiro privado sobre TON. Direto de dispositivo para dispositivo, criptografado de ponta a ponta, sem número de telefone.
+nav_features = Recursos
+nav_screens = Telas
+ai_name = IA no dispositivo
+get = Baixe o Viper Messenger
+logo_alt = Logo do Viper: um olho de víbora desenhado com caracteres ASCII verdes
+lead = Um mensageiro privado construído sobre TON. As mensagens vão de dispositivo para dispositivo sempre que possível, tudo é criptografado de ponta a ponta e sua conta é uma chave: sem número de telefone, sem e-mail.
+hero_ai = <b>IA no dispositivo:</b> o gpt-oss-20b roda localmente no seu Mac (Apple silicon, 24 GB) — respostas com os guias do Viper, nada sai do dispositivo. No iPhone e no iPad, modelos abertos menores.
+download = Baixar na App Store
+tg_channel = Canal no Telegram
+hero_alt = Um chat do Viper no iPhone; as últimas mensagens chegaram por uma conexão direta, marcada com uma moldura verde
+eyebrow = O que o Viper Messenger faz hoje
+h_private = Privado pela forma como é feito
+p_private = Não é uma promessa numa política: o design deixa pouco para um servidor saber.
+c1h = Direto, de dispositivo para dispositivo
+c1p = Mensagens e arquivos vão direto entre dispositivos sempre que possível, sem servidor no meio. Quando não dá para ter conexão direta, o relé repassa o que não consegue ler.
+c2h = Criptografado de ponta a ponta
+c2p = Só você e a outra pessoa podem ler suas mensagens: na conexão direta, por Bluetooth e pelo relé, do mesmo jeito.
+c3h = O histórico fica no seu dispositivo
+c3p = Os chats ficam guardados no seu dispositivo, criptografados. O relé apaga cada mensagem assim que ela é entregue e não guarda histórico.
+c4h = Sem número de telefone nem e-mail
+c4p = Sua chave criptográfica é sua conta. Comece com uma frase de recuperação de 24 palavras, sem cadastro; a mesma frase leva sua conta para um novo dispositivo.
+c5h = Voz, vídeos redondos, arquivos grandes
+c5p = Mensagens de voz, vídeos redondos de até 30 segundos e arquivos grandes. Se a conexão cair, a transferência continua de onde parou.
+c6h = Nomes de usuário .ton
+c6p = Use como nome um domínio TON DNS que é seu on-chain. Digite um nome com .ton na busca para ver quem é o dono.
+c7h = Carteira TON integrada
+c7p = Sua frase de recuperação também cria uma carteira TON não custodial: as mesmas palavras restauram sua conta e sua carteira.
+c8p = O anonimato (Anon Mode) tira você da busca enquanto seus chats continuam funcionando, e Ocultar status online (Hide Online Status) mostra você offline para todos.
+c9h = Pessoas por perto, sem internet
+c9p = Encontre usuários do Viper ao seu redor por Bluetooth e converse sem rede nenhuma. Veja <a href="#ton-drop">TON Drop</a>.
+c10p = Um chat de IA que roda no seu dispositivo e conhece o Viper. Ele prepara rascunhos de mensagens, eventos e notas; nada é enviado até você confirmar. <a href="#ai">Saiba mais</a>.
+also = Também no app: chamadas de áudio e vídeo no iPhone (criptografadas de ponta a ponta, pelo relé), Notas criptografadas, bloqueio com Face ID e backup criptografado dos chats.
+look = Uma olhada por dentro
+g1a = alt="Perfil com chave pública e nome de usuário"
+g2a = alt="Escolha da rota: relé, P2P direto ou Bluetooth"
+g3a = alt="Radar de Pessoas por perto"
+g4a = alt="Chat com mensagens diretas numa moldura verde"
+g5a = alt="Lista de Notas criptografadas"
+g6a = alt="Rascunho de mensagem da IA com Enviar, Editar e Cancelar"
+g1c = <b>Sem número de telefone</b><span>Sua conta é uma chave criptográfica</span>
+g2c = <b>Você escolhe a rota</b><span>Relé, P2P direto ou Bluetooth</span>
+g3c = <b>Pessoas por perto</b><span>Encontradas por Bluetooth, sem internet</span>
+g4c = <b>Criptografado de ponta a ponta</b><span>Moldura verde: veio direto, P2P</span>
+g5c = <b>Notas criptografadas</b><span>Só no seu dispositivo</span>
+g6c = <b>Nada se envia sozinho</b><span>A IA escreve, você envia (Mac, gpt-oss-20b)</span>
+g_note = Telas do Viper 1.5.34 geradas no simulador do iOS com contatos e mensagens de exemplo. A tela de rascunho da IA precisa do gpt-oss-20b, que roda num Mac.
+td_h = Bluetooth para se encontrar. TON para continuar em contato.
+td_p = Dois usuários do Viper lado a lado se encontram e começam a conversar na hora: sem internet, sem número de telefone, sem nome de usuário. Veja exatamente em que pé está.
+works = >Já funciona<
+wip = >Em andamento<
+td1 = <b>Descoberta por Bluetooth.</b> Pessoas por perto mostra os usuários do Viper ao seu redor e mais ou menos a que distância estão. Todos na lista provaram que a conta é deles.
+td2 = <b>Totalmente offline por Bluetooth.</b> Mensagens, mensagens de voz, vídeos redondos e arquivos vão de celular para celular sem rede e sem servidor.
+td3 = <b>Bluetooth, depois direto pela internet.</b> Os celulares podem trocar endereços IP por Bluetooth e depois se conectar direto, P2P pela internet com TON, sem servidor no meio.
+td4 = <b>Uma conexão estável fora do alcance.</b> Hoje, quando o endereço IP de um dos celulares muda, a conexão direta cai. Para mantê-la, os celulares precisam se reencontrar via TON DHT; é nisso que estamos trabalhando para o TON Drop funcionar por completo como descrito.
+td_docs = Leia a documentação do TON Drop →
+td_alt = Radar de Pessoas por perto mostrando uma pessoa a cerca de 3 metros, por Bluetooth
+ai_h = Um modelo aberto, sem alterações. O resto é com o Viper. No seu dispositivo.
+ai_p = No Mac, o Viper roda o gpt-oss-20b localmente: sem nuvem, sem conta de IA, suas perguntas nunca saem do dispositivo. Ele responde com os guias do próprio Viper e mostra as fontes embaixo de cada resposta, para você conferir com um toque.
+mac_alt = Chat de IA do Viper no Mac respondendo três perguntas: o que é o Viper Messenger, como ativar a entrada com Face ID e o que significam o relógio e um único visto numa mensagem, com as fontes embaixo de cada resposta
+mac_tr = Respostas traduzidas da sessão original em russo.
+ch1 = <b>Sem treinamento.</b> Os pesos do modelo são exatamente os publicados. O Viper muda o que o modelo vê, não o que ele é: troque por um modelo melhor e o conhecimento continua.
+ch2 = <b>Fontes embaixo das respostas.</b> As respostas vêm dos guias do Viper dentro do app, e os guias usados aparecem logo abaixo.
+ch3 = <b>Rascunhos, não ações.</b> Peça para mandar mensagem para alguém, criar um evento ou salvar uma nota: ele prepara um rascunho e nada acontece até você confirmar.
+ch4 = <b>Você escolhe o que ele sabe.</b> Ligue ou desligue o conhecimento embutido do Viper e adicione suas próprias notas.
+st1 = de 20 perguntas sobre o Viper certas: o modelo sozinho vs. com os guias do Viper (1.5.34)
+st2 = totalmente corretas em 167 perguntas novas e mais difíceis, dois juízes cegos (1.5.34, na App Store)
+ai_note = Ainda não acerta sempre: o teste rigoroso só conta uma resposta como correta quando todo detalhe sobre o Viper nela é verdadeiro. Uma versão nova chega a 61% na bancada de testes e ainda não está no app. O gpt-oss-20b precisa de um Mac com Apple silicon e 24 GB de memória; iPhone e iPad usam modelos abertos menores.
+writeup = O relato completo →
+try = Experimente o Viper Messenger
+try_p = Para iPhone, iPad e Mac. Sem número de telefone.
+follow = Siga no Telegram
+noto1 = Emojis animados:
+noto2 = do Google, sob a licença
+noto3 = sem alterações: as mesmas animações que o Viper usa na apresentação inicial.
+_name = Português (Brasil)
+_code = PT
+_lang = Idioma
+_app = App
+_store = Página na App Store
+nav_blog = >Blog</a>
+link_privacy = >Privacidade</a>
+link_terms = >Termos</a>
+# hero carousel: dot labels and slide alts (slide 1 alt = hero_alt)
+shot_dot1 = Tela 1 de 5: chat direto P2P
+shot_dot2 = Tela 2 de 5: Pessoas por perto via Bluetooth
+shot_dot3 = Tela 3 de 5: resposta da IA com fontes
+shot_dot4 = Tela 4 de 5: rascunho de mensagem da IA
+shot_dot5 = Tela 5 de 5: Notas criptografadas
+shot_alt2 = Pessoas por perto no iPhone: o radar encontrou um usuário do Viper a cerca de 3 metros via Bluetooth, sem internet
+shot_alt3 = O Chat com IA do Viper responde se o Viper precisa de um número de telefone e mostra as fontes que usou
+shot_alt4 = Um rascunho de mensagem da IA com Enviar, Editar e Cancelar: nada é enviado até você tocar em Enviar
+shot_alt5 = Notas criptografadas no iPhone: uma lista de notas guardadas só no dispositivo, criptografadas com a chave da sua conta
+lb_label = aria-label="Captura de tela">
+support_a = Suporte: dúvidas, bugs, um recurso que falta — escreva para
+support_b = no Viper (Buscar → @support) ou no
+link_support = >Suporte</a>

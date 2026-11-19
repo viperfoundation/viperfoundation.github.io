@@ -1,0 +1,11 @@
+Parked 2026-11-19, not built.
+
+These translations (de, fr, it, tr) are kept but no page is generated for them.
+Apple's lookup API (checked 2026-11-19) shows the App Store description localized
+only in English, Russian, Portuguese (Brazil), Spanish (Mexico) and Ukrainian; the app
+is not sold in DE/FR/IT/ES/PT (lookup resultCount 0, store page 404), and the Turkish
+storefront shows the English description. The landing only offers languages a visitor
+can also get on the App Store page.
+
+To bring one back: move its .txt up to i18n/, add it to LANGS in i18n/build.py and
+run python3 i18n/build.py.

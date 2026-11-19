@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>500 Downloads on the App Store · Viper Blog</title>
+<meta name="description" content="Small indie messenger with self-funding and no ads.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · May 14, 2026</p>
+<h1>500 Downloads on the App Store</h1>
+<p>We just crossed ~500 downloads on the App Store. No ads, no viral moment, no influencer push — just word of mouth and a belief that private communication and crypto identity should be out of the box.</p>
+<p>When I first submitted Viper to the App Store, I wasn't sure it would get approved. A messenger that doesn't ask for your phone number, uses encrypted messages out of the box (server stores only encrypted content), and uses TON's ADNL protocol under the hood — it's not exactly the typical consumer app.</p>
+<p>But it got approved. And people started downloading it.</p>
+<h2 id="what-500-means">What 500 means</h2>
+<p>500 isn't a big number by any metric that matters to growth hackers or investors. But it means 500 people actively chose a messenger that puts cryptographic identity ahead of convenience. That's not nothing.</p>
+<p>These are early adopters in the truest sense — people who are willing to share a public key instead of a phone number, who understand why end-to-end encryption at the protocol level matters, and who want something different.</p>
+<h2 id="where-we-go-from-here">Where we go from here</h2>
+<p>We're not chasing downloads. We're building the right thing. Each update to Viper makes it faster, more reliable, and more private. The recent 1.2 release brought end-to-end encrypted reactions — even emoji responses stay between you and the person you're talking to.</p>
+<p>If you haven't tried it yet, <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">download Viper on the App Store</a>.</p>
+<p>And if you're already using it — thank you. You're part of something that matters.</p>
+<h2 id="a-note-on-ton-wallet">A note on TON Wallet</h2>
+<p>Viper was built with TON Wallet integration in mind — encrypted messages tied to your on-chain identity felt like the natural next step. We implemented it. Then Apple rejected it.</p>
+<p>According to App Store rules, only registered organisations can integrate crypto wallets — not indie developers. So for now, that feature stays on the shelf. It's a frustrating reminder that even privacy-first software has to play by platform rules.</p>
+<p>We're not giving up on it. But we're being honest about where things stand.</p>
+<p class="muted" style="margin-top:32px">First published May 14, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

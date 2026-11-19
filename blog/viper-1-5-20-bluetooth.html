@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.20 — Chat Over Bluetooth, No Internet Needed · Viper Blog</title>
+<meta name="description" content="Viper now talks over Bluetooth. Two devices in range exchange messages over an encrypted radio link — no servers, no mobile data. Plus People Nearby, per-chat transport selection, and two themes.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · September 9, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5.20 — Chat Over Bluetooth, No Internet Needed</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Every new Bluetooth link asks first: the other phone shows a card with Allow or Decline, contacts too.</li><li>The default order is now <b>relay first</b> (fastest on a weak network); a Bluetooth link still wins. Change it in Settings → Connectivity → Route priority. The 1.5.20 text said a direct link takes priority.</li><li>The P2P and Bluetooth switches are in Settings → Connectivity (Allow P2P, Allow Bluetooth), not in the profile.</li><li>Files over Bluetooth: up to 8 MB, up to 1 GB when Wi-Fi can join in; bigger files take the relay.</li><li>Bluetooth → direct over the internet works; a stable link out of range is still in progress (an IP change breaks the direct link; it needs TON DHT). See the <a href="guide-bluetooth.html">Bluetooth guide</a>.</li></ul></div>
+<div class="shots"><figure class="shot"><img loading="lazy" src="img/bt-radar-connect.jpg" alt=""><figcaption>People Nearby: Connect asks the other phone first</figcaption></figure><figure class="shot"><img loading="lazy" src="img/bt-chat.jpg" alt=""><figcaption>Blue frame: over Bluetooth with no network; green frame: then direct over the internet with TON</figcaption></figure></div>
+<p>Viper now talks over Bluetooth. Two devices in range of each other can exchange messages over an encrypted radio link — no servers, no mobile data, nothing to pay for. This is the first transport Viper offers that doesn't touch the internet at all.</p>
+<h2 id="chat-over-bluetooth">Chat Over Bluetooth</h2>
+<ul>
+<li>Messages travel over an encrypted Bluetooth link when you and the other person are in range.</li>
+<li>No servers, no mobile data, nothing to pay for.</li>
+<li>You can also bring up a direct P2P connection over Bluetooth: the two devices exchange addresses over the radio link, then talk to each other directly.</li>
+</ul>
+<h2 id="people-nearby">People Nearby</h2>
+<p>Tap the radar next to the search field to find Viper users around you. Every one of them proves their identity with their key before anything is shown.</p>
+<h2 id="choose-how-a-chat-connects">Choose How a Chat Connects</h2>
+<p>Tap the bolt in a chat to pick its route — <strong>direct P2P</strong>, <strong>relay</strong>, or <strong>Bluetooth</strong> — and see which ones are actually available right now instead of guessing.</p>
+<ul>
+<li>New switches in your profile turn P2P or Bluetooth off entirely.</li>
+<li>When a direct link is up, it takes priority. A Bluetooth link stays ready underneath it.</li>
+</ul>
+<h2 id="themes">Themes</h2>
+<ul>
+<li><strong>Viper</strong> — the mint palette, following your system light or dark mode.</li>
+<li><strong>Terminal</strong> — phosphor green on black with monospaced messages.</li>
+</ul>
+<h2 id="faster-and-more-reliable-delivery">Faster and More Reliable Delivery</h2>
+<ul>
+<li>Fixed a regression that could delay messages by seconds, especially after the app had been in the background or the phone had switched networks.</li>
+<li>Files, voice notes and video circles now get through on weak mobile connections instead of timing out.</li>
+<li>Fixed messages not arriving at all after unlocking the app with Face ID.</li>
+</ul>
+<p class="muted" style="margin-top:32px">First published September 9, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

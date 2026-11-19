@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I&#x27;m Not Deleting My CLAUDE.md · Viper Blog</title>
+<meta name="description" content="Boris Cherny says delete your CLAUDE.md. For a product tuned over years, the context file isn&#x27;t a cage — it&#x27;s the years.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · August 18, 2026</p>
+<h1>I&#x27;m Not Deleting My CLAUDE.md</h1>
+<p>Boris Cherny says delete your CLAUDE.md. The argument is that detailed context files constrain the agent — that a fresh model does better exploring than following your notes. I read the thread. Right now, I don't agree.</p>
+<h2 id="ton-app-is-not-a-5-minute-problem">TON App Is Not a 5-Minute Problem</h2>
+<p>TON App is one of the hardest things to get right and one of the easiest to lose. I've spent years watching which phrasings land, which ones feel off, which edge cases break the voice.</p>
+<p>That's not knowledge you can rediscover by poking at the codebase for a few minutes. It's accumulated observation.</p>
+<p>A fresh agent walking into the project doesn't have any of that. It has the code, and it has its training. It does not have the years of <em>this wording tested badly</em>, or <em>users read this as aggressive</em>, or <em>we tried this tone and it killed the onboarding</em>. If you delete the file that holds that, you're betting the agent re-derives it.</p>
+<p>Maybe it does. Maybe it doesn't. Maybe it finds a version that's close enough. Maybe it finds one that's confidently wrong.</p>
+<h2 id="context-is-a-head-start-not-a-cage">Context Is a Head Start, Not a Cage</h2>
+<p>The stronger version of the delete-it argument is that context files become stale, contradictory, or actively misleading — and that's real. A CLAUDE.md that hasn't been touched in a year is worse than none.</p>
+<p>But the fix is to maintain it, not to delete it.</p>
+<p>For any product with real complexity, a fresh agent benefits from a compressed map of what matters: the tone, the constraints, the things that look like bugs but aren't, the things that look fine but aren't. Without it, the agent has to search — and search time is unpredictable. It might find the context fast. It might wander. It might never find the specific thing that took you three releases to learn.</p>
+<h2 id="the-actual-disagreement">The Actual Disagreement</h2>
+<p>I'm not saying context files are always good. I'm saying the complexity of a real product — the kind where tone and edge cases are load-bearing — is exactly the case where throwing away accumulated context is the expensive move.</p>
+<p>A toy project? Delete it, who cares. A product you've been tuning for years? The file <em>is</em> the years.</p>
+<p class="muted" style="margin-top:32px">First published August 18, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

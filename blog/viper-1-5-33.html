@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.33 · Viper Blog</title>
+<meta name="description" content="Encrypted Notes, Viper Pro on every account, and keys you can copy.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · November 7, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5.33</h1>
+<p class="lead">Encrypted Notes, Viper Pro on every account, and keys you can copy.</p>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>1.5.32 (build 335) was submitted on 2026-10-28 with these same notes but is not in the App Store version history; they shipped as 1.5.33.</li></ul></div>
+<div class="shots"><figure class="shot"><img loading="lazy" src="../img/iphone-8-notes.jpg" alt=""><figcaption>Encrypted Notes, kept on this device only (sample notes)</figcaption></figure><figure class="shot"><img loading="lazy" src="../img/iphone-1-profile.jpg" alt=""><figcaption>Profile: public key, Reputation, Accounts, Encrypted Notes, Shared Files (Viper 1.5.34, sample account)</figcaption></figure><figure class="shot"><img loading="lazy" src="img/pro-subscribe.jpg" alt=""><figcaption>Viper Pro guide: Settings → Subscription (demo account)</figcaption></figure></div>
+<ul><li>Encrypted Notes: Profile → Encrypted Notes. Your own notes, kept only on this device and encrypted with your account key. Send any note to a chat as a note card.</li><li>The encrypted chat backup now carries your notes. Messages, contacts and notes are free; with Viper Pro the backup also keeps photos, videos, files, voice and video messages.</li><li>Viper Pro works on the account that subscribed. Settings → Subscription shows which account has it.</li><li>Pro on your other accounts: any other account can buy Viper Pro for itself for one month, from the same Apple ID, as many times as you need. It does not renew.</li><li>Profiles show a person&#x27;s public key and reputation. Copying a public key now says Copied.</li><li>Hide typing and read receipts are free for everyone.</li><li>Reputation updates right after a purchase.</li><li>Profile rows have icons, and the Viper Pro guide explains accounts and Apple IDs.</li></ul>
+<p class="muted" style="margin-top:32px">Text: the App Store “What's New” for Viper 1.5.33, released November 7, 2026. Screenshots: Viper 1.5.34 with sample data. <a href="index.html#releases">All release notes</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

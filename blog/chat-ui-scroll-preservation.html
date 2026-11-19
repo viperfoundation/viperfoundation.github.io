@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat UI in Viper: previous messages logic, scroll preservation and good UX · Viper Blog</title>
+<meta name="description" content="Deep dive into handling prepend logic, scroll position preservation, and what makes chat UX feel right.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Posts</span> · December 22, 2025</p>
+<h1>Chat UI in Viper: previous messages logic, scroll preservation and good UX</h1>
+<p>Chat UI is one of those areas that looks deceptively simple.</p>
+<p>At first glance, it's just a list of messages. In practice, it's a constantly mutating structure driven by:</p>
+<ul>
+<li>asynchronous network events,</li>
+<li>partial history loading,</li>
+<li>user interaction,</li>
+<li>and strict UX expectations.</li>
+</ul>
+<p>Some of the hardest problems in Viper were deep in the transport layer. Others appeared much closer to the surface.</p>
+<p>This post breaks down three closely related topics:</p>
+<ul>
+<li>prepend logic,</li>
+<li>scroll position preservation,</li>
+<li>and what "good chat UX" actually means in practice.</li>
+</ul>
+<h2 id="1-why-prepend-is-not-trivial">1. Why prepend is not trivial</h2>
+<p>Loading older messages usually means prepending data to the top of the list.</p>
+<p>Naively, it looks like this:</p>
+<pre><code>messages = newMessages + oldMessages
+</code></pre>
+<p>But the moment you do this in a real UI, everything breaks:</p>
+<ul>
+<li>the scroll position jumps,</li>
+<li>the visible message changes,</li>
+<li>the user loses context.</li>
+</ul>
+<p>What matters here is not the prepend itself, but what happens to the visible content.</p>
+<p>When history is loaded, the user expects the same messages to remain in the same place on the screen.</p>
+<p>If the UI shifts, even slightly, the experience feels wrong.</p>
+<p><figure class="shot"><img loading="lazy" src="img/old/chat-ui-scroll-preservation-ce7a79a97_IMG_8155_0.jpg" alt=""><figcaption>Load Older Button (older version of Viper)</figcaption></figure></p>
+<p><em>When you tap "Load older (+10)", new messages are fetched and prepended above the current viewport. The scroll position is preserved — you stay on the same message you were viewing.</em></p>
+<p><figure class="shot"><img loading="lazy" src="img/old/chat-ui-scroll-preservation-d85ab733c_IMG_8157_1.jpg" alt=""><figcaption>Loading State (older version of Viper)</figcaption></figure></p>
+<p><em>During the loading process, a "Loading..." indicator appears. Once loaded, you can scroll up to see the newly added messages without losing your current position.</em></p>
+<h2 id="2-ux-is-about-predictability-not-polish">2. UX is about predictability, not polish</h2>
+<p>Good chat UX is often confused with:</p>
+<ul>
+<li>animations,</li>
+<li>transitions,</li>
+<li>visual polish.</li>
+</ul>
+<p>Those help, but they're secondary.</p>
+<p>What actually defines good UX in chat is <strong>predictability</strong>.</p>
+<p>The interface should behave exactly as the user expects:</p>
+<ul>
+<li>scrolling up loads history without jumping,</li>
+<li>new messages don't steal focus,</li>
+<li>the list never "teleports".</li>
+</ul>
+<p>Users are extremely sensitive to small inconsistencies in chat interfaces. Even minor scroll glitches are perceived as bugs — because they break trust.</p>
+<p>A technically correct UI that feels wrong is still wrong.</p>
+<h2 id="3-where-swiftui-stops-being-enough">3. Where SwiftUI stops being enough</h2>
+<p>I initially tried to solve this entirely in SwiftUI.</p>
+<p>For simple lists, SwiftUI works great. But chat UI pushes it into uncomfortable territory.</p>
+<p>At a certain point, I needed:</p>
+<ul>
+<li>precise control over scroll position</li>
+<li>reliable access to content size</li>
+<li>predictable layout timing</li>
+<li>the ability to react to multiple layout passes</li>
+</ul>
+<p>These are areas where SwiftUI intentionally abstracts things away.</p>
+<p>That abstraction is usually a benefit — but in this case, it became a limitation.</p>
+<p>To get the behavior I needed, I had to drop down to UIKit for:</p>
+<ul>
+<li>manual scroll management</li>
+<li>explicit layout measurement</li>
+<li>tighter control over when and how state changes affect the view</li>
+</ul>
+<p>SwiftUI still renders the content. UIKit owns the scrolling.</p>
+<p>This hybrid approach wasn't about fighting SwiftUI. It was about using the right level of control for the problem.</p>
+<h2 id="4-why-these-problems-matter">4. Why these problems matter</h2>
+<p>It's easy to dismiss this as overengineering.</p>
+<p>But solving problems like prepend and scroll preservation forces you to:</p>
+<ul>
+<li>think in terms of state transitions,</li>
+<li>separate data from presentation,</li>
+<li>reason about time, order, and causality.</li>
+</ul>
+<p>After working through problems at this level, typical business tasks — CRUDs, dashboards, admin panels — become dramatically simpler.</p>
+<p>There's a reason for that.</p>
+<p>Hard problems sharpen your engineering intuition. They teach you how to reason under constraints.</p>
+<p>As the saying goes:</p>
+<blockquote>
+<p>"Hard in training — easy in battle."</p>
+</blockquote>
+<h2 id="closing-thoughts">Closing thoughts</h2>
+<p>A good chat interface fades into the background.</p>
+<p>When it works well, the user doesn't notice the UI at all — only the conversation.</p>
+<p>Working on Viper taught me that achieving this "invisibility" often requires more thought, not less.</p>
+<p>Once the interface stops drawing attention to itself, the solution feels simple — even if it wasn't.</p>
+<p class="muted" style="margin-top:32px">First published December 22, 2025 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

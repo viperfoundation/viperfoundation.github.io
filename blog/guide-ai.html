@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI · Viper Blog</title>
+<meta name="description" content="From a chat to the AI and back, on this device">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Guides</span> · November 19, 2026</p>
+<h1>AI</h1>
+<p class="lead">From a chat to the AI and back, on this device</p>
+<h2>AI on this device</h2><p>Open AI Chat and tap Download once. Then the model runs on this device, offline: what you ask stays with you. Small models run on iPhone, iPad and Mac; the large GPT-OSS 20B runs on a Mac only.</p>
+<figure class="shot wide"><img loading="lazy" src="../img/en/mac-ai-chat-window.jpg" alt=""><figcaption>AI Chat on a Mac: gpt-oss-20b answers from Viper&#x27;s guides, with Sources under each answer (real answers)</figcaption></figure><figure class="shot wide"><img loading="lazy" src="img/ai-draft-mac.jpg" alt=""><figcaption>“Write to Maksim C that I&#x27;ll be late”: gpt-oss-20b proposes a draft, nothing is sent until you tap Send (real answer; iPad layout, the same window on a Mac)</figcaption></figure><figure class="shot panel"><img loading="lazy" src="img/ai-knowledge-mac.jpg" alt=""><figcaption>Viper knowledge: switch each source on or off; only GPT-OSS 20B uses it (iPad layout, the same on a Mac)</figcaption></figure>
+<h2>From a chat to the AI</h2><p>In a chat, hold a message, tap Select and pick a few. Tap ✨: AI Chat opens with them. Tap Summarize, or write what to do.</p>
+<h2>From the AI to a friend</h2><p>Hold an AI answer, tap Forward to chat… and pick the chat. Your friend sees it marked Forwarded from Viper AI.</p>
+<h2>A message from the AI</h2><p>Ask GPT-OSS 20B to write to a contact: it shows a draft with the recipient. Nothing is sent until you tap Send. Edit changes it, Cancel drops it. The ✦ Viper AI block is the AI&#x27;s comment: Without comment removes it.</p>
+<h2>Contacts for AI</h2><p>AI Chat menu → Contacts for AI…: pick up to 50 contacts the AI may write to by @username. Only names go to the model, never keys or messages. Only GPT-OSS 20B on a Mac does this.</p>
+<h2>GPT-OSS 20B on Mac</h2><p>A large model, for a Mac only (the iPhone app on Apple silicon). About 12 GB, downloaded once; then it runs offline. Only GPT-OSS 20B answers from Knowledge and writes drafts to contacts, events and notes; small models just chat.</p>
+<h2>Knowledge</h2><p>GPT-OSS 20B answers about Viper from About Viper, the guides of this build and What&#x27;s new in this build, and from My knowledge. Under an answer, Sources show what it used. AI Chat menu → Viper knowledge…: read, copy or share each source, and switch it on or off.</p>
+<h2>My knowledge</h2><p>AI Chat menu → Knowledge… → Add: write your own text in Markdown, any length. Edit and Preview show how it reads. Share… sends it to a friend, who can add it to theirs.</p>
+
+<p class="muted" style="margin-top:32px">From the guide in Viper 1.5.34: Profile → Settings → Help → Guides. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

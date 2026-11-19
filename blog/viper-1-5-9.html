@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper 1.5.9 — Ephemeral Relay, Local Contacts &amp; Persistent P2P History · Viper Blog</title>
+<meta name="description" content="Relay messages now vanish from the server the moment you come online. Contacts live on your device. P2P chat history persists locally across app restarts.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Release notes</span> · July 9, 2026 · Updated for Viper 1.5.34</p>
+<h1>Viper 1.5.9 — Ephemeral Relay, Local Contacts &amp; Persistent P2P History</h1>
+<div class="box updated"><h2>Updated for Viper 1.5.34 (November 19, 2026)</h2><p class="muted">What changed since this post. Where the post and the app differ, the app is right.</p><ul><li>Still true: the relay keeps a message only until it is delivered, then deletes it, and keeps no history. Chats are stored on your device, encrypted.</li><li><b>Correction:</b> the contact list is kept on your device, encrypted, but the app still sends each contact you add to the relay (your public key → their public key, with the name encrypted to you). So the relay does see who your contacts are.</li><li>New since: Encrypted Chat Backup (Settings → Security and Data) to take chats to a new phone.</li></ul></div>
+<p>Viper 1.5.9 is a privacy-focused release: messages leave the server as soon as they reach you, contacts never leave your device, and P2P history now survives app restarts.</p>
+<h2 id="ephemeral-relay-storage">Ephemeral Relay Storage</h2>
+<p>Relay messages are no longer stored permanently on the server.</p>
+<p>When you're <strong>online</strong>, messages are routed straight to your device — they never touch persistent storage at all. When you're <strong>offline</strong>, the relay holds incoming messages temporarily, just long enough to deliver them. The moment you come back online, messages are forwarded to you and immediately removed from the server.</p>
+<p>The relay never accumulates your message history. There's nothing to subpoena, nothing to breach.</p>
+<h2 id="contacts-stored-on-device">Contacts Stored on Device</h2>
+<p>Your contact list is now stored entirely on your device. It no longer syncs through or lives on any server. Your social graph is yours — private by default, inaccessible to anyone else.</p>
+<h2 id="persistent-p2p-message-history">Persistent P2P Message History</h2>
+<p>P2P messages are now saved locally and survive app restarts. Previously, closing the app meant losing your direct P2P conversation history. Now it's stored on-device and available the next time you open Viper — just like relay-delivered messages.</p>
+<p class="muted" style="margin-top:32px">First published July 9, 2026 on the old Viper Foundation blog; moved here November 19, 2026. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

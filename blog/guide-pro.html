@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Viper Pro · Viper Blog</title>
+<meta name="description" content="What it adds and where to get it">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/" aria-current=page>Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<p class="meta"><span class="tag">Guides</span> · November 19, 2026</p>
+<h1>Viper Pro</h1>
+<p class="lead">What it adds and where to get it</p>
+<h2>Where to get it</h2><p>Settings → Subscription → Subscribe. Viper Pro is a monthly App Store subscription; Restore Purchases brings it back.</p>
+<figure class="shot"><img loading="lazy" src="img/pro-subscribe.jpg" alt=""><figcaption>Viper Pro guide: Settings → Subscription (demo account)</figcaption></figure>
+<h2>One Apple ID, one account</h2><p>An Apple ID holds one renewing Viper Pro subscription, and it works on one account: the one that subscribed. Settings → Subscription says On this account there.</p>
+<h2>Your other accounts</h2><p>On any other account, Subscription offers Pro for this account for a month. The same Apple ID can buy it for any number of accounts. It does not renew.</p>
+<h2>Renewing on two accounts</h2><p>For a renewing subscription on a second account, subscribe with a second Apple ID: say Apple ID X on your iPhone and Apple ID Y on your Mac.</p>
+<h2>Hidden by the relay</h2><p>Anon Mode takes you out of Search; your chats keep working. Hide Online Status shows you offline to everyone. The relay checks Apple&#x27;s signature itself.</p>
+<h2>Files up to 2 GB</h2><p>Through the relay a file can be up to 50 MB free, up to 2 GB with Pro, even when they are offline. It waits for them up to 14 days.</p>
+<h2>Full Chat Backup</h2><p>Messages and contacts go into the backup for free. With Pro it also carries photos, videos, files, voice and video messages. Only your Account Key opens the file.</p>
+<div class="box coming"><h3>Coming (announced, not shipped yet)</h3>
+<p>Features that run on your device are moving to Free: <b>Save without Logo</b> and the <b>full chat backup with photos, videos and files</b>. What the relay does stays in Viper Pro: <b>Anon Mode</b>, <b>Hide Online Status</b> and <b>big files through the relay</b>. File transfers will also be improved. Until that update ships, the page above describes the app as it is.</p></div>
+<h3>Earlier on this blog</h3><ul><li><a href="viper-1-5-18-hide-online-status.html">Viper 1.5.18 — Hide Your Online Status</a></li><li><a href="viper-pro-launch-stall.html">Viper Pro: A Launch, a Stall, and a Week Lost</a></li></ul>
+<p class="muted" style="margin-top:32px">From the guide in Viper 1.5.34: Profile → Settings → Help → Guides. <a href="index.html">All posts</a></p>
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>

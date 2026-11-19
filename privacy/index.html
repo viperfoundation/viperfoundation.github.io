@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Viper Messenger</title>
+<meta name="description" content="How Viper Messenger handles your information: what leaves your device, who receives it and for how long.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0b0f0d" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8f7" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="../img/viper-eye-64.png">
+<link rel="apple-touch-icon" href="../img/viper-eye-180.png">
+<link rel="stylesheet" href="../blog/blog.css">
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="../"><img src="../img/viper-eye-64.png" alt="" width="28" height="28"><span>Viper Messenger</span></a>
+  <nav><a href="../blog/">Blog</a><a href="../privacy/" aria-current=page>Privacy</a><a href="../terms/">Terms</a></nav>
+</div></header>
+<main><div class="wrap">
+<h1>Privacy Policy</h1>
+<p class="meta">Last updated: November 19, 2026 · Effective: on publication · Applies to Viper Messenger 1.5.34 for iPhone, iPad and Mac, and to this website</p>
+
+<h2>Introduction and updates</h2>
+<p>This policy explains what information Viper Messenger (“Viper”, the “app”) and this website handle, who receives it, and for how long. “We”, “us” and “our” mean Viper Foundation. Viper is built so that we have as little information as possible: there is no sign-up form, no phone number and no email address, and messages are end-to-end encrypted. Your account is a key made on your device; when the app goes online, it connects to our relay with your public key so that messages can reach you (see below for what the relay keeps). Without internet, Viper still works over Bluetooth with people nearby, and the relay is not contacted.</p>
+<p>We may update this policy by posting a new version on this page and changing the “Last updated” date. If a change is significant, we will also say so in the app's “What's new” or on our <a href="https://t.me/viperfoundation">Telegram channel</a>.</p>
+
+<h2>The short version</h2>
+<ul>
+<li>Your account is a pair of cryptographic keys made on your device. We never receive your private key (Account Key) or your recovery phrase.</li>
+<li>Messages, files, reactions, calls and shared locations are end-to-end encrypted. The relay that passes them on cannot read them.</li>
+<li>The relay keeps an undelivered message only until it is delivered, then deletes it. Files sent through the relay are deleted once delivered, or after 14 days if nobody fetches them.</li>
+<li>Your chat history is stored on your device, encrypted. We have no copy.</li>
+<li>The relay does see some metadata to do its job: your public key, your IP address, who you send to and when, sizes, your online status, and the public keys of the contacts you add.</li>
+<li>The app has no advertising, no analytics and no tracking SDKs.</li>
+<li>The on-device AI runs on your device. What you ask it is not sent anywhere.</li>
+</ul>
+
+<h2>What information is handled</h2>
+
+<h3>1. Your account</h3>
+<p>When you create an account, the app generates a key pair on your device. The <b>public key</b> is your address: it is sent to the relay and is visible to anyone you talk to. The <b>Account Key</b> (private key) and the <b>24-word recovery phrase</b> stay on your device, in the system keychain, and are never sent to us. If you lose them, we cannot recover your account.</p>
+<p>Information you choose to make public: a <b>@username</b>, a <b>display name</b> and a <b>profile photo</b>. The relay stores these with your public key so others can find you and see them. Anyone who knows your key can see your name and photo.</p>
+
+<h3>2. Messages and other content</h3>
+<p>Messages, photos, videos, files, voice and video messages, notes, events, reactions, edits and Live Location updates are encrypted on your device for the recipient before they leave it. They travel by one of three routes:</p>
+<ul>
+<li><b>Through the relay.</b> The relay receives the sender's and recipient's public keys, a timestamp, the size and the encrypted content. It cannot read the content. If the recipient is offline, the relay holds the encrypted message until it is delivered and then deletes it; it keeps no message history. For a short time (up to 48 hours) it remembers message IDs to avoid delivering a message twice.</li>
+<li><b>Files through the relay</b> (up to 50 MB, or 2 GB with Viper Pro) are stored encrypted until the recipient downloads them, then deleted. A file nobody fetches is deleted after 14 days; an unfinished upload after 6 hours. The relay sees the size, never the file name or contents.</li>
+<li><b>Directly between devices (P2P)</b> over the internet, or <b>over Bluetooth</b> when you are near each other. These do not pass through the relay. See “Direct links and your IP address” below.</li>
+</ul>
+<p><b>Calls</b> always go through the relay. Each call uses a new key; the relay passes on audio and video it cannot read.</p>
+
+<h3>3. Metadata the relay sees</h3>
+<p>To deliver messages, the relay necessarily learns:</p>
+<ul>
+<li>your public key and your <b>IP address and port</b> while you are connected;</li>
+<li>which public key you send to and when, and the size of what you send;</li>
+<li>your <b>online status</b> (a short heartbeat while the app is open), and the last time your account connected; if you have Viper Pro and turn on Hide Online Status, others see you as offline, but the relay still knows you are connected;</li>
+<li>the date your account was first seen (used for Reputation);</li>
+<li>what you type into Search (to find a @username, public key or .ton name);</li>
+<li>the <b>public keys of the contacts you add</b>. Your contact list itself is stored on your device; the app also sends each contact you add to the relay as a pair (your key → their key), with the name you gave them encrypted so that only you can read it.</li>
+</ul>
+<p>The relay keeps only aggregate operational counters (for example, how many messages passed), not per-user activity logs.</p>
+
+<h3>4. Push notifications</h3>
+<p>If you allow notifications, your device's push token is sent to the relay. When you receive a message while Viper is closed, the relay asks Apple Push Notification service to show “Viper — New message”. The push contains no message text, no name and no public key; it contains a short hash of the sender's key so your phone can open the right chat. Apple handles the push under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>. Exit, Delete Account and Erase All Data stop pushes for the account in use.</p>
+
+<h3>5. Direct links and your IP address</h3>
+<p>A direct (P2P) link connects your device to the other person's device. To set it up, the relay introduces the two devices, and <b>each device learns the other's IP address</b>. A direct link opens only between people who have each other in contacts. With TON Drop, two nearby phones can exchange their IP addresses over Bluetooth to connect directly. If you don't want your IP address to reach a contact, keep that chat on Relay only (Route → Relay only) or turn off Allow P2P in Settings → Connectivity.</p>
+
+<h3>6. Bluetooth, nearby devices and location</h3>
+<ul>
+<li><b>People Nearby</b> uses Bluetooth. Nearby Viper users can see your <b>public key</b> and, if you share it, a rough distance. You can turn this off in Settings → Connectivity (Allow Bluetooth). A Bluetooth chat link opens only after the other person taps Allow.</li>
+<li><b>Ultra Wideband</b> (on supported iPhones) measures distance and direction between two phones; this stays between the two phones.</li>
+<li><b>Location</b> is used only when you choose: for Live Location (your position goes end-to-end encrypted to the one chat you picked, for the time you picked), and optionally for People Nearby: while your radar is open with location allowed, your position goes, encrypted, only to the people you are linked with over Bluetooth. The relay never sees where you are.</li>
+<li><b>Local network</b> access is used to send files to people nearby over Wi-Fi.</li>
+</ul>
+
+<h3>7. Other device permissions</h3>
+<p>Camera, microphone and photo library are used only to take, record and send the media you choose. Calendar access is <b>add-only</b> (to add an event you received); Viper does not read your calendar. Speech recognition for Transcribe runs on the device. Face ID protects the app and your keys; Apple does not share your face data with apps. Viper does not access your address book.</p>
+
+<h3>8. On-device AI</h3>
+<p>AI Chat runs a model on your device. Your questions, the messages you select for it and its answers stay on the device. To get a model, the app downloads it once from <b>Hugging Face</b> (huggingface.co), which, like any web server, sees your IP address and which file was downloaded (see <a href="https://huggingface.co/privacy">Hugging Face's privacy policy</a>).</p>
+
+<h3>9. TON network and .ton names</h3>
+<p>Viper connects to public TON network servers (liteservers, and the configuration published at ton.org) to find the relay and to read the blockchain. If you turn on Show TON Domains, the app asks <b>tonapi.io</b> which .ton names belong to a wallet; tonapi.io sees your IP address and the wallet address asked about. The relay also reads public blockchain data to resolve .ton names and to compute Reputation.</p>
+
+<h3>10. Viper Pro and payments</h3>
+<p>Viper Pro is bought through Apple's App Store. We never see your name, Apple ID or payment details. To turn on Pro features, the app sends the relay the signed transaction record that Apple provides (StoreKit), which contains the product, purchase and expiry dates and transaction IDs. The relay checks Apple's signature and uses it only to enable Pro features for your account.</p>
+
+<h3>11. Diagnostics</h3>
+<p>Network Diagnostics keeps a journal on your device of network changes, IP addresses and connection events, to help find connection problems. It is not sent anywhere unless you tap Share and send it yourself; the file includes your IP addresses but no message text. The app also writes technical logs to the device's system log, which Apple may receive if you choose to share analytics with Apple developers in iOS settings. Viper has no crash-reporting or analytics service of its own.</p>
+
+<h3>12. Backups</h3>
+<p>Chats are stored on your device, encrypted with a key derived from your Account Key; your keys are kept “this device only” and are not included in iCloud backups. Encrypted Chat Backup creates a file that only your Account Key opens; where you keep that file (Files, iCloud Drive, another app) is your choice and is governed by that service. AI models are excluded from device backups.</p>
+
+<h3>13. This website</h3>
+<p>This website is a static site hosted on <b>GitHub Pages</b>. It has no cookies, forms or analytics. GitHub may log visitors' IP addresses for security (see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>). Everything the site uses, including the animations, is served from the site itself: no third-party scripts, fonts or trackers.</p>
+
+<h2>How we use information</h2>
+<p>Only to run the service: to deliver messages, calls and files; to let people find you by @username, public key or .ton name; to show online status, Reputation and Pro features; to send push notifications; and to keep the relay secure and working. We do not sell or rent information, we do not use it for advertising, and we do not build profiles of users.</p>
+
+<h2>Legal basis (EEA, UK and similar laws)</h2>
+<p>We process the information above because it is necessary to provide the service you ask for (performance of a contract), for our legitimate interest in keeping the service secure and working, and, where the operating system asks for it (location, Bluetooth, notifications, camera and similar), with your consent, which you can withdraw in your device settings.</p>
+
+<h2>Who receives information</h2>
+<ul>
+<li>The people you talk to (your public key, profile, messages; and your IP address over a direct link).</li>
+<li>People nearby, if Bluetooth is on (your public key).</li>
+<li>Apple (push notifications and App Store purchases), Hugging Face (model downloads), tonapi.io and TON network servers (blockchain lookups), GitHub (this website), each under its own privacy policy.</li>
+<li>Professional advisers, or authorities where the law requires it. Because messages are end-to-end encrypted and deleted from the relay once delivered, we have no message content to give.</li>
+</ul>
+
+<h2>How long information is kept</h2>
+<ul>
+<li>Undelivered messages: until delivered. Delivery IDs: up to 48 hours.</li>
+<li>Files sent through the relay: until delivered, at most 14 days (unfinished uploads: 6 hours).</li>
+<li>Your public key, @username, display name, photo, last-connected time and first-seen date: while your account exists on the relay.</li>
+<li>Contact pairs and push tokens: while your account exists on the relay.</li>
+<li>Everything on your device: until you delete it, use Erase All Data, or delete the app.</li>
+</ul>
+
+<h2>Deleting your data</h2>
+<ul>
+<li><b>Delete Account</b> (bottom of Settings) removes the account in use from the relay, including its @username and photo, and stops its push notifications.</li>
+<li><b>Erase All Data</b> clears every account and all chats from this device. It does not remove accounts from the relay; use Delete Account for that first.</li>
+<li><b>Exit</b> removes an account from this device only.</li>
+</ul>
+
+<h2>Your rights</h2>
+<p>Depending on where you live, you may have the right to access, correct, delete, restrict or object to the processing of your information, and to receive it in a portable format. Most of your information is on your device and under your control: you can view and delete it in the app. For information on the relay, use Delete Account or contact us. Because an account has no name, email or phone number attached, we may need you to prove that you hold its key (for example, by sending a message from it). You may also complain to your local data protection authority.</p>
+
+<h2>Children</h2>
+<p>Viper is not directed to children. Do not use Viper if you are under the minimum age required in your country to consent to the processing of your information.</p>
+
+<h2>International transfers</h2>
+<p>The relay and the services named above may be located outside your country. Where the law requires it, we use appropriate safeguards for such transfers.</p>
+
+<h2>Contact</h2>
+<p>Viper Foundation. For questions about privacy, write to us on <a href="https://t.me/viperfoundation" target="_blank" rel="noopener">Telegram</a>, or in Viper to <a href="viper://support">@support</a> (find @support in Search).</p>
+
+
+</div></main>
+<footer><div class="wrap">
+  <div class="cols">
+    <a href="../">Home</a><a href="../blog/">Blog</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a>
+    <a href="https://apps.apple.com/us/app/viper-messenger/id6754181968" target="_blank" rel="noopener">App Store</a><a href="https://t.me/viperfoundation">Telegram</a><a href="https://github.com/viperfoundation/viperfoundation.github.io">Source of this site</a>
+  </div>
+  <p>© Viper Foundation</p>
+</div></footer>
+<dialog id="lb" aria-label="Screenshot"><img alt=""></dialog>
+<script>
+// Screenshots open full size (click, Enter); Esc or a click closes.
+(function(){var lb=document.getElementById('lb'),big=lb.querySelector('img');if(!lb.showModal)return;
+  lb.addEventListener('click',function(){lb.close()});
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault()});
+  document.querySelectorAll('figure.shot img').forEach(function(m){m.tabIndex=0;m.setAttribute('role','button');
+    function open(){big.src=m.currentSrc||m.src;big.alt=m.closest('figure').querySelector('figcaption')?.textContent||'';lb.showModal()}
+    m.addEventListener('click',open);m.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})})})();
+</script>
+</body>
+</html>
