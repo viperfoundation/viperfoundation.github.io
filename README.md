@@ -1,9 +1,12 @@
 # viperfoundation.github.io
 
-The open-source landing page of **Viper Messenger**: <https://viperfoundation.github.io/>
+The open-source landing page of **Viper Messenger**: <https://viperfoundation.io/>
 
 Viper Messenger is a private messenger built on TON. Messages go device to device whenever they can, everything is
 end-to-end encrypted, and your account is a key: no phone number, no email.
+The AI runs on your device too: gpt-oss-20b locally on a Mac (Apple silicon, 24 GB) and smaller open models on iPhone
+and iPad. It answers from Viper's guides and drafts messages, events and notes; nothing leaves the device, and nothing is
+sent until you confirm.
 [Viper Messenger on the App Store](https://apps.apple.com/us/app/viper-messenger/id6754181968) ·
 [Docs](https://github.com/viperfoundation/Viper) · [Telegram](https://t.me/viperfoundation)
 

@@ -9,7 +9,7 @@ English string from en.txt for its translation in <lang>.txt.
 import os, re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SITE = "https://viperfoundation.github.io/"
+SITE = "https://viperfoundation.io/"
 # (strings file, folder, html lang / hreflang). Order = order in the switcher.
 LANGS = [("en", "", "en"), ("ru", "ru", "ru"), ("pt-br", "pt-br", "pt-BR"), ("es", "es", "es-MX"), ("uk", "uk", "uk")]
 APP_LANGS = "English, Русский"  # Viper/Localizable.xcstrings: source en, only ru localized
